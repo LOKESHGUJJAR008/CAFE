@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 620" fill="none">
+  <defs>
+    <linearGradient id="cafeBg" x1="0" y1="0" x2="520" y2="620" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3D2417"/>
+      <stop offset="100%" stop-color="#241812"/>
+    </linearGradient>
+    <radialGradient id="lampGlow1" cx="180" cy="160" r="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#C58B4E" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#241812" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lampGlow2" cx="400" cy="200" r="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#C58B4E" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#241812" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="tableGrad" x1="60" y1="420" x2="460" y2="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2A1A10"/>
+      <stop offset="50%" stop-color="#5A3825"/>
+      <stop offset="100%" stop-color="#2A1A10"/>
+    </linearGradient>
+    <linearGradient id="curtainGrad" x1="0" y1="0" x2="100" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3D2417"/>
+      <stop offset="100%" stop-color="#2A1A10"/>
+    </linearGradient>
+    <clipPath id="sceneClip">
+      <rect width="520" height="620" rx="32"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#sceneClip)">
+    <!-- Room bg -->
+    <rect width="520" height="620" fill="url(#cafeBg)"/>
+    <!-- Warm ambient lighting -->
+    <circle cx="180" cy="160" r="200" fill="url(#lampGlow1)"/>
+    <circle cx="400" cy="200" r="180" fill="url(#lampGlow2)"/>
+
+    <!-- Rear wall texture - subtle brick effect -->
+    <rect x="0" y="0" width="520" height="380" fill="#1E120A" opacity="0.4"/>
+    <line x1="0" y1="50" x2="520" y2="50" stroke="#2A1A10" stroke-width="1.5" opacity="0.6"/>
+    <line x1="0" y1="100" x2="520" y2="100" stroke="#2A1A10" stroke-width="1.5" opacity="0.6"/>
+    <line x1="0" y1="150" x2="520" y2="150" stroke="#2A1A10" stroke-width="1.5" opacity="0.6"/>
+    <line x1="0" y1="200" x2="520" y2="200" stroke="#2A1A10" stroke-width="1.5" opacity="0.6"/>
+    <line x1="0" y1="250" x2="520" y2="250" stroke="#2A1A10" stroke-width="1.5" opacity="0.6"/>
+    <line x1="0" y1="300" x2="520" y2="300" stroke="#2A1A10" stroke-width="1.5" opacity="0.6"/>
+    <line x1="0" y1="350" x2="520" y2="350" stroke="#2A1A10" stroke-width="1.5" opacity="0.6"/>
+
+    <!-- Pendant lamp 1 -->
+    <line x1="160" y1="0" x2="160" y2="120" stroke="#C58B4E" stroke-width="2.5" opacity="0.7"/>
+    <path d="M138 120 H182 L175 148 H145 Z" fill="#C58B4E"/>
+    <ellipse cx="160" cy="150" rx="18" ry="6" fill="#C58B4E" opacity="0.5"/>
+    <!-- Lamp glow -->
+    <ellipse cx="160" cy="160" rx="70" ry="30" fill="#C58B4E" opacity="0.08"/>
+
+    <!-- Pendant lamp 2 -->
+    <line x1="380" y1="0" x2="380" y2="100" stroke="#C58B4E" stroke-width="2" opacity="0.6"/>
+    <path d="M362 100 H398 L393 124 H367 Z" fill="#C58B4E" opacity="0.85"/>
+    <ellipse cx="380" cy="127" rx="15" ry="5" fill="#C58B4E" opacity="0.5"/>
+
+    <!-- Arch window (back wall aesthetic detail) -->
+    <path d="M280 60 Q310 30 340 60 L340 180 H280 Z" fill="none" stroke="#5A3825" stroke-width="3" opacity="0.5"/>
+    <path d="M282 62 Q310 34 338 62 L338 178 H282 Z" fill="#3D2417" opacity="0.4"/>
+
+    <!-- Wooden floor -->
+    <rect x="0" y="390" width="520" height="230" fill="#2A1A10"/>
+    <!-- Floor planks -->
+    <line x1="0" y1="410" x2="520" y2="410" stroke="#3D2417" stroke-width="1.5" opacity="0.8"/>
+    <line x1="0" y1="440" x2="520" y2="440" stroke="#3D2417" stroke-width="1.5" opacity="0.8"/>
+    <line x1="0" y1="470" x2="520" y2="470" stroke="#3D2417" stroke-width="1.5" opacity="0.8"/>
+    <line x1="0" y1="500" x2="520" y2="500" stroke="#3D2417" stroke-width="1.5" opacity="0.8"/>
+    <line x1="0" y1="530" x2="520" y2="530" stroke="#3D2417" stroke-width="1.5" opacity="0.8"/>
+    <!-- Floor highlight -->
+    <rect x="80" y="392" width="80" height="228" fill="#C58B4E" opacity="0.04"/>
+    <rect x="260" y="392" width="60" height="228" fill="#C58B4E" opacity="0.03"/>
+
+    <!-- Table -->
+    <rect x="80" y="385" width="360" height="28" rx="6" fill="url(#tableGrad)"/>
+    <rect x="80" y="385" width="360" height="6" rx="3" fill="#C58B4E" opacity="0.18"/>
+    <!-- Table legs -->
+    <rect x="110" y="413" width="16" height="130" rx="4" fill="#5A3825"/>
+    <rect x="394" y="413" width="16" height="130" rx="4" fill="#5A3825"/>
+
+    <!-- Coffee cup on table (left) -->
+    <path d="M136 348 H180 C177 372 168 384 158 384 C148 384 139 372 136 348 Z" fill="#F5EBDD"/>
+    <path d="M180 358 C192 358 196 368 196 374 C196 380 190 386 180 386" stroke="#D8C3A5" stroke-width="10" fill="none"/>
+    <ellipse cx="158" cy="348" rx="22" ry="7" fill="#F5EBDD"/>
+    <ellipse cx="158" cy="348" rx="20" ry="6" fill="#5A3825"/>
+    <!-- saucer -->
+    <ellipse cx="158" cy="386" rx="28" ry="6" fill="#D8C3A5"/>
+
+    <!-- Open book on table (center) -->
+    <path d="M220 370 Q260 360 300 370 L305 390 Q260 378 215 390 Z" fill="#EBD9C0"/>
+    <path d="M260 360 L260 390" stroke="#C58B4E" stroke-width="1.5" opacity="0.5"/>
+    <line x1="225" y1="373" x2="258" y2="367" stroke="#D8C3A5" stroke-width="1.2" opacity="0.5"/>
+    <line x1="225" y1="378" x2="258" y2="373" stroke="#D8C3A5" stroke-width="1.2" opacity="0.5"/>
+    <line x1="262" y1="367" x2="296" y2="373" stroke="#D8C3A5" stroke-width="1.2" opacity="0.5"/>
+    <line x1="262" y1="372" x2="296" y2="378" stroke="#D8C3A5" stroke-width="1.2" opacity="0.5"/>
+
+    <!-- Small potted plant right side -->
+    <rect x="360" y="340" width="30" height="46" rx="4" fill="#5A3825"/>
+    <rect x="358" y="340" width="34" height="8" rx="4" fill="#7A4E35"/>
+    <!-- Plant stems/leaves -->
+    <path d="M375 340 C365 310 340 300 345 280" stroke="#3A6040" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <path d="M375 335 C385 305 408 295 405 270" stroke="#3A6040" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <path d="M375 330 C375 310 375 290 375 270" stroke="#3A6040" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+    <!-- Leaves -->
+    <ellipse cx="342" cy="276" rx="18" ry="10" fill="#4A7A50" transform="rotate(-30 342 276)"/>
+    <ellipse cx="407" cy="266" rx="18" ry="10" fill="#4A7A50" transform="rotate(20 407 266)"/>
+    <ellipse cx="375" cy="264" rx="14" ry="8" fill="#4A7A50"/>
+
+    <!-- Decorative coffee bean art on wall -->
+    <g opacity="0.35" transform="translate(440, 90)">
+      <ellipse cx="0" cy="0" rx="14" ry="9" fill="#C58B4E" transform="rotate(-20)"/>
+      <path d="M-12 -2 Q0 2 12 -2" stroke="#241812" stroke-width="1.5" fill="none"/>
+      <ellipse cx="0" cy="28" rx="11" ry="7" fill="#C58B4E" transform="rotate(10)"/>
+      <path d="M-9 26 Q0 30 9 26" stroke="#241812" stroke-width="1.5" fill="none"/>
+      <ellipse cx="-18" cy="14" rx="10" ry="6" fill="#C58B4E" transform="rotate(-35)"/>
+      <ellipse cx="18" cy="14" rx="10" ry="6" fill="#C58B4E" transform="rotate(35)"/>
+    </g>
+
+    <!-- Golden light bloom at the top center (artistic) -->
+    <ellipse cx="260" cy="0" rx="160" ry="60" fill="#C58B4E" opacity="0.07"/>
+
+    <!-- Text overlay at bottom -->
+    <rect x="0" y="540" width="520" height="80" fill="url(#cafeBg)" opacity="0.9"/>
+    <text x="260" y="575" text-anchor="middle" font-family="'Playfair Display', serif" font-size="20" font-weight="700" fill="#F5EBDD">Crafted With Love</text>
+    <text x="260" y="598" text-anchor="middle" font-family="'Inter', sans-serif" font-size="12" fill="#C58B4E" letter-spacing="3">ROYAL BEAN CAFÉ • TALWANDI</text>
+  </g>
+</svg>

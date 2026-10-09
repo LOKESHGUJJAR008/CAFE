@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" fill="none">
+  <defs>
+    <radialGradient id="beanGlow" cx="160" cy="160" r="140" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#5A3825" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#241812" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="beanClip">
+      <rect width="320" height="320" rx="28"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#beanClip)">
+    <rect width="320" height="320" fill="#2A1A10"/>
+    <circle cx="160" cy="160" r="140" fill="url(#beanGlow)"/>
+
+    <!-- Surface / dark backdrop -->
+    <rect x="0" y="180" width="320" height="140" fill="#3D2417" opacity="0.6"/>
+
+    <!-- Large coffee bean 1 -->
+    <g transform="translate(120, 140) rotate(-25)">
+      <ellipse cx="0" cy="0" rx="52" ry="34" fill="#5A3825"/>
+      <ellipse cx="0" cy="0" rx="52" ry="34" fill="#3D2417" opacity="0.6"/>
+      <path d="M-46 0 Q0 6 46 0" stroke="#C58B4E" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+      <!-- surface sheen -->
+      <ellipse cx="-15" cy="-10" rx="16" ry="9" fill="#7A4E35" opacity="0.5" transform="rotate(15)"/>
+    </g>
+
+    <!-- Large coffee bean 2 -->
+    <g transform="translate(200, 165) rotate(15)">
+      <ellipse cx="0" cy="0" rx="46" ry="30" fill="#241812"/>
+      <ellipse cx="0" cy="0" rx="46" ry="30" fill="#3D2417" opacity="0.7"/>
+      <path d="M-40 0 Q0 5 40 0" stroke="#C58B4E" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <ellipse cx="10" cy="-8" rx="12" ry="7" fill="#5A3825" opacity="0.5" transform="rotate(-10)"/>
+    </g>
+
+    <!-- Medium bean 3 -->
+    <g transform="translate(80, 195) rotate(35)">
+      <ellipse cx="0" cy="0" rx="36" ry="23" fill="#5A3825"/>
+      <path d="M-32 0 Q0 4 32 0" stroke="#C58B4E" stroke-width="3" stroke-linecap="round" fill="none"/>
+    </g>
+
+    <!-- Medium bean 4 -->
+    <g transform="translate(240, 210) rotate(-18)">
+      <ellipse cx="0" cy="0" rx="34" ry="22" fill="#3D2417"/>
+      <ellipse cx="0" cy="0" rx="34" ry="22" fill="#5A3825" opacity="0.5"/>
+      <path d="M-30 0 Q0 4 30 0" stroke="#C58B4E" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    </g>
+
+    <!-- Small scattered beans -->
+    <g transform="translate(160, 230) rotate(45)">
+      <ellipse cx="0" cy="0" rx="24" ry="15" fill="#241812"/>
+      <ellipse cx="0" cy="0" rx="24" ry="15" fill="#5A3825" opacity="0.4"/>
+      <path d="M-20 0 Q0 3 20 0" stroke="#C58B4E" stroke-width="2" fill="none"/>
+    </g>
+    <g transform="translate(60, 240) rotate(-10)">
+      <ellipse cx="0" cy="0" rx="20" ry="13" fill="#5A3825"/>
+      <path d="M-17 0 Q0 3 17 0" stroke="#C58B4E" stroke-width="2" fill="none"/>
+    </g>
+    <g transform="translate(265, 250) rotate(60)">
+      <ellipse cx="0" cy="0" rx="18" ry="12" fill="#3D2417"/>
+      <path d="M-15 0 Q0 2 15 0" stroke="#C58B4E" stroke-width="2" fill="none"/>
+    </g>
+
+    <!-- Scattered tiny beans (background depth) -->
+    <g opacity="0.45">
+      <g transform="translate(45, 165) rotate(20)">
+        <ellipse cx="0" cy="0" rx="16" ry="10" fill="#5A3825"/>
+        <path d="M-13 0 Q0 2 13 0" stroke="#C58B4E" stroke-width="1.5" fill="none"/>
+      </g>
+      <g transform="translate(275, 175) rotate(-30)">
+        <ellipse cx="0" cy="0" rx="14" ry="9" fill="#3D2417"/>
+        <path d="M-11 0 Q0 2 11 0" stroke="#C58B4E" stroke-width="1.5" fill="none"/>
+      </g>
+      <g transform="translate(155, 270) rotate(12)">
+        <ellipse cx="0" cy="0" rx="15" ry="10" fill="#5A3825"/>
+        <path d="M-12 0 Q0 2 12 0" stroke="#C58B4E" stroke-width="1.5" fill="none"/>
+      </g>
+    </g>
+
+    <!-- Top golden dust / aroma particles -->
+    <circle cx="110" cy="80" r="3" fill="#C58B4E" opacity="0.7"/>
+    <circle cx="160" cy="60" r="4" fill="#C58B4E" opacity="0.8"/>
+    <circle cx="210" cy="75" r="3" fill="#C58B4E" opacity="0.65"/>
+    <circle cx="135" cy="100" r="2.5" fill="#F5EBDD" opacity="0.6"/>
+    <circle cx="185" cy="90" r="2.5" fill="#F5EBDD" opacity="0.55"/>
+    <circle cx="240" cy="105" r="2" fill="#C58B4E" opacity="0.5"/>
+    <circle cx="80" cy="115" r="2" fill="#C58B4E" opacity="0.4"/>
+
+    <!-- Steam / aroma wisps at top -->
+    <path d="M120 110 C112 85 130 70 118 45" stroke="#F5EBDD" stroke-opacity="0.25" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+    <path d="M160 100 C150 70 170 55 158 28" stroke="#F5EBDD" stroke-opacity="0.3" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <path d="M200 108 C208 82 190 68 202 42" stroke="#F5EBDD" stroke-opacity="0.25" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+
+    <!-- Label at bottom -->
+    <rect x="0" y="272" width="320" height="48" fill="#241812" opacity="0.85"/>
+    <text x="160" y="295" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#C58B4E" letter-spacing="4">SINGLE-ORIGIN ARABICA</text>
+    <text x="160" y="311" text-anchor="middle" font-family="'Playfair Display', serif" font-size="14" fill="#F5EBDD">Chikmagalur Estates</text>
+  </g>
+</svg>

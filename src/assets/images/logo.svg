@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="none">
+    <circle cx="30" cy="30" r="24" fill="#241812"/>
+    <path d="M30 14c-6 0-11 5-11 11 0 7 11 19 11 19s11-12 11-19c0-6-5-11-11-11zm0 15a4 4 0 110-8 4 4 0 010 8z" fill="#C58B4E"/>
+    <path d="M22 25c1-3 5-4 8-4" stroke="#F5EBDD" stroke-width="1.5" stroke-linecap="round"/>
+    <text x="65" y="32" font-family="'Playfair Display', serif" font-weight="700" font-size="20" fill="#241812">Royal Bean</text>
+    <text x="65" y="46" font-family="'Inter', sans-serif" font-weight="500" font-size="10" letter-spacing="3" fill="#C58B4E">CAFÉ • TALWANDI</text>
+  </svg>

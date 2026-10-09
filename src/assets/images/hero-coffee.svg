@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 800" fill="none">
+  <defs>
+    <!-- Deep Atmospheric Glows -->
+    <radialGradient id="heroGlow" cx="450" cy="420" r="380" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#C58B4E" stop-opacity="0.45"/>
+      <stop offset="45%" stop-color="#5A3825" stop-opacity="0.25"/>
+      <stop offset="85%" stop-color="#241812" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="rimLight" cx="450" cy="280" r="260" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F5EBDD" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#241812" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Ceramic Cup Shading -->
+    <linearGradient id="cupGrad" x1="280" y1="260" x2="620" y2="560" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="18%" stop-color="#F5EBDD"/>
+      <stop offset="65%" stop-color="#D8C3A5"/>
+      <stop offset="100%" stop-color="#9C8366"/>
+    </linearGradient>
+
+    <!-- Cup Rim & Interior -->
+    <linearGradient id="cupRimGrad" x1="280" y1="280" x2="620" y2="280" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F5EBDD"/>
+      <stop offset="50%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#D8C3A5"/>
+    </linearGradient>
+
+    <!-- Rich Espresso & Crema -->
+    <radialGradient id="cremaGrad" cx="450" cy="305" r="160" fx="430" fy="295" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#5A3825"/>
+      <stop offset="40%" stop-color="#3D2417"/>
+      <stop offset="80%" stop-color="#241812"/>
+      <stop offset="100%" stop-color="#18100C"/>
+    </radialGradient>
+
+    <!-- Golden Caramel Crema Ring -->
+    <radialGradient id="cremaRing" cx="450" cy="305" r="150" gradientUnits="userSpaceOnUse">
+      <stop offset="70%" stop-color="#C58B4E" stop-opacity="0.1"/>
+      <stop offset="92%" stop-color="#C58B4E" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#5A3825" stop-opacity="0.9"/>
+    </radialGradient>
+
+    <!-- Saucer Shading -->
+    <linearGradient id="saucerGrad" x1="200" y1="520" x2="700" y2="520" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#C7AE8C"/>
+      <stop offset="25%" stop-color="#F5EBDD"/>
+      <stop offset="75%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#9C8366"/>
+    </linearGradient>
+
+    <!-- Handle Gradient -->
+    <linearGradient id="handleGrad" x1="570" y1="320" x2="680" y2="440" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="40%" stop-color="#F5EBDD"/>
+      <stop offset="100%" stop-color="#9C8366"/>
+    </linearGradient>
+
+    <!-- Soft Drop Shadows -->
+    <filter id="shadowCup" x="200" y="440" width="500" height="200" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="28" result="blur"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.08  0 0 0 0 0.05  0 0 0 0 0.04  0 0 0 0.75 0"/>
+    </filter>
+
+    <filter id="saucerShadow" x="120" y="500" width="660" height="220" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="34" result="blur"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.05  0 0 0 0 0.03  0 0 0 0 0.02  0 0 0 0.85 0"/>
+    </filter>
+
+    <filter id="steamGlow" x="250" y="40" width="400" height="260" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+    </filter>
+  </defs>
+
+  <!-- Ambient Light Field -->
+  <circle cx="450" cy="420" r="380" fill="url(#heroGlow)"/>
+  <circle cx="450" cy="280" r="260" fill="url(#rimLight)"/>
+
+  <!-- Dramatic Cast Shadow on Table -->
+  <ellipse cx="450" cy="600" rx="310" ry="70" filter="url(#saucerShadow)"/>
+  <ellipse cx="450" cy="575" rx="220" ry="45" filter="url(#shadowCup)"/>
+
+  <!-- Ceramic Saucer (Outer Rim & Base) -->
+  <ellipse cx="450" cy="565" rx="280" ry="58" fill="#18100C" opacity="0.6"/>
+  <ellipse cx="450" cy="555" rx="275" ry="52" fill="url(#saucerGrad)"/>
+  <ellipse cx="450" cy="550" rx="245" ry="42" fill="#EBDCC8"/>
+  <ellipse cx="450" cy="547" rx="220" ry="34" fill="#D8C3A5" opacity="0.8"/>
+  <ellipse cx="450" cy="544" rx="160" ry="24" fill="#5A3825" opacity="0.25"/>
+
+  <!-- Cup Handle with 3D Depth -->
+  <path d="M570 330 C660 330 700 375 700 425 C700 475 645 515 570 515" 
+        stroke="url(#handleGrad)" stroke-width="32" stroke-linecap="round" fill="none"/>
+  <path d="M570 330 C650 330 685 375 685 425 C685 475 640 515 570 515" 
+        stroke="#5A3825" stroke-opacity="0.15" stroke-width="12" stroke-linecap="round" fill="none"/>
+  <!-- Handle Golden Accent Rim -->
+  <path d="M578 322 C665 322 708 370 708 425" 
+        stroke="#C58B4E" stroke-opacity="0.4" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+  <!-- Main Ceramic Cup Body -->
+  <path d="M295 285 H605 C590 445 540 540 450 540 C360 540 310 445 295 285 Z" 
+        fill="url(#cupGrad)"/>
+
+  <!-- Cup Rim Light Accent -->
+  <path d="M295 285 C310 445 360 540 450 540" 
+        stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="4" fill="none"/>
+  <path d="M605 285 C590 445 540 540 450 540" 
+        stroke="#9C8366" stroke-opacity="0.5" stroke-width="4" fill="none"/>
+
+  <!-- Cup Lip / Mouth Ellipse -->
+  <ellipse cx="450" cy="285" rx="155" ry="38" fill="url(#cupRimGrad)"/>
+  <ellipse cx="450" cy="288" rx="146" ry="32" fill="url(#cremaGrad)"/>
+  <ellipse cx="450" cy="288" rx="146" ry="32" fill="url(#cremaRing)"/>
+
+  <!-- Artisanal Rosetta Latte Art (Pure Vector) -->
+  <g transform="translate(450, 288)">
+    <!-- Base Heart / Leaf Tip -->
+    <path d="M0 -18 C-35 8 -30 22 0 32 C30 22 35 8 0 -18 Z" fill="#F5EBDD" opacity="0.95"/>
+    <!-- Central Stem -->
+    <path d="M0 -22 V28" stroke="#5A3825" stroke-width="2.5" stroke-linecap="round"/>
+    
+    <!-- Feathering layers -->
+    <path d="M-22 14 C-10 18 0 20 0 20 C0 20 10 18 22 14 C12 11 0 10 -22 14 Z" fill="#FFFFFF" opacity="0.9"/>
+    <path d="M-28 6 C-14 11 0 13 0 13 C0 13 14 11 28 6 C16 3 0 2 -28 6 Z" fill="#FFFFFF" opacity="0.9"/>
+    <path d="M-30 -2 C-16 4 0 6 0 6 C0 6 16 4 30 -2 C18 -5 0 -6 -30 -2 Z" fill="#FFFFFF" opacity="0.92"/>
+    <path d="M-26 -10 C-14 -4 0 -2 0 -2 C0 -2 14 -4 26 -10 C16 -13 0 -14 -26 -10 Z" fill="#FFFFFF" opacity="0.95"/>
+    <path d="M-18 -18 C-10 -13 0 -11 0 -11 C0 -11 10 -13 18 -18 C12 -20 0 -20 -18 -18 Z" fill="#FFFFFF"/>
+    
+    <!-- Top Rosetta Heart -->
+    <path d="M0 -24 C-12 -28 -8 -18 0 -14 C8 -18 12 -28 0 -24 Z" fill="#FFFFFF"/>
+    <circle cx="0" cy="-21" r="2" fill="#C58B4E"/>
+  </g>
+
+  <!-- Aromatic Steam Wisps with Soft Glow -->
+  <g opacity="0.55" filter="url(#steamGlow)">
+    <path d="M390 230 C370 180 430 140 400 90" stroke="#F5EBDD" stroke-width="9" stroke-linecap="round" fill="none"/>
+    <path d="M450 220 C420 160 480 120 445 60" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" fill="none"/>
+    <path d="M510 230 C530 170 470 130 500 80" stroke="#F5EBDD" stroke-width="9" stroke-linecap="round" fill="none"/>
+  </g>
+  <!-- Crisper Steam Foreground Lines -->
+  <path d="M395 230 C375 180 435 140 405 90" stroke="#D8C3A5" stroke-opacity="0.3" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M450 220 C420 160 480 120 445 60" stroke="#F5EBDD" stroke-opacity="0.4" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <path d="M505 230 C525 170 465 130 495 80" stroke="#D8C3A5" stroke-opacity="0.3" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+  <!-- Scattered Roasted Coffee Beans on Saucer Edge & Table -->
+  <!-- Bean 1 -->
+  <g transform="translate(195, 570) rotate(-22)">
+    <ellipse cx="0" cy="0" rx="18" ry="11" fill="#3D2417"/>
+    <ellipse cx="0" cy="0" rx="18" ry="11" fill="#241812" opacity="0.8"/>
+    <path d="M-15 0 Q0 3 15 0" stroke="#C58B4E" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <!-- Bean 2 -->
+  <g transform="translate(230, 595) rotate(35)">
+    <ellipse cx="0" cy="0" rx="16" ry="10" fill="#5A3825"/>
+    <ellipse cx="0" cy="0" rx="16" ry="10" fill="#241812" opacity="0.6"/>
+    <path d="M-13 0 Q0 -2 13 0" stroke="#C58B4E" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
+  <!-- Bean 3 -->
+  <g transform="translate(680, 580) rotate(42)">
+    <ellipse cx="0" cy="0" rx="19" ry="12" fill="#3D2417"/>
+    <ellipse cx="0" cy="0" rx="19" ry="12" fill="#241812" opacity="0.75"/>
+    <path d="M-16 0 Q0 3 16 0" stroke="#C58B4E" stroke-width="2.2" stroke-linecap="round"/>
+  </g>
+  <!-- Bean 4 -->
+  <g transform="translate(720, 605) rotate(-15)">
+    <ellipse cx="0" cy="0" rx="15" ry="9" fill="#5A3825"/>
+    <path d="M-12 0 Q0 -2 12 0" stroke="#C58B4E" stroke-width="1.6" stroke-linecap="round"/>
+  </g>
+
+  <!-- Floating Golden Aroma Micro-Particles -->
+  <circle cx="340" cy="200" r="3" fill="#C58B4E" opacity="0.7"/>
+  <circle cx="370" cy="140" r="2" fill="#F5EBDD" opacity="0.8"/>
+  <circle cx="530" cy="170" r="3.5" fill="#C58B4E" opacity="0.6"/>
+  <circle cx="560" cy="220" r="2" fill="#F5EBDD" opacity="0.7"/>
+  <circle cx="480" cy="110" r="2.5" fill="#C58B4E" opacity="0.85"/>
+</svg>
