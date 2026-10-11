@@ -9,7 +9,7 @@ export const FloatingWhatsApp = () => (
     animate={{ scale: 1, opacity: 1 }}
     transition={{ delay: 1.2, type: 'spring', stiffness: 260, damping: 20 }}
     className="fixed bottom-6 right-6 z-50 flex items-center group"
-    aria-label="Contact Royal Bean Café on WhatsApp"
+    aria-label="Contact TATVA Café on WhatsApp"
   >
     {/* Tooltip */}
     <span className="hidden sm:inline-block mr-3 px-3 py-1.5 rounded-full text-xs font-semibold

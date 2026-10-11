@@ -1,27 +1,27 @@
 export const siteData = {
-  name: "Royal Bean Café",
+  name: "TATVA Café",
   logo: null,
-  tagline: "Where Every Sip Feels Like Home.",
-  description: "A premium, warm, cozy, and youth-friendly artisan coffee retreat nestled in Talwandi, Kota. Handcrafted brews, single-origin roasts, and artisan bites.",
+  tagline: "Minimalist Indulgence & Botanical Coffee House.",
+  description: "A luxury minimalist sanctuary in Talwandi, Kota. Single-origin artisanal coffees, handcrafted patisserie, and an aesthetic lounge.",
   address: {
-    line1: "Royal Bean Café",
+    line1: "TATVA Café",
     area: "Talwandi",
     city: "Kota",
     state: "Rajasthan",
     pincode: "324005",
     country: "India",
-    formatted: "Royal Bean Café, Talwandi, Kota, Rajasthan – 324005",
-    full: "Royal Bean Café, Talwandi, Kota, Rajasthan – 324005"
+    formatted: "TATVA Café, Talwandi, Kota, Rajasthan – 324005",
+    full: "TATVA Café, Talwandi, Kota, Rajasthan – 324005"
   },
   phone: "+91 98765 43210",
   phoneRaw: "+919876543210",
   whatsapp: "+919876543210",
   whatsappDisplay: "+91 98765 43210",
-  whatsappDefaultMessage: "Hello Royal Bean Café! I'd like to ask a question / reserve a table.",
-  email: "hello@royalbeancafe.in",
+  whatsappDefaultMessage: "Hello TATVA Café! I'd like to ask a question / reserve a table.",
+  email: "hello@tatvacafe.in",
   socials: {
-    instagram: "https://instagram.com/royalbeancafe",
-    instagramHandle: "@royalbeancafe",
+    instagram: "https://instagram.com/tatvacafe",
+    instagramHandle: "@tatvacafe",
     facebook: null
   },
   openingHours: {
@@ -37,7 +37,7 @@ export const siteData = {
     latitude: 25.1388,
     longitude: 75.8362
   },
-  googleMapsLink: "https://www.google.com/maps/search/?api=1&query=Royal+Bean+Caf%C3%A9+Talwandi+Kota",
+  googleMapsLink: "https://www.google.com/maps/search/?api=1&query=TATVA+Caf%C3%A9+Talwandi+Kota",
   directionsLink: "https://www.google.com/maps/search/?api=1&query=Royal+Bean+Caf%C3%A9+Talwandi+Kota",
   navLinks: [
     { label: "Home",       href: "/" },

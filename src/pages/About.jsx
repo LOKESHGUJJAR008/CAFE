@@ -14,8 +14,8 @@ import { aboutLuxury } from '../data/aboutLuxury';
 
 const AboutPage = () => {
   useDocumentMeta({
-    title: 'Our Story - Royal Bean Café',
-    description: "Discover Royal Bean Café's journey in Kota — from our founding aspiration to brew belonging, to the craft behind every cup, our sanctuary space, and the team that makes it all possible.",
+    title: 'Our Story - TATVA Café',
+    description: "Discover TATVA Café's journey in Kota — from our founding aspiration to brew belonging, to the craft behind every cup, our aesthetic sanctuary space, and the team that makes it all possible.",
   });
 
   return (

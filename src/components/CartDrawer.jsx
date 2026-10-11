@@ -74,7 +74,7 @@ export default function CartDrawer({ isOpen, onClose }) {
       ? `\nPickup time: ${orderMeta.pickupTime.trim()}`
       : '';
 
-    let message = `Hi Royal Bean Café, I'd like to order!\n\nOrder type: ${modeLabel}`;
+    let message = `Hi TATVA Café, I'd like to order!\n\nOrder type: ${modeLabel}`;
     message += `\nName: ${orderMeta.customerName.trim()}`;
     message += tableInfo + pickupInfo;
     message += `\n\nItems:\n`;

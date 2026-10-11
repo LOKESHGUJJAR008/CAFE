@@ -1,6 +1,6 @@
 export const whyData = {
-  badge: "The Royal Bean Standard",
-  title: "Why Talwandi Chooses Royal Bean",
+  badge: "The TATVA Standard",
+  title: "Why Talwandi Chooses TATVA",
   subtitle: "We believe exceptional coffee is an art born from uncompromising ingredients, craftsmanship, and heartfelt hospitality.",
   pillars: [
     {

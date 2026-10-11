@@ -6,14 +6,15 @@
 export const WHATSAPP_NUMBER  = '+919876543210';           // digits only, with country code
 export const PHONE_RAW        = '+919876543210';
 export const PHONE_DISPLAY    = '+91 98765 43210';
-export const WHATSAPP_MESSAGE = "Hi Royal Bean Café, I'd like to place an order.";
+export const WHATSAPP_MESSAGE = "Hi TATVA Café, I'd like to place an order.";
 export const WHATSAPP_URL     = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
-export const CAFE_NAME        = 'Royal Bean Café';
+export const CAFE_NAME        = 'TATVA Café';
+export const CAFE_TAGLINE     = 'Artisan Coffee, Patisserie & Contemporary Lounge';
 export const CAFE_ADDRESS     = 'Talwandi, Kota, Rajasthan – 324005';
-export const CAFE_EMAIL       = 'hello@royalbeancafe.in';
-export const MAPS_LINK        = 'https://www.google.com/maps/search/?api=1&query=Royal+Bean+Café+Talwandi+Kota';
-export const INSTAGRAM        = 'https://instagram.com/royalbeancafe';
+export const CAFE_EMAIL       = 'hello@tatvacafe.in';
+export const MAPS_LINK        = 'https://www.google.com/maps/search/?api=1&query=TATVA+Café+Talwandi+Kota';
+export const INSTAGRAM        = 'https://instagram.com/tatvacafe';
 
 /**
  * GOOGLE_REVIEW_URL — get it from Google Business Profile:
@@ -23,7 +24,7 @@ export const INSTAGRAM        = 'https://instagram.com/royalbeancafe';
  * Leave as '' to hide all Google review buttons automatically.
  */
 export const GOOGLE_REVIEW_URL = ''; // e.g. 'https://g.page/r/XXXXXXX/review'
-export const GOOGLE_MAPS_URL   = 'https://www.google.com/maps/search/?api=1&query=Royal+Bean+Café+Talwandi+Kota';
+export const GOOGLE_MAPS_URL   = 'https://www.google.com/maps/search/?api=1&query=TATVA+Café+Talwandi+Kota';
 
 /**
  * HOURS — human-readable display strings used in UI.
@@ -58,11 +59,12 @@ export const OFFER_BAR_MESSAGE = 'Student discount: 10% off on all orders with a
 
 /** Palette tokens — keep in sync with tailwind.config.js */
 export const COLORS = {
-  foam:    '#FBF7F1',
-  ink:     '#1F1612',
-  latte:   '#C9A27E',
-  caramel: '#A8612E',
-  almond:  '#EADBC8',
+  foam:    '#FDF8FA',
+  ink:     '#221220',
+  latte:   '#C48B9F',
+  caramel: '#EA5C89',
+  almond:  '#F3DFE7',
+  plum:    '#432A3B',
 };
 
 /** DEMO MODE */

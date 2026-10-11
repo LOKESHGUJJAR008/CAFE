@@ -1,15 +1,15 @@
 export const featuredData = {
   eyebrow: "Featured",
-  title: "Royal Bean Specials",
+  title: "TATVA Specials",
   items: [
     {
-      id: "royal-bean-signature-coffee",
-      slug: "royal-bean-signature-coffee",
-      name: "Royal Bean Signature Coffee",
+      id: "tatva-signature-coffee",
+      slug: "tatva-signature-coffee",
+      name: "TATVA Signature Coffee",
       category: "Coffee",
       price: 199,
       formattedPrice: "₹199",
-      description: "Our house-special creamy coffee with a rich caramel finish."
+      description: "Our house-special velvety coffee with a delicate caramel & rose finish."
     },
     {
       id: "belgian-chocolate-frappe",

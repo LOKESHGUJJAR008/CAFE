@@ -30,7 +30,7 @@ const REVIEWS = [
     name: 'Karan Mehta',
     initials: 'KM',
     rating: 5,
-    quote: 'Discovered Royal Bean during JEE prep and it became my sanctuary. Quiet corners, power sockets everywhere, and consistently brilliant coffee.',
+    quote: 'Discovered TATVA during JEE prep and it became my sanctuary. Quiet corners, power sockets everywhere, and consistently brilliant coffee.',
   },
 ];
 

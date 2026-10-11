@@ -53,9 +53,9 @@ export const Hero = () => {
         >
           <img 
             src={getImage('latteArt')} 
-            alt="Coffee and french press at Royal Bean Café" 
+            alt="Artisanal brew and latte art at TATVA Café" 
             loading="eager" 
-            fetchpriority="high"
+            fetchPriority="high"
             className="w-full h-full object-cover object-center md:object-right"
           />
         </motion.div>

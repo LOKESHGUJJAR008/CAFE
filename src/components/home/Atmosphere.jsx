@@ -60,7 +60,7 @@ export const Atmosphere = () => {
             transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
             className="relative w-48 sm:w-64 aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl z-10 mr-12 sm:mr-32"
           >
-            <img src={getImage('seating')} alt="Royal Bean atmosphere details" className="w-full h-full object-cover" loading="lazy" />
+            <img src={getImage('seating')} alt="TATVA café aesthetic atmosphere details" className="w-full h-full object-cover" loading="lazy" />
             <div className="absolute inset-0 bg-gradient-to-t from-ink/30 to-transparent pointer-events-none" />
           </motion.div>
           

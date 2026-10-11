@@ -18,7 +18,7 @@ export const heroData = {
     { label: "Artisan Bakes & Snacks", icon: "Sparkles" }
   ],
   heroImage: heroImage,
-  heroImageAlt: "Steaming handcrafted artisanal coffee at Royal Bean Café"
+  heroImageAlt: "Steaming handcrafted artisanal coffee at TATVA Café"
 };
 
 export default heroData;

@@ -12,7 +12,7 @@ export const menuData = {
   categories: [
     {
       id: "coffee",
-      name: "Hot Coffee",
+      name: "Coffee",
       description: "Hot artisan espresso and filter brews crafted from single-origin Arabica",
       image: coffeeImg,
       theme: {
@@ -106,8 +106,7 @@ export const menuData = {
           formattedPrice: "₹209",
           isVeg: true,
           diet: "veg",
-          badge: "Royal Bean Special",
-          special: true,
+          badge: "Special",
           bestseller: false,
           image: coffeeImg,
           ingredients: ["Espresso", "Irish Cream Syrup", "Steamed Milk", "Cocoa"]
@@ -196,8 +195,7 @@ export const menuData = {
           formattedPrice: "₹229",
           isVeg: true,
           diet: "veg",
-          badge: "Royal Bean Special",
-          special: true,
+          badge: "Signature",
           bestseller: false,
           image: coldCoffeeImg,
           ingredients: ["Cold Brew", "Nitrogen Bubbles"]
@@ -206,7 +204,7 @@ export const menuData = {
     },
     {
       id: "tea",
-      name: "Tea & Beverages",
+      name: "Tea",
       description: "Soothing artisanal infusions, classic royal chai, and floral tisanes",
       image: teaImg,
       theme: {
@@ -244,8 +242,7 @@ export const menuData = {
           formattedPrice: "₹149",
           isVeg: true,
           diet: "veg",
-          badge: "Royal Bean Special",
-          special: true,
+          badge: "Special",
           bestseller: false,
           image: teaImg,
           ingredients: ["Green Tea", "Saffron", "Almonds", "Cinnamon"]
@@ -277,82 +274,6 @@ export const menuData = {
           bestseller: false,
           image: teaImg,
           ingredients: ["Chamomile Flowers", "Orange Peel"]
-        }
-      ]
-    },
-    {
-      id: "bakery",
-      name: "Bakery & Breakfast",
-      description: "Artisan baked viennoiseries, warm sourdough toasts, and golden breakfast bakes",
-      image: snacksImg,
-      theme: {
-        bg: "#EADBC8",       // almond
-        blob: "#C9A27E",     // latte
-        accent: "#A8612E",   // caramel
-        blobPath: "M 70 230 C 90 120, 210 60, 330 80 C 450 100, 460 210, 420 330 C 380 450, 250 460, 140 420 C 70 380, 50 320, 70 230 Z",
-        textColor: "text-ink",
-        subtextColor: "text-ink/80",
-        priceColor: "text-caramel",
-        cardBg: "bg-foam/70 border-latte/40",
-        isDark: false
-      },
-      items: [
-        {
-          id: "french-butter-croissant",
-          slug: "french-butter-croissant",
-          name: "French Butter Croissant",
-          description: "Flaky, layered golden pastry made with slow-fermented butter.",
-          price: 139,
-          formattedPrice: "₹139",
-          isVeg: true,
-          diet: "unconfirmed",
-          badge: "Bestseller",
-          bestseller: true,
-          image: snacksImg,
-          ingredients: ["Laminated Dough", "Pure Butter", "Sea Salt"]
-        },
-        {
-          id: "pain-au-chocolat",
-          slug: "pain-au-chocolat",
-          name: "Belgian Pain au Chocolat",
-          description: "Crisp flaky croissant dough rolled around double dark chocolate batons.",
-          price: 169,
-          formattedPrice: "₹169",
-          isVeg: true,
-          diet: "unconfirmed",
-          badge: "Royal Bean Special",
-          special: true,
-          bestseller: false,
-          image: dessertsImg,
-          ingredients: ["Croissant Dough", "Belgian Dark Chocolate"]
-        },
-        {
-          id: "cinnamon-swirl-roll",
-          slug: "cinnamon-swirl-roll",
-          name: "Ceylon Cinnamon Swirl Roll",
-          description: "Soft warm brioche ribboned with spicy Ceylon cinnamon and cream cheese drizzle.",
-          price: 159,
-          formattedPrice: "₹159",
-          isVeg: true,
-          diet: "unconfirmed",
-          badge: "Freshly Baked",
-          bestseller: false,
-          image: dessertsImg,
-          ingredients: ["Brioche Dough", "Ceylon Cinnamon", "Cream Cheese Glaze"]
-        },
-        {
-          id: "mushroom-cheese-croissant",
-          slug: "mushroom-cheese-croissant",
-          name: "Truffled Mushroom Croissant",
-          description: "Savory buttery croissant stuffed with wild mushrooms and melted Emmental.",
-          price: 199,
-          formattedPrice: "₹199",
-          isVeg: true,
-          diet: "veg",
-          badge: "Signature",
-          bestseller: false,
-          image: snacksImg,
-          ingredients: ["Croissant", "Wild Mushrooms", "Emmental", "Thyme"]
         }
       ]
     },
@@ -405,13 +326,12 @@ export const menuData = {
           id: "tiramisu-jar",
           slug: "tiramisu-jar",
           name: "Artisanal Espresso Tiramisu Jar",
-          description: "Savoiardi ladyfingers soaked in Royal Bean espresso with mascarpone cream.",
+          description: "Savoiardi ladyfingers soaked in TATVA espresso with mascarpone cream.",
           price: 199,
           formattedPrice: "₹199", // PROPOSED, owner approval pending
           isVeg: true,
           diet: "unconfirmed", // CONFIRM WITH CLIENT: egg/eggless
-          badge: "Royal Bean Special",
-          special: true,
+          badge: "Signature",
           bestseller: false,
           image: dessertsImg,
           ingredients: ["Ladyfingers", "Espresso", "Mascarpone Cream"]
@@ -434,7 +354,7 @@ export const menuData = {
     },
     {
       id: "snacks",
-      name: "Quick Bites",
+      name: "Snacks",
       description: "Gourmet grilled sandwiches, sourdough toasts, and crunchy finger foods",
       image: snacksImg,
       theme: {
@@ -458,8 +378,7 @@ export const menuData = {
           formattedPrice: "₹199", // PROPOSED, owner approval pending
           isVeg: true,
           diet: "unconfirmed", // CONFIRM WITH CLIENT: egg/eggless
-          badge: "Royal Bean Special",
-          special: true,
+          badge: "Bestseller",
           bestseller: true,
           image: getImage('paneerPanini'),
           ingredients: ["Paneer Tikka", "Bell Peppers", "Mint Mayo", "Focaccia"]

@@ -34,7 +34,7 @@ const ContactPage = () => {
         </Reveal>
         <Reveal delay={0.08}>
           <h1 className="font-playfair font-bold text-4xl sm:text-5xl lg:text-6xl text-foam leading-tight mb-4">
-            Find Royal Bean<br />
+            Find TATVA<br />
             <span className="text-caramel italic font-normal">in Kota</span>
           </h1>
         </Reveal>
@@ -145,7 +145,7 @@ const ContactPage = () => {
             {/* Map placeholder — replace the src with your actual embed URL */}
             <div className="rounded-2xl overflow-hidden shadow-warm-sm bg-almond border border-latte/30 aspect-[4/3] flex items-center justify-center">
               <iframe
-                title="Royal Bean Café location"
+                title="TATVA Café location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3577.123!2d75.8362!3d25.1388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDA4JzE5LjciTiA3NcKwNTAnMTAuMyJF!5e0!3m2!1sen!2sin!4v1234567890"
                 width="100%"
                 height="100%"

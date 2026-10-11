@@ -207,7 +207,7 @@ export const SignatureDrinks = () => {
             What Fuels Us
           </h2>
           <p className="mt-3 text-ink/70 text-sm sm:text-base max-w-md mx-auto font-inter">
-            Handcrafted originals that have become the soul of Royal Bean.
+            Handcrafted originals that have become the soul of TATVA.
           </p>
         </motion.div>
 

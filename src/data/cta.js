@@ -6,7 +6,7 @@ export const ctaData = {
   address: siteData.address.formatted,
   phone: siteData.phone,
   directionsLink: siteData.directionsLink,
-  whatsappUrl: `https://wa.me/${siteData.whatsapp}?text=${encodeURIComponent("Hello Royal Bean Café! I'd like to order or ask a question.")}`,
+  whatsappUrl: `https://wa.me/${siteData.whatsapp}?text=${encodeURIComponent("Hello TATVA Café! I'd like to order or ask a question.")}`,
   // For backwards compatibility with menu pages:
   badge: "Visit Us in Talwandi",
   title: "Your Next Coffee Break Is Waiting.",

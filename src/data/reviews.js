@@ -18,7 +18,7 @@ export const reviewsData = {
       id: "kunal-jain",
       name: "Kunal Jain",
       initials: "KJ",
-      quote: "Delicious brews, friendly staff, and peaceful seating. Royal Bean is definitely my go-to café in Kota."
+      quote: "Delicious brews, friendly staff, and peaceful seating. TATVA is definitely my go-to café in Kota."
     }
   ]
 };

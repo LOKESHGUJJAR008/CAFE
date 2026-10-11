@@ -41,7 +41,7 @@ const EVENTS = [
 /* ─── Card ─────────────────────────────────────────────────────────────────── */
 const EventCard = ({ event }) => {
   const waMsg = encodeURIComponent(
-    `Hi Royal Bean Café, I'd like to know about ${event.title}.`
+    `Hi TATVA Café, I'd like to know about ${event.title}.`
   );
   const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${waMsg}`;
 
@@ -132,7 +132,7 @@ export const StudyHub = () => {
               Study Hub &amp; Events
             </h2>
             <p className="mt-3 text-foam/70 text-sm sm:text-base max-w-md font-inter">
-              Quiet study hours every morning, and weekend meetups that bring the Royal Bean community together.
+              Quiet study hours every morning, and weekend meetups that bring the TATVA community together.
             </p>
           </motion.div>
 

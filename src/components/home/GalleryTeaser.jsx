@@ -45,7 +45,7 @@ export const GalleryTeaser = () => {
             Visual Diary
           </span>
           <h2 className="font-playfair font-bold text-3xl sm:text-4xl lg:text-5xl text-ink tracking-tight">
-            Moments at Royal Bean
+            Moments at TATVA
           </h2>
         </div>
         <Link

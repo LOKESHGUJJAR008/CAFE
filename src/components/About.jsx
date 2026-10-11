@@ -19,7 +19,7 @@ export const Story = () => {
     <div className={`relative overflow-hidden w-full h-full flex items-center justify-center ${className}`}>
       <img
         src="/images/gallery/cafe-1.webp"
-        alt="Royal Bean Café atmosphere and story"
+        alt="TATVA Café atmosphere and story"
         width={600}
         height={520}
         loading="lazy"

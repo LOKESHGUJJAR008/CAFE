@@ -46,7 +46,7 @@ function validate(fields) {
 const ReservePage = () => {
   useDocumentMeta({
     title: `Book a Table | ${CAFE_NAME}`,
-    description: `Reserve a table at Royal Bean Café in Talwandi, Kota via WhatsApp. Choose your date, time and number of guests.`,
+    description: `Reserve a table at TATVA Café in Talwandi, Kota via WhatsApp. Choose your date, time and number of guests.`,
   });
 
   const prefersReducedMotion = useReducedMotion();
@@ -79,7 +79,7 @@ const ReservePage = () => {
     }
 
     const note = fields.note.trim() ? `\nNote: ${fields.note.trim()}` : '';
-    const msg = `Hi Royal Bean Café, I'd like to book a table.\n\nName: ${fields.name}\nPhone: ${fields.phone}\nDate: ${fields.date}\nTime: ${fields.time}\nGuests: ${fields.guests}${note}`;
+    const msg = `Hi TATVA Café, I'd like to book a table.\n\nName: ${fields.name}\nPhone: ${fields.phone}\nDate: ${fields.date}\nTime: ${fields.time}\nGuests: ${fields.guests}${note}`;
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
     setSubmitted(true);
@@ -109,7 +109,7 @@ const ReservePage = () => {
           </span>
           <h1 className="font-playfair font-bold text-4xl sm:text-5xl lg:text-6xl text-foam leading-tight mb-4">
             Book a Table at<br />
-            <span className="text-caramel italic font-normal">Royal Bean</span>
+            <span className="text-caramel italic font-normal">TATVA</span>
           </h1>
           <p className="text-almond/75 text-base sm:text-lg">
             Reserve your cosy spot via WhatsApp — we'll confirm in minutes.

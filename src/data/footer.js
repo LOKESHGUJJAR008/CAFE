@@ -19,7 +19,7 @@ export const footerData = {
     { days: "Fri", time: "10:00 AM – 11:00 PM" },
     { days: "Sat – Sun", time: "9:00 AM – 11:00 PM" }
   ],
-  copyright: "© 2026 Royal Bean Café. All Rights Reserved."
+  copyright: "© 2026 TATVA Café. All Rights Reserved."
 };
 
 export default footerData;

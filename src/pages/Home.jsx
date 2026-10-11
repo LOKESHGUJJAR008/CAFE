@@ -14,8 +14,8 @@ import FinalCTA from '../components/home/FinalCTA';
 
 const Home = () => {
   useDocumentMeta({
-    title: 'Royal Bean Café | Artisan Coffee & Cozy Retreat in Talwandi, Kota',
-    description: 'Where Every Sip Feels Like Home. Royal Bean Café in Talwandi, Kota offers single-origin artisan brews, silky lattes, handcrafted cold coffees, fresh desserts, and a cozy study haven.'
+    title: 'TATVA Café | Minimalist Indulgence & Contemporary Lounge in Talwandi, Kota',
+    description: 'Minimalist Indulgence & Contemporary Coffee House. TATVA Café in Talwandi, Kota offers single-origin artisan brews, handcrafted patisserie, and an aesthetic sanctuary.'
   });
 
   return (

@@ -14,7 +14,7 @@ export const aboutLuxury = {
     eyebrow: 'Our Beginning',
     heading: 'Founded on a single aspiration — to brew belonging.',
     paragraphs: [
-      'Royal Bean Café was born from a desire to create a space that Kota\'s students, professionals and coffee lovers could genuinely call their own. We brought together artisanal coffee culture and heartfelt Rajasthani hospitality — and the response has been overwhelming.',
+      'TATVA Café was born from a desire to create an aesthetic sanctuary that Kota\'s students, professionals and coffee lovers could genuinely call their own. We brought together modern minimalist coffee culture and heartfelt hospitality — and the response has been overwhelming.',
       'Every batch of single-origin beans is roasted with precision and dialled in fresh daily by our passionate baristas. Whether you are studying for high-stakes exams, catching up with friends, or seeking a quiet corner — you will always find your cosy spot here.',
     ],
   },

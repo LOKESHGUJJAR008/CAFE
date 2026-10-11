@@ -13,7 +13,7 @@ import { featuredData } from '../data/featured';
 import { getSpecialImage } from '../lib/homeImages';
 
 /**
- * Fallback configuration for each of the 5 Royal Bean Specials:
+ * Fallback configuration for each of the 5 TATVA Specials:
  * Uses warm palette gradient pairs, centered low-opacity Lucide icon,
  * and fine caramel arch outline.
  */

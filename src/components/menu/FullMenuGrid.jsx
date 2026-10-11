@@ -6,7 +6,7 @@ import { useCart } from '../../context/CartContext';
 import { menuData } from '../../data/menu';
 import DietBadge from '../DietBadge';
 
-const TABS = ['All', 'Hot Coffee', 'Cold Coffee', 'Tea & Beverages', 'Bakery & Breakfast', 'Desserts', 'Quick Bites', 'Specials'];
+const TABS = ['All', 'Coffee', 'Cold Coffee', 'Tea', 'Bakery', 'Quick Bites', 'Desserts', 'Specials'];
 
 const COMBOS = [
   { id: 'combo-1', slug: 'morning-ritual-combo', name: 'Morning Ritual Combo', description: 'Royal Cappuccino + Sourdough Guacamole Toast', price: 349, saved: 'Save ₹39', image: null },
@@ -16,12 +16,12 @@ const COMBOS = [
 ];
 
 const catSlugMap = {
-  'Hot Coffee': 'coffee', Coffee: 'coffee', 'Cold Coffee': 'cold-coffee', 'Tea & Beverages': 'tea', Tea: 'tea',
-  'Bakery & Breakfast': 'bakery', Bakery: 'bakery', 'Quick Bites': 'snacks', Desserts: 'desserts', Specials: 'specials',
+  Coffee: 'coffee', 'Cold Coffee': 'cold-coffee', Tea: 'tea',
+  Bakery: 'desserts', 'Quick Bites': 'snacks', Desserts: 'desserts', Specials: 'specials',
 };
 const catQueryMap = {
-  coffee: 'Hot Coffee', 'cold-coffee': 'Cold Coffee', tea: 'Tea & Beverages',
-  bakery: 'Bakery & Breakfast', 'quick-bites': 'Quick Bites', desserts: 'Desserts', specials: 'Specials',
+  coffee: 'Coffee', 'cold-coffee': 'Cold Coffee', tea: 'Tea',
+  bakery: 'Bakery', 'quick-bites': 'Quick Bites', desserts: 'Desserts', specials: 'Specials',
 };
 
 function useDebounce(value, delay) {
@@ -96,7 +96,7 @@ export default function FullMenuGrid() {
     // Category filter
     if (activeTab !== 'All') {
       if (activeTab === 'Specials') {
-        items = items.filter(i => i.badge === 'Special' || i.badge === 'Signature' || i.badge === 'Royal Bean Special');
+        items = items.filter(i => i.badge === 'Special' || i.badge === 'Signature' || i.badge === 'TATVA Special');
       } else {
         const cat = catSlugMap[activeTab];
         items = items.filter(i => i.categoryId === cat);
@@ -272,12 +272,12 @@ export default function FullMenuGrid() {
                                 Bestseller
                               </span>
                             )}
-                            {item.badge && (item.badge === 'Special' || item.badge === 'Signature' || item.badge === 'Royal Bean Special') && (
+                            {item.badge && (item.badge === 'Special' || item.badge === 'Signature' || item.badge === 'TATVA Special') && (
                               <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-caramel text-foam shadow-md">
-                                Royal Bean Special
+                                TATVA Special
                               </span>
                             )}
-                            {item.badge && item.badge !== 'Special' && item.badge !== 'Signature' && item.badge !== 'Royal Bean Special' && item.badge !== 'Bestseller' && (
+                            {item.badge && item.badge !== 'Special' && item.badge !== 'Signature' && item.badge !== 'TATVA Special' && item.badge !== 'Bestseller' && (
                               <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-foam/90 backdrop-blur-sm text-caramel shadow-sm">
                                 {item.badge}
                               </span>

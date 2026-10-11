@@ -49,7 +49,7 @@ const GalleryPage = () => {
         </span>
         <h1 className="font-playfair font-bold text-4xl sm:text-5xl lg:text-6xl text-foam leading-tight mb-4">
           Moments at<br />
-          <span className="text-caramel italic font-normal">Royal Bean</span>
+          <span className="text-caramel italic font-normal">TATVA</span>
         </h1>
         <p className="text-almond/75 text-base sm:text-lg">
           A glimpse into the warmth, craft and community of our space.
