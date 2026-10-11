@@ -7,7 +7,9 @@ import { useCart } from '../context/CartContext';
 import { menuData } from '../data/menu';
 import DietBadge from '../components/DietBadge';
 import DishTrain from '../components/menu/DishTrain';
-import FlipMenu from '../components/menu/FlipMenu';
+import FlipBook from '../components/menu/FlipBook';
+import SpecialsCarousel from '../components/menu/SpecialsCarousel';
+import MenuHero from '../components/menu/MenuHero';
 
 /* ─── Shared easing ─────────────────────────────────────────────────── */
 const EASE = [0.22, 1, 0.36, 1];
@@ -342,67 +344,66 @@ export const MenuPage = () => {
   return (
     <div className="bg-foam text-ink min-h-screen pb-32 overflow-x-hidden">
 
-{/* ── HEADER ──────────────────────────────────────────────────── */}
-      <div className="max-w-6xl mx-auto px-6 pt-24 pb-8 lg:pt-32 border-b border-latte/30">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-          <div>
-            <motion.span {...fadeUp(0, rm)} className="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-caramel mb-2 font-inter">
-              Our Menu
-            </motion.span>
-            {viewMode === 'list' && (
-              <>
-                <motion.h1 {...fadeUp(0.08, rm)} className="font-playfair font-bold text-4xl sm:text-5xl text-ink">
-                  Brewed fresh, served warm
-                </motion.h1>
-                <motion.p {...fadeUp(0.16, rm)} className="mt-2 text-ink/70">
-                  Artisan coffee, comforting bakes, and royal flavors.
-                </motion.p>
-              </>
-            )}
-            {viewMode === 'flip' && (
+      {viewMode === 'flip' && (
+        <MenuHero
+          onScrollToBook={() => {
+            const el = document.getElementById('royal-menu-book');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }}
+        />
+      )}
+
+      {/* ── HEADER / SEARCH & TOGGLE (For List Mode or general controls) ── */}
+      {viewMode === 'list' && (
+        <div className="max-w-6xl mx-auto px-6 pt-24 pb-8 lg:pt-32 border-b border-latte/30">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+            <div>
+              <motion.span {...fadeUp(0, rm)} className="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-caramel mb-2 font-inter">
+                Our Menu
+              </motion.span>
+              <motion.h1 {...fadeUp(0.08, rm)} className="font-playfair font-bold text-4xl sm:text-5xl text-ink">
+                Brewed fresh, served warm
+              </motion.h1>
               <motion.p {...fadeUp(0.16, rm)} className="mt-2 text-ink/70">
                 Artisan coffee, comforting bakes, and royal flavors.
               </motion.p>
-            )}
+            </div>
+
+            <motion.div {...fadeUp(0.24, rm)} className="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full lg:w-auto relative">
+              <div className="relative w-full sm:w-64">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-ink/40 pointer-events-none" />
+                <input
+                  type="search" value={rawSearch} onChange={e => setRawSearch(e.target.value)}
+                  placeholder="Search..." aria-label="Search menu items"
+                  className="w-full pl-10 pr-10 py-2.5 rounded-full bg-almond/30 border border-latte/40 text-sm text-ink placeholder:text-ink/40 focus:outline-none focus:ring-2 focus:ring-caramel transition-colors"
+                />
+                {rawSearch && (
+                  <button onClick={() => setRawSearch('')} aria-label="Clear search"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-ink/40 hover:text-ink p-1">
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+              <button
+                onClick={() => setVegOnly(!vegOnly)} aria-pressed={vegOnly}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-bold tracking-wide transition-all border
+                  ${vegOnly ? 'bg-[#2E7D32] border-[#2E7D32] text-white shadow-md' : 'bg-almond/30 border-latte/40 text-ink hover:bg-almond/60'}`}
+              >
+                <span className="inline-flex items-center justify-center shrink-0 w-3.5 h-3.5 border-[1.5px] border-current rounded-sm bg-white">
+                  <span className={`block w-1.5 h-1.5 rounded-full ${vegOnly ? 'bg-[#2E7D32]' : 'bg-transparent'}`} />
+                </span>
+                Veg only
+              </button>
+            </motion.div>
           </div>
-
-          <motion.div {...fadeUp(0.24, rm)} className="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full lg:w-auto relative">
-            {viewMode === 'list' && (
-              <>
-                <div className="relative w-full sm:w-64">
-                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-ink/40 pointer-events-none" />
-                  <input
-                    type="search" value={rawSearch} onChange={e => setRawSearch(e.target.value)}
-                    placeholder="Search..." aria-label="Search menu items"
-                    className="w-full pl-10 pr-10 py-2.5 rounded-full bg-almond/30 border border-latte/40 text-sm text-ink placeholder:text-ink/40 focus:outline-none focus:ring-2 focus:ring-caramel transition-colors"
-                  />
-                  {rawSearch && (
-                    <button onClick={() => setRawSearch('')} aria-label="Clear search"
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-ink/40 hover:text-ink p-1">
-                      <X className="w-4 h-4" />
-                    </button>
-                  )}
-                </div>
-                <button
-                  onClick={() => setVegOnly(!vegOnly)} aria-pressed={vegOnly}
-                  className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-bold tracking-wide transition-all border
-                    ${vegOnly ? 'bg-[#2E7D32] border-[#2E7D32] text-white shadow-md' : 'bg-almond/30 border-latte/40 text-ink hover:bg-almond/60'}`}
-                >
-                  <span className="inline-flex items-center justify-center shrink-0 w-3.5 h-3.5 border-[1.5px] border-current rounded-sm bg-white">
-                    <span className={`block w-1.5 h-1.5 rounded-full ${vegOnly ? 'bg-[#2E7D32]' : 'bg-transparent'}`} />
-                  </span>
-                  Veg only
-                </button>
-              </>
-            )}
-          </motion.div>
         </div>
-      </div>
+      )}
 
-      <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col items-center border-b border-latte/20 mb-8 bg-foam/50 backdrop-blur-sm sticky top-[72px] z-20">
-        <div className="flex gap-1 bg-almond/40 rounded-full p-1 border border-latte/30 shadow-inner mb-3">
-          <button onClick={() => toggleView('flip')} className={`px-5 py-2 rounded-full font-inter text-sm font-bold transition-all ${viewMode === 'flip' ? 'bg-foam shadow-[0_2px_10px_rgba(31,22,18,0.1)] text-caramel border border-latte/50' : 'text-ink/60 hover:text-ink'}`}>Flip view</button>
-          <button onClick={() => toggleView('list')} className={`px-5 py-2 rounded-full font-inter text-sm font-bold transition-all ${viewMode === 'list' ? 'bg-foam shadow-[0_2px_10px_rgba(31,22,18,0.1)] text-caramel border border-latte/50' : 'text-ink/60 hover:text-ink'}`}>List view</button>
+      {/* Sticky Switch View bar */}
+      <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col items-center border-b border-latte/20 mb-8 bg-foam/80 backdrop-blur-sm sticky top-[72px] z-30">
+        <div className="flex gap-1 bg-almond/40 rounded-full p-1 border border-latte/30 shadow-inner mb-2">
+          <button onClick={() => toggleView('flip')} className={`px-5 py-2 rounded-full font-inter text-sm font-bold transition-all ${viewMode === 'flip' ? 'bg-foam shadow-[0_2px_10px_rgba(31,22,18,0.1)] text-caramel border border-latte/50' : 'text-ink/60 hover:text-ink'}`}>Flip 3D Book</button>
+          <button onClick={() => toggleView('list')} className={`px-5 py-2 rounded-full font-inter text-sm font-bold transition-all ${viewMode === 'list' ? 'bg-foam shadow-[0_2px_10px_rgba(31,22,18,0.1)] text-caramel border border-latte/50' : 'text-ink/60 hover:text-ink'}`}>List View</button>
         </div>
         <p className="text-[10px] text-ink/50 italic text-center font-inter">
           Ingredients and allergens: please ask our team before ordering.
@@ -410,7 +411,10 @@ export const MenuPage = () => {
       </div>
 
       {viewMode === 'flip' ? (
-        <FlipMenu />
+        <>
+          <FlipBook />
+          <SpecialsCarousel specials={specials} />
+        </>
       ) : (
         <>
           <DishTrain />

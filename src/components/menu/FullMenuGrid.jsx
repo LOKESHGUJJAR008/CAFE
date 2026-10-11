@@ -6,7 +6,7 @@ import { useCart } from '../../context/CartContext';
 import { menuData } from '../../data/menu';
 import DietBadge from '../DietBadge';
 
-const TABS = ['All', 'Coffee', 'Cold Coffee', 'Tea', 'Bakery', 'Quick Bites', 'Desserts', 'Specials'];
+const TABS = ['All', 'Hot Coffee', 'Cold Coffee', 'Tea & Beverages', 'Bakery & Breakfast', 'Desserts', 'Quick Bites', 'Specials'];
 
 const COMBOS = [
   { id: 'combo-1', slug: 'morning-ritual-combo', name: 'Morning Ritual Combo', description: 'Royal Cappuccino + Sourdough Guacamole Toast', price: 349, saved: 'Save ₹39', image: null },
@@ -16,12 +16,12 @@ const COMBOS = [
 ];
 
 const catSlugMap = {
-  Coffee: 'coffee', 'Cold Coffee': 'cold-coffee', Tea: 'tea',
-  Bakery: 'desserts', 'Quick Bites': 'snacks', Desserts: 'desserts', Specials: 'specials',
+  'Hot Coffee': 'coffee', Coffee: 'coffee', 'Cold Coffee': 'cold-coffee', 'Tea & Beverages': 'tea', Tea: 'tea',
+  'Bakery & Breakfast': 'bakery', Bakery: 'bakery', 'Quick Bites': 'snacks', Desserts: 'desserts', Specials: 'specials',
 };
 const catQueryMap = {
-  coffee: 'Coffee', 'cold-coffee': 'Cold Coffee', tea: 'Tea',
-  bakery: 'Bakery', 'quick-bites': 'Quick Bites', desserts: 'Desserts', specials: 'Specials',
+  coffee: 'Hot Coffee', 'cold-coffee': 'Cold Coffee', tea: 'Tea & Beverages',
+  bakery: 'Bakery & Breakfast', 'quick-bites': 'Quick Bites', desserts: 'Desserts', specials: 'Specials',
 };
 
 function useDebounce(value, delay) {
