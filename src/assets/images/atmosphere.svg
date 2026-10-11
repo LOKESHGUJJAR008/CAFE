@@ -1,33 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" fill="none">
     <defs>
       <linearGradient id="atmoG" x1="0" y1="0" x2="1200" y2="600" gradientUnits="userSpaceOnUse">
-        <stop stop-color="#18100C"/>
-        <stop offset="0.5" stop-color="#241812"/>
+        <stop stop-color="#1F1612"/>
+        <stop offset="0.5" stop-color="#1F1612"/>
         <stop offset="1" stop-color="#140C08"/>
       </linearGradient>
       <radialGradient id="lampG1" cx="300" cy="180" r="160" gradientUnits="userSpaceOnUse">
-        <stop stop-color="#C58B4E" stop-opacity="0.6"/>
-        <stop offset="1" stop-color="#241812" stop-opacity="0"/>
+        <stop stop-color="#A8612E" stop-opacity="0.6"/>
+        <stop offset="1" stop-color="#1F1612" stop-opacity="0"/>
       </radialGradient>
       <radialGradient id="lampG2" cx="900" cy="180" r="160" gradientUnits="userSpaceOnUse">
-        <stop stop-color="#C58B4E" stop-opacity="0.6"/>
-        <stop offset="1" stop-color="#241812" stop-opacity="0"/>
+        <stop stop-color="#A8612E" stop-opacity="0.6"/>
+        <stop offset="1" stop-color="#1F1612" stop-opacity="0"/>
       </radialGradient>
     </defs>
     <rect width="1200" height="600" fill="url(#atmoG)"/>
     <circle cx="300" cy="180" r="160" fill="url(#lampG1)"/>
     <circle cx="900" cy="180" r="160" fill="url(#lampG2)"/>
     <!-- Pendant Lamps -->
-    <line x1="300" y1="0" x2="300" y2="150" stroke="#C58B4E" stroke-width="3"/>
-    <path d="M270 150 h60 l-15 30 h-30 z" fill="#C58B4E"/>
-    <line x1="900" y1="0" x2="900" y2="150" stroke="#C58B4E" stroke-width="3"/>
-    <path d="M870 150 h60 l-15 30 h-30 z" fill="#C58B4E"/>
+    <line x1="300" y1="0" x2="300" y2="150" stroke="#A8612E" stroke-width="3"/>
+    <path d="M270 150 h60 l-15 30 h-30 z" fill="#A8612E"/>
+    <line x1="900" y1="0" x2="900" y2="150" stroke="#A8612E" stroke-width="3"/>
+    <path d="M870 150 h60 l-15 30 h-30 z" fill="#A8612E"/>
     <!-- Coffee Bar Silhouette -->
-    <rect x="100" y="380" width="1000" height="180" rx="8" fill="#5A3825" stroke="#C58B4E" stroke-width="2"/>
+    <rect x="100" y="380" width="1000" height="180" rx="8" fill="#C9A27E" stroke="#A8612E" stroke-width="2"/>
     <rect x="160" y="410" width="220" height="120" rx="4" fill="#251610"/>
     <rect x="490" y="410" width="220" height="120" rx="4" fill="#251610"/>
     <rect x="820" y="410" width="220" height="120" rx="4" fill="#251610"/>
     <!-- Center Text -->
-    <text x="600" y="270" text-anchor="middle" font-family="'Playfair Display', serif" font-size="44" font-weight="700" fill="#F5EBDD">An Atmosphere of Warmth &amp; Inspiration</text>
-    <text x="600" y="320" text-anchor="middle" font-family="'Inter', sans-serif" font-size="18" fill="#C58B4E">Aesthetic Nooks • Study Spaces • Amber Glow</text>
+    <text x="600" y="270" text-anchor="middle" font-family="'Playfair Display', serif" font-size="44" font-weight="700" fill="#FBF7F1">An Atmosphere of Warmth &amp; Inspiration</text>
+    <text x="600" y="320" text-anchor="middle" font-family="'Inter', sans-serif" font-size="18" fill="#A8612E">Aesthetic Nooks • Study Spaces • Amber Glow</text>
   </svg>

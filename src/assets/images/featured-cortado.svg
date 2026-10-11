@@ -1,26 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 420" fill="none">
   <defs>
     <radialGradient id="glow3" cx="200" cy="210" r="160" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#C58B4E" stop-opacity="0.25"/>
-      <stop offset="100%" stop-color="#241812" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#A8612E" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#1F1612" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="cortadoCup" x1="160" y1="200" x2="240" y2="320" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#FFFFFF"/>
-      <stop offset="35%" stop-color="#F5EBDD"/>
+      <stop offset="35%" stop-color="#FBF7F1"/>
       <stop offset="100%" stop-color="#B8997A"/>
     </linearGradient>
     <linearGradient id="cortadoLiquid" x1="165" y1="215" x2="235" y2="215" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#3D2417"/>
-      <stop offset="50%" stop-color="#5A3825"/>
+      <stop offset="50%" stop-color="#C9A27E"/>
       <stop offset="100%" stop-color="#3D2417"/>
     </linearGradient>
   </defs>
-  <rect width="400" height="420" fill="#241812"/>
+  <rect width="400" height="420" fill="#1F1612"/>
   <circle cx="200" cy="210" r="160" fill="url(#glow3)"/>
   <!-- shadow -->
-  <ellipse cx="200" cy="338" rx="72" ry="11" fill="#18100C" opacity="0.8"/>
+  <ellipse cx="200" cy="338" rx="72" ry="11" fill="#1F1612" opacity="0.8"/>
   <!-- saucer -->
-  <ellipse cx="200" cy="332" rx="80" ry="14" fill="#D8C3A5"/>
+  <ellipse cx="200" cy="332" rx="80" ry="14" fill="#EADBC8"/>
   <ellipse cx="200" cy="329" rx="67" ry="10" fill="#EBD9C0"/>
   <!-- small cortado glass/cup -->
   <path d="M162 200 H238 L228 320 H172 Z" fill="url(#cortadoCup)"/>
@@ -33,12 +33,12 @@
   <!-- top espresso shot -->
   <path d="M164 205 H236 L234 230 H166 Z" fill="url(#cortadoLiquid)"/>
   <!-- crema ripple on top -->
-  <path d="M170 210 Q185 207 200 209 Q215 207 230 210" stroke="#C58B4E" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-  <path d="M168 215 Q185 212 200 214 Q215 212 232 215" stroke="#C58B4E" stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  <path d="M170 210 Q185 207 200 209 Q215 207 230 210" stroke="#A8612E" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M168 215 Q185 212 200 214 Q215 212 232 215" stroke="#A8612E" stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round" fill="none"/>
   <!-- glass rim -->
-  <ellipse cx="200" cy="200" rx="38" ry="10" fill="none" stroke="#D8C3A5" stroke-width="3" opacity="0.9"/>
+  <ellipse cx="200" cy="200" rx="38" ry="10" fill="none" stroke="#EADBC8" stroke-width="3" opacity="0.9"/>
   <!-- steam wisps (small, espresso shot style) -->
-  <path d="M188 175 C182 155 196 142 188 122" stroke="#D8C3A5" stroke-opacity="0.4" stroke-width="4" stroke-linecap="round" fill="none"/>
-  <path d="M200 168 C193 145 207 130 200 108" stroke="#F5EBDD" stroke-opacity="0.5" stroke-width="5" stroke-linecap="round" fill="none"/>
-  <path d="M212 175 C218 155 204 142 212 122" stroke="#D8C3A5" stroke-opacity="0.4" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <path d="M188 175 C182 155 196 142 188 122" stroke="#EADBC8" stroke-opacity="0.4" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <path d="M200 168 C193 145 207 130 200 108" stroke="#FBF7F1" stroke-opacity="0.5" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <path d="M212 175 C218 155 204 142 212 122" stroke="#EADBC8" stroke-opacity="0.4" stroke-width="4" stroke-linecap="round" fill="none"/>
 </svg>

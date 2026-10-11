@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <rect width="128" height="128" rx="28" fill="#1F1612"/>
+  
+  <g transform="translate(64, 60) scale(1.1)">
+    <!-- Crown (Caramel / Gold) -->
+    <path d="M-28 -14 
+             L-18 -4 
+             L-9 -22 
+             L0 2 
+             L9 -22 
+             L18 -4 
+             L28 -14 
+             L20 4 
+             C12 0, 6 -1, 0 -1 
+             C-6 -1, -12 0, -20 4 Z" 
+          fill="none" stroke="#A8612E" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+    
+    <!-- Crown Jewels / Tips -->
+    <polygon points="-28,-14 -25,-18 -28,-22 -31,-18" fill="#A8612E"/>
+    <polygon points="-9,-22 -6,-26 -9,-30 -12,-26" fill="#A8612E"/>
+    <polygon points="0,2 3,-2 0,-6 -3,-2" fill="#A8612E"/>
+    <polygon points="9,-22 12,-26 9,-30 6,-26" fill="#A8612E"/>
+    <polygon points="28,-14 31,-18 28,-22 25,-18" fill="#A8612E"/>
+
+    <!-- Coffee Bean (Cream/Caramel on Espresso background) -->
+    <g transform="rotate(-25, 0, 20)">
+      <!-- Outer Bean contour -->
+      <path d="M-18 -2 
+               C-28 10 -28 28 -14 40 
+               C0 50 20 48 28 34 
+               C36 20 32 2 18 -6 
+               C4 -14 -10 -13 -18 -2 Z" 
+            fill="none" stroke="#FBF7F1" stroke-width="4" stroke-linecap="round"/>
+      <!-- S-curve line through center -->
+      <path d="M-14 0 
+               C-8 10 -3 15 2 18 
+               C7 21 12 26 20 32" 
+            fill="none" stroke="#A8612E" stroke-width="3.5" stroke-linecap="round"/>
+    </g>
+  </g>
+</svg>

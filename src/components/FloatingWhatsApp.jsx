@@ -1,39 +1,41 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
-import { siteData } from '../data/site';
+import { WHATSAPP_URL } from '../config';
 
-export const FloatingWhatsApp = () => {
-  const whatsappUrl = `https://wa.me/${siteData.whatsapp}?text=${encodeURIComponent(siteData.whatsappDefaultMessage)}`;
+export const FloatingWhatsApp = () => (
+  <motion.aside
+    initial={{ scale: 0, opacity: 0 }}
+    animate={{ scale: 1, opacity: 1 }}
+    transition={{ delay: 1.2, type: 'spring', stiffness: 260, damping: 20 }}
+    className="fixed bottom-6 right-6 z-50 flex items-center group"
+    aria-label="Contact Royal Bean Café on WhatsApp"
+  >
+    {/* Tooltip */}
+    <span className="hidden sm:inline-block mr-3 px-3 py-1.5 rounded-full text-xs font-semibold
+                     bg-[#1F1612]/90 text-[#FBF7F1] backdrop-blur-md shadow-warm border border-[#C9A27E]/30
+                     opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+      Chat on WhatsApp
+    </span>
 
-  return (
-    <motion.aside
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ delay: 0.8, type: 'spring', stiffness: 260, damping: 20 }}
-      className="fixed bottom-6 right-6 z-50 flex items-center group"
-      aria-label="Contact Royal Bean Café on WhatsApp"
+    <motion.a
+      href={WHATSAPP_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.92 }}
+      className="relative w-11 h-11 rounded-full bg-[#1F1612] hover:bg-[#2e2118]
+                 text-[#FBF7F1] flex items-center justify-center
+                 shadow-[0_4px_20px_rgba(31,22,18,0.35)]
+                 border border-[#C9A27E]/20 transition-colors"
+      title="Chat on WhatsApp"
     >
-      {/* Tooltip on desktop */}
-      <span className="hidden sm:inline-block mr-3 px-3 py-1.5 rounded-full text-xs font-semibold bg-espresso/90 text-cream backdrop-blur-md shadow-warm border border-caramel/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
-        Chat with us on WhatsApp
-      </span>
-
-      {/* Floating button */}
-      <motion.a
-        href={whatsappUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        whileHover={{ scale: 1.08 }}
-        whileTap={{ scale: 0.94 }}
-        className="w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white flex items-center justify-center shadow-warm-lg hover:shadow-glow-caramel border-2 border-cream transition-shadow relative"
-        title="Chat on WhatsApp"
-      >
-        <MessageCircle className="w-7 h-7 fill-current stroke-none" />
-        <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-caramel rounded-full border-2 border-espresso animate-pulse" />
-      </motion.a>
-    </motion.aside>
-  );
-};
+      <MessageCircle className="w-5 h-5" strokeWidth={1.8} />
+      {/* small caramel dot */}
+      <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-[#A8612E] rounded-full
+                       border-2 border-[#FBF7F1] animate-pulse" />
+    </motion.a>
+  </motion.aside>
+);
 
 export default FloatingWhatsApp;

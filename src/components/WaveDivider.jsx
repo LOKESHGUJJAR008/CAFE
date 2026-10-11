@@ -3,14 +3,14 @@ import React from 'react';
 /**
  * Reusable WaveDivider component for organic transitions between sections.
  * 
- * @param {string} color - Fill color (e.g. '#241812', '#F5EBDD', '#5A3825')
+ * @param {string} color - Fill color (e.g. '#1F1612', '#FBF7F1', '#C9A27E')
  * @param {boolean} flipX - Mirrors the wave horizontally
  * @param {boolean} flipY - Flips the wave upside-down (e.g., for top of section vs bottom)
  * @param {string} className - Additional CSS classes
  * @param {number|string} height - Height of the wave divider (default: '48px' to '72px')
  */
 export const WaveDivider = ({
-  color = '#F5EBDD',
+  color = '#FBF7F1',
   flipX = false,
   flipY = false,
   className = '',

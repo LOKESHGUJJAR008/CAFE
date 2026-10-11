@@ -1,28 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 420" fill="none">
   <defs>
     <radialGradient id="glow2" cx="200" cy="210" r="160" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#5A3825" stop-opacity="0.45"/>
-      <stop offset="100%" stop-color="#241812" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#C9A27E" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#1F1612" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="glassGrad" x1="155" y1="150" x2="245" y2="340" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#D8C3A5" stop-opacity="0.9"/>
-      <stop offset="30%" stop-color="#C7AE8C" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="#5A3825" stop-opacity="0.2"/>
+      <stop offset="0%" stop-color="#EADBC8" stop-opacity="0.9"/>
+      <stop offset="30%" stop-color="#EADBC8" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#C9A27E" stop-opacity="0.2"/>
     </linearGradient>
     <linearGradient id="coldBrewLiquid" x1="160" y1="200" x2="240" y2="340" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#241812"/>
+      <stop offset="0%" stop-color="#1F1612"/>
       <stop offset="60%" stop-color="#3D2417"/>
-      <stop offset="100%" stop-color="#5A3825"/>
+      <stop offset="100%" stop-color="#C9A27E"/>
     </linearGradient>
     <linearGradient id="foamGrad" x1="160" y1="165" x2="240" y2="195" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#FFFFFF"/>
-      <stop offset="100%" stop-color="#F5EBDD"/>
+      <stop offset="100%" stop-color="#FBF7F1"/>
     </linearGradient>
   </defs>
-  <rect width="400" height="420" fill="#241812"/>
+  <rect width="400" height="420" fill="#1F1612"/>
   <circle cx="200" cy="210" r="160" fill="url(#glow2)"/>
   <!-- Ice cubes under glass -->
-  <ellipse cx="200" cy="345" rx="85" ry="12" fill="#18100C" opacity="0.8"/>
+  <ellipse cx="200" cy="345" rx="85" ry="12" fill="#1F1612" opacity="0.8"/>
   <!-- Glass outer wall -->
   <path d="M160 155 H240 L228 335 H172 Z" fill="url(#glassGrad)" opacity="0.45"/>
   <!-- Glass front highlight -->
@@ -30,9 +30,9 @@
   <!-- Cold brew liquid -->
   <path d="M163 195 H237 L227 330 H173 Z" fill="url(#coldBrewLiquid)"/>
   <!-- Ice cubes visible inside -->
-  <rect x="176" y="240" width="26" height="22" rx="5" fill="#C7AE8C" opacity="0.25"/>
-  <rect x="198" y="262" width="24" height="20" rx="5" fill="#D8C3A5" opacity="0.2"/>
-  <rect x="183" y="285" width="20" height="18" rx="4" fill="#C7AE8C" opacity="0.2"/>
+  <rect x="176" y="240" width="26" height="22" rx="5" fill="#EADBC8" opacity="0.25"/>
+  <rect x="198" y="262" width="24" height="20" rx="5" fill="#EADBC8" opacity="0.2"/>
+  <rect x="183" y="285" width="20" height="18" rx="4" fill="#EADBC8" opacity="0.2"/>
   <!-- Vanilla cold foam on top -->
   <path d="M163 180 Q175 165 200 168 Q225 165 237 180 L237 195 Q220 185 200 188 Q180 185 163 195 Z" fill="url(#foamGrad)"/>
   <!-- Foam texture -->
@@ -42,10 +42,10 @@
   <circle cx="192" cy="182" r="4" fill="#FFFFFF" opacity="0.5"/>
   <circle cx="208" cy="181" r="4" fill="#FFFFFF" opacity="0.5"/>
   <!-- Hazelnut drizzle on foam -->
-  <path d="M175 178 Q190 174 200 176 Q212 174 225 179" stroke="#C58B4E" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M175 178 Q190 174 200 176 Q212 174 225 179" stroke="#A8612E" stroke-width="2.5" stroke-linecap="round" fill="none"/>
   <!-- Glass top rim -->
-  <ellipse cx="200" cy="155" rx="40" ry="10" fill="none" stroke="#D8C3A5" stroke-width="3" opacity="0.7"/>
+  <ellipse cx="200" cy="155" rx="40" ry="10" fill="none" stroke="#EADBC8" stroke-width="3" opacity="0.7"/>
   <!-- Straw -->
-  <rect x="215" y="95" width="7" height="225" rx="3.5" fill="#C58B4E" opacity="0.7"/>
+  <rect x="215" y="95" width="7" height="225" rx="3.5" fill="#A8612E" opacity="0.7"/>
   <rect x="215" y="95" width="3" height="225" rx="1.5" fill="#FFFFFF" opacity="0.2"/>
 </svg>

@@ -1,54 +1,71 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Featured from './components/Featured';
-import About from './components/About';
-import Menu from './components/Menu';
-import Atmosphere from './components/Atmosphere';
-import Gallery from './components/Gallery';
-import Reviews from './components/Reviews';
-import CTA from './components/CTA';
-import Footer from './components/Footer';
-import FloatingWhatsApp from './components/FloatingWhatsApp';
+import React, { Suspense } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import Layout from './components/Layout';
+import ScrollToTop from './components/ScrollToTop';
+
+const Home = React.lazy(() => import('./pages/Home'));
+const AboutPage = React.lazy(() => import('./pages/About'));
+const MenuPage = React.lazy(() => import('./pages/Menu'));
+const DishDetail = React.lazy(() => import('./pages/DishDetail'));
+const GalleryPage = React.lazy(() => import('./pages/Gallery'));
+const ContactPage = React.lazy(() => import('./pages/Contact'));
+const NotFound = React.lazy(() => import('./pages/NotFound'));
+const ReservePage = React.lazy(() => import('./pages/Reserve'));
 
 function App() {
+  const location = useLocation();
+
   return (
-    <div className="min-h-screen bg-cream text-espresso font-inter antialiased selection:bg-caramel selection:text-cream flex flex-col relative">
-      {/* 1. Navbar */}
-      <Navbar />
-
-      <main className="flex-1">
-        {/* 2. Hero (Dark Espresso) */}
-        <Hero />
-
-        {/* 3. Featured Coffee (Cream) */}
-        <Featured />
-
-        {/* 4. About (Dark Espresso - with 4 stats & merged 4 why items) */}
-        <About />
-
-        {/* 5. Menu (Cream - after About) */}
-        <Menu />
-
-        {/* 6. Café Atmosphere (Dark Espresso) */}
-        <Atmosphere />
-
-        {/* 7. Gallery (Cream - before Reviews) */}
-        <Gallery />
-
-        {/* 8. Reviews (Dark Espresso) */}
-        <Reviews />
-
-        {/* 9. Final CTA (Cream / Card) */}
-        <CTA />
-      </main>
-
-      {/* 10. Footer (Dark Espresso) */}
-      <Footer />
-
-      {/* Floating WhatsApp Action Button */}
-      <FloatingWhatsApp />
-    </div>
+    <>
+      <ScrollToTop />
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route element={<Layout />}>
+            <Route index element={
+              <Suspense fallback={<div className="h-screen bg-foam flex items-center justify-center text-caramel">Loading...</div>}>
+                <Home />
+              </Suspense>
+            } />
+            <Route path="about" element={
+              <Suspense fallback={<div className="h-screen bg-foam flex items-center justify-center text-caramel">Loading...</div>}>
+                <AboutPage />
+              </Suspense>
+            } />
+            <Route path="menu" element={
+              <Suspense fallback={<div className="h-screen bg-foam flex items-center justify-center text-caramel">Loading...</div>}>
+                <MenuPage />
+              </Suspense>
+            } />
+            <Route path="menu/:slug" element={
+              <Suspense fallback={<div className="h-screen bg-foam flex items-center justify-center text-caramel">Loading...</div>}>
+                <DishDetail />
+              </Suspense>
+            } />
+            <Route path="gallery" element={
+              <Suspense fallback={<div className="h-screen bg-foam flex items-center justify-center text-caramel">Loading...</div>}>
+                <GalleryPage />
+              </Suspense>
+            } />
+            <Route path="contact" element={
+              <Suspense fallback={<div className="h-screen bg-foam flex items-center justify-center text-caramel">Loading...</div>}>
+                <ContactPage />
+              </Suspense>
+            } />
+            <Route path="reserve" element={
+              <Suspense fallback={<div className="h-screen bg-foam flex items-center justify-center text-caramel">Loading...</div>}>
+                <ReservePage />
+              </Suspense>
+            } />
+            <Route path="*" element={
+              <Suspense fallback={<div className="h-screen bg-foam flex items-center justify-center text-caramel">Loading...</div>}>
+                <NotFound />
+              </Suspense>
+            } />
+          </Route>
+        </Routes>
+      </AnimatePresence>
+    </>
   );
 }
 

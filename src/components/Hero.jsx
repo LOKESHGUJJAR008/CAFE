@@ -1,169 +1,163 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Coffee, BookOpen, Sparkles, ArrowRight, Compass } from 'lucide-react';
-import { heroData } from '../data/hero';
-import Reveal from './Reveal';
+import { motion, useReducedMotion } from 'framer-motion';
+import { Coffee, ArrowRight, BookOpen, Croissant } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import WaveDivider from './WaveDivider';
-
-// Helper to map icon names from heroData
-const iconMap = {
-  Coffee: Coffee,
-  BookOpen: BookOpen,
-  Sparkles: Sparkles,
-  Compass: Compass,
-};
+import { useOpenStatus } from '../hooks/useOpenStatus';
+import { getImage } from '../data/images';
+import FloatingElements from './FloatingElements';
 
 export const Hero = () => {
+  const prefersReducedMotion = useReducedMotion();
+  const { isOpen, label } = useOpenStatus();
+
+  const photoVariants = {
+    hidden: { scale: 1.06 },
+    visible: { scale: 1, transition: { duration: 1.4, ease: 'easeOut' } }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } }
+  };
+
+  const chipContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.3 }
+    }
+  };
+
+  const chipVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
+  };
+
+  const chips = [
+    { label: '100% Single-Origin Arabica', icon: Coffee },
+    { label: 'Cozy Student & Study Hub', icon: BookOpen },
+    { label: 'Artisan Bakes & Snacks', icon: Croissant }
+  ];
+
   return (
-    <section
-      id="hero"
-      className="relative bg-espresso text-cream overflow-hidden pt-28 sm:pt-36 lg:pt-40 pb-0"
-    >
-      {/* Ambient Lighting & Glow Accents */}
-      <div
-        className="absolute top-1/4 right-0 w-[420px] sm:w-[600px] h-[420px] sm:h-[600px] rounded-full bg-caramel/15 blur-[120px] pointer-events-none -z-0"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute top-10 left-[-10%] w-[320px] sm:w-[450px] h-[320px] sm:h-[450px] rounded-full bg-roast/30 blur-[100px] pointer-events-none -z-0"
-        aria-hidden="true"
-      />
+    <section className="bg-foam">
+      <div className="mx-3 md:mx-6 mt-3 relative overflow-hidden rounded-3xl min-h-[90svh] md:min-h-[88vh] bg-gradient-to-br from-almond to-latte flex flex-col justify-end md:justify-center pt-32 pb-8 md:py-32">
+        
+        {/* Background Image & Overlay */}
+        <motion.div 
+          variants={photoVariants}
+          initial={prefersReducedMotion ? "visible" : "hidden"}
+          animate="visible"
+          className="absolute inset-0 w-full h-full"
+        >
+          <img 
+            src={getImage('latteArt')} 
+            alt="Coffee and french press at Royal Bean Café" 
+            loading="eager" 
+            fetchpriority="high"
+            className="w-full h-full object-cover object-center md:object-right"
+          />
+        </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-t from-foam/80 via-transparent to-transparent md:bg-gradient-to-r md:from-foam/70 md:via-foam/20 md:to-transparent" aria-hidden="true" />
+        
+        <FloatingElements />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        {/* Content Container */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-10 flex flex-col items-start h-full justify-end md:justify-center">
           
-          {/* Left Column: Headline, Copy & CTAs */}
-          <div className="lg:col-span-7 flex flex-col text-center lg:text-left items-center lg:items-start">
-            <Reveal delay={0.1}>
-              {/* Brand Category Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-roast/40 border border-caramel/40 text-caramel text-xs tracking-wider uppercase font-semibold shadow-warm-sm backdrop-blur-sm">
-                <Sparkles className="w-3.5 h-3.5 text-caramel animate-pulse" />
-                <span>{heroData.badge}</span>
-              </div>
-            </Reveal>
+          {/* Left Glass Card */}
+          <motion.div 
+            variants={cardVariants}
+            initial={prefersReducedMotion ? "visible" : "hidden"}
+            animate="visible"
+            className="w-full max-w-xl p-6 md:p-10 rounded-3xl bg-foam/60 backdrop-blur-md border border-foam/60 shadow-[0_20px_60px_rgba(31,22,18,0.12)] flex flex-col items-start"
+          >
+            {/* Open status badge */}
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-foam/80 border border-latte/30 mb-3">
+              <span className={`w-2 h-2 rounded-full flex-shrink-0 ${isOpen ? 'bg-green-600' : 'bg-caramel'}`} aria-hidden="true" />
+              <span className="text-[11px] font-semibold text-ink font-inter">{label}</span>
+            </div>
 
-            <Reveal delay={0.2}>
-              {/* Large Elegant Serif Headline */}
-              <h1 className="mt-6 font-playfair font-bold text-4xl sm:text-5xl md:text-6xl xl:text-7xl text-cream tracking-tight leading-[1.12]">
-                {heroData.headline.split('Home.').length > 1 ? (
-                  <>
-                    {heroData.headline.replace('Home.', '')}
-                    <span className="italic font-normal text-caramel underline decoration-caramel/30 underline-offset-8">
-                      Home.
-                    </span>
-                  </>
-                ) : (
-                  heroData.headline
-                )}
-              </h1>
-            </Reveal>
+            {/* Pill Badge */}
+            <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-almond text-caramel text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase mb-5 shadow-sm">
+              ARTISAN COFFEE HAVEN • TALWANDI, KOTA
+            </div>
 
-            <Reveal delay={0.3}>
-              {/* Warm Subheadline */}
-              <p className="mt-6 text-beige/85 text-base sm:text-lg max-w-xl font-inter leading-relaxed">
-                {heroData.subheadline}
-              </p>
-            </Reveal>
+            {/* Headline */}
+            <h1 className="font-playfair font-bold text-4xl md:text-6xl text-ink leading-[1.15] mb-5">
+              Where Every Sip Feels Like <em className="text-caramel font-normal underline decoration-latte decoration-1 underline-offset-8">Home.</em>
+            </h1>
 
-            <Reveal delay={0.4} className="w-full sm:w-auto">
-              {/* Thumb-Friendly CTA Action Row */}
-              <div className="mt-9 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-                <a
-                  href={heroData.ctaPrimary.href}
-                  className="w-full sm:w-auto px-8 py-4 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider bg-caramel hover:bg-caramel-light text-espresso shadow-warm-lg hover:shadow-glow-caramel transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 group"
-                >
-                  <span>{heroData.ctaPrimary.label}</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </a>
+            {/* Paragraph */}
+            <p className="text-ink/80 text-base max-w-md mb-8 leading-relaxed font-medium">
+              Experience the perfect blend of rich, single-origin roasts, warm hospitality, and a cozy atmosphere. Your daily escape in the heart of Talwandi.
+            </p>
 
-                <a
-                  href={heroData.ctaSecondary.href}
-                  className="w-full sm:w-auto px-8 py-4 rounded-full text-xs sm:text-sm font-semibold tracking-wider bg-roast/30 hover:bg-roast/60 text-cream border border-beige/30 hover:border-caramel/60 backdrop-blur-sm transition-all flex items-center justify-center gap-2"
-                >
-                  <Compass className="w-4 h-4 text-caramel" />
-                  <span>{heroData.ctaSecondary.label}</span>
-                </a>
-              </div>
-            </Reveal>
-
-            {/* Feature Highlights Strip (Mobile-first responsive row) */}
-            <Reveal delay={0.5} className="w-full">
-              <div className="mt-12 pt-8 border-t border-roast/40 w-full">
-                <div className="flex flex-wrap lg:flex-nowrap items-center justify-center lg:justify-start gap-3 sm:gap-4">
-                  {heroData.highlights.map((item, idx) => {
-                    const IconComponent = iconMap[item.icon] || Coffee;
-                    return (
-                      <div
-                        key={idx}
-                        className="flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-espresso-light/40 border border-roast/40 backdrop-blur-sm shadow-warm-sm"
-                      >
-                        <div className="w-7 h-7 rounded-full bg-caramel/15 flex items-center justify-center text-caramel flex-shrink-0">
-                          <IconComponent className="w-3.5 h-3.5" />
-                        </div>
-                        <span className="text-xs font-medium text-beige/90 whitespace-nowrap">
-                          {item.label}
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </Reveal>
-          </div>
-
-          {/* Right Column: Hero Visual with Large Coffee Cup Image */}
-          <div className="lg:col-span-5 flex justify-center items-center relative">
-            <Reveal delay={0.3} className="relative w-full max-w-[480px] lg:max-w-none">
-              {/* Outer Amber Halo */}
-              <div
-                className="absolute inset-0 m-auto w-[280px] sm:w-[380px] h-[280px] sm:h-[380px] rounded-full bg-gradient-to-tr from-caramel/30 to-roast/40 blur-3xl pointer-events-none"
-                aria-hidden="true"
-              />
-
-              {/* Floating Coffee Cup Artwork with Gentle Motion */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 5,
-                  ease: 'easeInOut'
-                }}
-                className="relative z-10 w-full flex justify-center"
+            {/* Buttons */}
+            <div className="w-full flex flex-col md:flex-row items-center gap-4">
+              <Link 
+                to="/menu"
+                className="w-full md:w-auto px-8 py-3.5 rounded-full bg-caramel text-foam text-xs sm:text-sm font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:-translate-y-0.5 transition-transform shadow-warm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-caramel focus-visible:ring-offset-2"
               >
-                <img
-                  src={heroData.heroImage}
-                  alt={heroData.heroImageAlt}
-                  className="w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[520px] h-auto object-contain drop-shadow-[0_24px_36px_rgba(0,0,0,0.45)]"
-                  loading="eager"
-                />
-              </motion.div>
-
-              {/* Subtle Aesthetic Floating Pill Badge */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.7, duration: 0.5 }}
-                className="absolute -bottom-4 right-4 sm:right-8 z-20 px-4 py-2.5 rounded-2xl bg-espresso/90 border border-caramel/40 backdrop-blur-md shadow-warm-lg flex items-center gap-3"
+                <span>EXPLORE OUR MENU</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              
+              <Link 
+                to="/about"
+                className="w-full md:w-auto px-8 py-3.5 rounded-full bg-transparent text-ink border border-latte text-xs sm:text-sm font-bold uppercase tracking-wider flex items-center justify-center hover:bg-almond/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-caramel focus-visible:ring-offset-2"
               >
-                <div className="w-2.5 h-2.5 rounded-full bg-caramel animate-ping" />
-                <div className="flex flex-col">
-                  <span className="text-[10px] uppercase font-bold tracking-wider text-caramel">
-                    Freshly Dialed In
-                  </span>
-                  <span className="text-xs font-semibold text-cream">
-                    100% Arabica Roast
-                  </span>
-                </div>
-              </motion.div>
-            </Reveal>
-          </div>
-
+                Experience The Vibe
+              </Link>
+            </div>
+            
+            {/* Bottom Feature Row */}
+            <motion.div 
+              variants={chipContainerVariants}
+              initial={prefersReducedMotion ? "visible" : "hidden"}
+              animate="visible"
+              className="mt-8 pt-6 border-t border-latte/30 w-full flex overflow-x-auto snap-x scrollbar-none md:flex-wrap gap-3"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {chips.map((chip, idx) => {
+                const Icon = chip.icon;
+                return (
+                  <motion.div 
+                    key={idx}
+                    variants={chipVariants}
+                    className="snap-start flex items-center gap-2 px-4 py-2 rounded-full bg-foam/70 backdrop-blur border border-foam/50 whitespace-nowrap flex-shrink-0 shadow-sm"
+                  >
+                    <Icon className="w-4 h-4 text-caramel" />
+                    <span className="text-xs font-bold text-ink">{chip.label}</span>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+          </motion.div>
         </div>
+
+        {/* Floating Badge (Desktop Only) */}
+        <motion.div 
+          animate={prefersReducedMotion ? {} : { y: [-6, 6] }}
+          transition={{ duration: 4, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
+          className="hidden md:flex absolute bottom-8 right-8 z-20 items-center gap-3 px-5 py-3 rounded-full bg-foam/80 backdrop-blur-md border border-latte/40 shadow-[0_8px_30px_rgba(31,22,18,0.08)]"
+        >
+          <div className="relative flex items-center justify-center">
+            <Coffee className="w-5 h-5 text-caramel" />
+            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-caramel rounded-full animate-ping" />
+            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-caramel rounded-full" />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-[9px] font-bold uppercase tracking-widest text-caramel">Freshly dialed in</span>
+            <span className="text-xs font-bold text-ink">100% Arabica Roast</span>
+          </div>
+        </motion.div>
       </div>
 
-      {/* Organic Wavy Transition to the next Cream Section (Featured Coffee) */}
-      <div className="relative mt-12 sm:mt-16 z-20">
-        <WaveDivider color="#F5EBDD" height="72px" />
+      {/* Organic Wavy Transition to the next Almond Section (Featured Coffee) */}
+      <div className="relative mt-8 sm:mt-12 z-20">
+        <WaveDivider color="#EADBC8" height="72px" />
       </div>
     </section>
   );
