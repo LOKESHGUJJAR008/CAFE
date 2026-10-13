@@ -10,9 +10,7 @@ import {
   Minimize2, 
   Play, 
   Pause, 
-  Coffee, 
-  Sparkles,
-  Bookmark
+  Sparkles
 } from 'lucide-react';
 import { menuData } from '../../data/menu';
 import { useCart } from '../../context/CartContext';
@@ -559,7 +557,6 @@ export const FlipMenu = () => {
 
   // Initialize PageFlip
   const initializePageFlip = useCallback(() => {
-    initFnRef.current = initializePageFlip;
     if (!containerRef.current || flipInstanceRef.current) return;
     
     const el = containerRef.current;
@@ -619,6 +616,7 @@ export const FlipMenu = () => {
 
   // Safe init
   useEffect(() => {
+    initFnRef.current = initializePageFlip;
     initAttemptsRef.current = 0;
     initializePageFlip();
 
@@ -681,11 +679,6 @@ export const FlipMenu = () => {
     if (soundEnabled) playPageTurnSound();
     flipRef.current.flipPrev('bottom');
   };
-
-  // Determine current active category tab
-  const activeCategoryIndex = useMemo(() => {
-    return Math.floor(currentPage / 2) * 2;
-  }, [currentPage]);
 
   return (
     <div 
@@ -751,7 +744,7 @@ export const FlipMenu = () => {
               className="relative z-10 w-full aspect-[1.44/1] min-h-[440px] max-h-[740px] md:min-h-[540px] md:max-h-[740px]"
               style={{ height: '100%' }}
             >
-              {pages.map((page, i) => (
+              {pages.map((page) => (
                 <div key={page.key} className="page w-full h-full" style={{ width: '100%', height: '100%' }}>
                   {page}
                 </div>
