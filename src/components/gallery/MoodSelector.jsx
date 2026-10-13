@@ -1,7 +1,11 @@
 import React, { useRef, useState } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
-import { Check } from 'lucide-react';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { Check, Sparkles } from 'lucide-react';
 import { moods } from '../../data/moods';
+import MoodCardModal from './MoodCardModal';
+import KineticHeadline from './KineticHeadline';
+import MoodStickers from './MoodStickers';
+import MagneticButton from './MagneticButton';
 
 const EASE = [0.22, 1, 0.36, 1];
 
@@ -85,6 +89,7 @@ const MoodCard = ({
       role="radio"
       aria-checked={isSelected}
       tabIndex={isSelected ? 0 : -1}
+      data-cursor="select"
       onClick={() => onSelect(mood.id)}
       onKeyDown={onKeyDown}
       onMouseMove={handleMouseMove}
@@ -131,7 +136,17 @@ const MoodCard = ({
           className={`w-full h-full object-cover transition-transform duration-500 ease-out ${
             !prefersReducedMotion && isHovered ? 'scale-105' : 'scale-100'
           }`}
+          style={{ objectPosition: mood.featuredImage.objectPosition || 'center' }}
           loading="lazy"
+        />
+
+        {/* Subtle shared warm tone overlay */}
+        <div
+          className="absolute inset-0 pointer-events-none mix-blend-multiply opacity-50"
+          style={{
+            background: 'linear-gradient(135deg, rgba(168, 97, 46, 0.14) 0%, rgba(201, 162, 126, 0.08) 100%)',
+          }}
+          aria-hidden="true"
         />
 
         {/* Subtle photo vignette */}
@@ -185,6 +200,8 @@ export const MoodSelector = ({
 }) => {
   const prefersReducedMotion = useReducedMotion();
   const cardElementsRef = useRef({});
+  const cardButtonRef = useRef(null);
+  const [isCardModalOpen, setIsCardModalOpen] = useState(false);
 
   const currentMoodObj = moods.find((m) => m.id === selectedMood) || moods[0];
 
@@ -210,7 +227,7 @@ export const MoodSelector = ({
   };
 
   return (
-    <section id="moods" className="bg-[#FBF7F1] text-[#1F1612] py-16 sm:py-20 lg:py-24 scroll-mt-20">
+    <section id="moods" className="relative bg-transparent text-[var(--gallery-text)] py-16 sm:py-20 lg:py-24 scroll-mt-20 transition-colors duration-700">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12">
         {/* Section Heading */}
         <motion.div
@@ -220,13 +237,23 @@ export const MoodSelector = ({
           transition={{ duration: 0.6, ease: EASE }}
           className="text-center max-w-2xl mx-auto mb-10 sm:mb-14"
         >
-          <span className="font-inter text-xs font-bold uppercase tracking-[0.22em] text-[#A8612E] block mb-2.5">
+          <span
+            className="font-inter text-xs font-bold uppercase tracking-[0.22em] block mb-2.5 transition-colors duration-500"
+            style={{ color: 'var(--gallery-accent)' }}
+          >
             CHOOSE YOUR ATMOSPHERE
           </span>
-          <h2 className="font-playfair font-bold text-3xl sm:text-4xl lg:text-5xl text-[#1F1612] tracking-tight mb-4">
-            Find Your Coffee Mood
-          </h2>
-          <p className="font-inter text-sm sm:text-base text-[#1F1612]/75 leading-relaxed">
+          <KineticHeadline
+            as="h2"
+            text="Find Your Coffee Mood"
+            delay={0.1}
+            className="font-playfair font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight mb-4 transition-colors duration-500"
+            style={{ color: 'var(--gallery-text)' }}
+          />
+          <p
+            className="font-inter text-sm sm:text-base leading-relaxed transition-colors duration-500"
+            style={{ color: 'var(--gallery-subtext)' }}
+          >
             Select an atmosphere to discover handcrafted moments, curated roasts, and signature café rituals.
           </p>
         </motion.div>
@@ -257,14 +284,77 @@ export const MoodSelector = ({
           ))}
         </div>
 
-        {/* Small test indicator under the cards as requested */}
-        <div className="mt-10 sm:mt-12 text-center">
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#EADBC8]/50 border border-[#C9A27E]/30 text-xs sm:text-sm font-inter text-[#1F1612]/80 font-medium">
-            <span className="text-[#A8612E] font-bold">Selected:</span>
-            <span className="font-semibold text-[#1F1612]">{currentMoodObj.title}</span>
+        {/* Selected mood label text and "Get my mood card" button */}
+        <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 text-center">
+          <div
+            className="relative inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full border text-xs sm:text-sm font-inter font-medium shadow-xs transition-colors duration-500"
+            style={{
+              backgroundColor: 'var(--gallery-panel)',
+              borderColor: 'var(--gallery-border)',
+              color: 'var(--gallery-text)',
+            }}
+          >
+            {/* Playful sticker pops per selected mood */}
+            <MoodStickers selectedMood={selectedMood} />
+
+            <span
+              className="relative z-10 font-bold uppercase tracking-wider text-[11px]"
+              style={{ color: 'var(--gallery-accent)' }}
+            >
+              Selected Mood:
+            </span>
+            <span className="relative z-10 inline-block pb-0.5 font-semibold">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={currentMoodObj.id}
+                  initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 3 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: -3 }}
+                  transition={{ duration: 0.25, ease: EASE }}
+                  className="inline-block"
+                  style={{ color: 'var(--gallery-text)' }}
+                >
+                  {currentMoodObj.title}
+                </motion.span>
+              </AnimatePresence>
+              {!prefersReducedMotion && (
+                <motion.span
+                  key={`underline-${currentMoodObj.id}`}
+                  initial={{ scaleX: 0, originX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 0.45, ease: EASE, delay: 0.08 }}
+                  className="absolute left-0 bottom-0 w-full h-[2px] rounded-full"
+                  style={{ backgroundColor: 'var(--gallery-accent)' }}
+                />
+              )}
+            </span>
           </div>
+
+          {/* "Get my mood card" CTA button with Magnetic attraction */}
+          <MagneticButton>
+            <button
+              ref={cardButtonRef}
+              type="button"
+              id="get-mood-card-btn"
+              onClick={() => setIsCardModalOpen(true)}
+              aria-haspopup="dialog"
+              aria-expanded={isCardModalOpen}
+              className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#A8612E] hover:bg-[#A8612E]/90 text-[#FBF7F1] text-xs sm:text-sm font-inter font-semibold tracking-wide shadow-md transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8612E] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FBF7F1] cursor-pointer"
+            >
+              <Sparkles className="w-4 h-4 text-[#EADBC8]" />
+              <span>Get my mood card</span>
+            </button>
+          </MagneticButton>
         </div>
       </div>
+
+      {/* 9:16 Mood Card Generator & Preview Modal */}
+      <MoodCardModal
+        isOpen={isCardModalOpen}
+        onClose={() => setIsCardModalOpen(false)}
+        moodId={selectedMood}
+        triggerRef={cardButtonRef}
+      />
     </section>
   );
 };

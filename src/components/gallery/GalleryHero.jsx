@@ -1,6 +1,10 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowDown, Sparkles } from 'lucide-react';
+import { heroImage } from '../../data/moods';
+import slowMornings02 from '../../assets/images/gallery/slow-mornings/02-sunlit-wooden-table.png';
+import KineticHeadline from './KineticHeadline';
+import MagneticButton from './MagneticButton';
 
 const EASE = [0.22, 1, 0.36, 1];
 
@@ -30,12 +34,12 @@ export const GalleryHero = () => {
   };
 
   return (
-    <section className="relative bg-[#FBF7F1] text-[#1F1612] pt-28 sm:pt-36 lg:pt-40 pb-16 lg:pb-24 overflow-hidden">
+    <section className="relative bg-transparent text-[var(--gallery-text)] pt-28 sm:pt-36 lg:pt-40 pb-16 lg:pb-24 overflow-hidden transition-colors duration-700">
       {/* Background soft ambient warmth using palette tokens */}
       <div
-        className="absolute top-12 left-1/2 -translate-x-1/2 w-[720px] h-[480px] rounded-full pointer-events-none -z-10 blur-3xl opacity-60"
+        className="absolute top-12 left-1/2 -translate-x-1/2 w-[720px] h-[480px] rounded-full pointer-events-none -z-10 blur-3xl opacity-50 transition-opacity duration-700"
         style={{
-          background: 'radial-gradient(ellipse at center, rgba(234, 219, 200, 0.8) 0%, rgba(201, 162, 126, 0.2) 50%, transparent 75%)',
+          background: 'radial-gradient(ellipse at center, var(--gallery-glow) 0%, transparent 70%)',
         }}
         aria-hidden="true"
       />
@@ -47,56 +51,72 @@ export const GalleryHero = () => {
             {/* Eyebrow */}
             <motion.div
               {...fadeInUp(0.05)}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EADBC8]/70 border border-[#C9A27E]/30 mb-6"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border mb-6 transition-colors duration-500"
+              style={{
+                backgroundColor: 'var(--gallery-panel)',
+                borderColor: 'var(--gallery-border)',
+              }}
             >
-              <Sparkles className="w-3.5 h-3.5 text-[#A8612E]" />
-              <span className="font-inter text-[11px] sm:text-xs font-bold tracking-[0.22em] text-[#A8612E] uppercase">
+              <Sparkles className="w-3.5 h-3.5" style={{ color: 'var(--gallery-accent)' }} />
+              <span
+                className="font-inter text-[11px] sm:text-xs font-bold tracking-[0.22em] uppercase"
+                style={{ color: 'var(--gallery-accent)' }}
+              >
                 A LITTLE MOMENT OF YOU
               </span>
             </motion.div>
 
             {/* Headline */}
-            <motion.h1
-              {...fadeInUp(0.12)}
-              className="font-playfair font-bold text-4xl sm:text-5xl lg:text-6xl text-[#1F1612] leading-[1.12] tracking-tight mb-6"
-            >
-              Every Mood Has Its Coffee.
-            </motion.h1>
+            <KineticHeadline
+              as="h1"
+              text="Every Mood Has Its Coffee."
+              delay={0.12}
+              className="font-playfair font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.12] tracking-tight mb-6 transition-colors duration-500"
+              style={{ color: 'var(--gallery-text)' }}
+            />
 
             {/* Subtitle Text */}
             <motion.p
-              {...fadeInUp(0.2)}
-              className="font-inter text-base sm:text-lg lg:text-xl text-[#1F1612]/75 leading-relaxed max-w-xl mb-9 font-normal"
+              {...fadeInUp(0.24)}
+              className="font-inter text-base sm:text-lg lg:text-xl leading-relaxed max-w-xl mb-9 font-normal transition-colors duration-500"
+              style={{ color: 'var(--gallery-subtext)' }}
             >
               Find the moments, flavours, and little rituals that feel like you.
             </motion.p>
 
             {/* CTA + Scroll indicator */}
             <motion.div
-              {...fadeInUp(0.28)}
+              {...fadeInUp(0.32)}
               className="flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-7 w-full sm:w-auto"
             >
-              <a
-                href="#moods"
-                onClick={handleScrollToMoods}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#A8612E] hover:bg-[#A8612E]/90 text-[#FBF7F1] font-inter font-semibold text-sm sm:text-base tracking-wide shadow-[0_8px_24px_rgba(168,97,46,0.28)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8612E] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FBF7F1]"
-              >
-                <span>Explore Your Mood</span>
-                <ArrowDown className="w-4 h-4" />
-              </a>
+              <MagneticButton>
+                <a
+                  href="#moods"
+                  onClick={handleScrollToMoods}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#A8612E] hover:bg-[#A8612E]/90 text-[#FBF7F1] font-inter font-semibold text-sm sm:text-base tracking-wide shadow-[0_8px_24px_rgba(168,97,46,0.28)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8612E] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FBF7F1]"
+                >
+                  <span>Explore Your Mood</span>
+                  <ArrowDown className="w-4 h-4" />
+                </a>
+              </MagneticButton>
 
               {/* Subtle Scroll Indicator */}
               <a
                 href="#moods"
                 onClick={handleScrollToMoods}
-                className="group inline-flex items-center gap-2.5 text-xs uppercase tracking-widest text-[#1F1612]/60 hover:text-[#A8612E] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8612E] rounded-md px-1 py-1"
+                className="group inline-flex items-center gap-2.5 text-xs uppercase tracking-widest transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8612E] rounded-md px-1 py-1"
+                style={{ color: 'var(--gallery-subtext)' }}
                 aria-label="Scroll down to mood selection"
               >
-                <span className="w-6 h-10 rounded-full border border-[#C9A27E]/60 flex items-start justify-center p-1.5 transition-colors group-hover:border-[#A8612E]">
+                <span
+                  className="w-6 h-10 rounded-full border flex items-start justify-center p-1.5 transition-colors group-hover:border-[#A8612E]"
+                  style={{ borderColor: 'var(--gallery-border)' }}
+                >
                   <motion.span
                     animate={prefersReducedMotion ? {} : { y: [0, 8, 0], opacity: [0.9, 0.3, 0.9] }}
                     transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-                    className="w-1.5 h-1.5 rounded-full bg-[#A8612E]"
+                    className="w-1.5 h-1.5 rounded-full"
+                    style={{ backgroundColor: 'var(--gallery-accent)' }}
                   />
                 </span>
                 <span className="font-inter font-medium text-[11px]">Scroll down</span>
@@ -121,11 +141,21 @@ export const GalleryHero = () => {
               {/* Main Photo Card */}
               <div className="relative rounded-3xl overflow-hidden border border-[#C9A27E]/30 bg-[#EADBC8] shadow-[0_24px_60px_rgba(31,22,18,0.14)] aspect-[4/5] sm:aspect-[4/5]">
                 <img
-                  src="/images/hero.webp"
-                  alt="Artisanal breakfast latte art with a fresh croissant in golden morning sunlight"
+                  src={heroImage.src}
+                  alt={heroImage.alt}
+                  style={{ objectPosition: heroImage.objectPosition || 'center' }}
                   className="w-full h-full object-cover"
                   loading="eager"
                   fetchPriority="high"
+                />
+
+                {/* Subtle shared warm tone overlay */}
+                <div
+                  className="absolute inset-0 pointer-events-none mix-blend-multiply opacity-50"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(168, 97, 46, 0.14) 0%, rgba(201, 162, 126, 0.08) 100%)',
+                  }}
+                  aria-hidden="true"
                 />
 
                 {/* Warm foam-to-coffee gradient overlay */}
@@ -192,10 +222,19 @@ export const GalleryHero = () => {
                 className="absolute -bottom-6 -left-4 sm:-bottom-8 sm:-left-8 w-36 sm:w-44 aspect-square rounded-2xl overflow-hidden border-[3px] border-[#FBF7F1] shadow-[0_16px_36px_rgba(31,22,18,0.22)] bg-[#EADBC8] z-20"
               >
                 <img
-                  src="/images/gallery/cafe-3.webp"
-                  alt="Tranquil daylight window with botanical vines and woven rattan fixtures"
+                  src={slowMornings02}
+                  alt="Sunlit minimalist wooden table with fresh morning cake and black coffee"
                   className="w-full h-full object-cover"
+                  style={{ objectPosition: 'center' }}
                   loading="lazy"
+                />
+                {/* Subtle shared warm tone overlay */}
+                <div
+                  className="absolute inset-0 pointer-events-none mix-blend-multiply opacity-50"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(168, 97, 46, 0.14) 0%, rgba(201, 162, 126, 0.08) 100%)',
+                  }}
+                  aria-hidden="true"
                 />
                 <div
                   className="absolute inset-0 pointer-events-none"

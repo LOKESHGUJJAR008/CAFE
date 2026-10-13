@@ -30,6 +30,7 @@ export default {
       fontFamily: {
         playfair: ['"Playfair Display"', 'serif'],
         inter: ['Inter', 'sans-serif'],
+        caveat: ['Caveat', 'cursive', 'sans-serif'],
       },
       boxShadow: {
         'warm-sm': '0 2px 8px -2px rgba(34, 18, 32, 0.08), 0 1px 4px -1px rgba(234, 92, 137, 0.06)',

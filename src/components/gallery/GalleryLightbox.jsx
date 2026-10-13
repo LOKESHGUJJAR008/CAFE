@@ -180,9 +180,15 @@ export const GalleryLightbox = ({
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3, ease: EASE }}
                 className="max-h-[68vh] sm:max-h-[74vh] w-auto max-w-full object-contain rounded-xl"
-                onError={(e) => {
-                  e.currentTarget.src = '/images/hero.webp';
+              />
+
+              {/* Subtle shared warm tone overlay in lightbox */}
+              <div
+                className="absolute inset-0 pointer-events-none mix-blend-multiply opacity-25 rounded-2xl"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(168, 97, 46, 0.12) 0%, rgba(201, 162, 126, 0.06) 100%)',
                 }}
+                aria-hidden="true"
               />
 
               {/* Navigation Arrows */}
