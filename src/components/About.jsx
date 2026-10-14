@@ -41,31 +41,28 @@ export const Story = () => {
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className="hidden lg:flex w-full h-[520px]"
       >
-        {/* Left Panel: ~38% espresso */}
-        <div className="w-[38%] bg-foam p-10 xl:p-12 flex flex-col justify-center border-r border-latte/40/30">
-          <span className="text-xs font-bold uppercase tracking-[0.25em] text-caramel mb-3 font-inter">
+        {/* Left Panel: ~38% foam */}
+        <div className="w-[38%] bg-[#FBF7F1] p-10 xl:p-12 flex flex-col justify-center border-r border-[#1F1612]/10">
+          <span className="bd-eyebrow block mb-4">
             {aboutData.eyebrow}
           </span>
 
-          <h2 className="font-playfair font-bold text-3xl xl:text-4xl text-ink tracking-tight leading-[1.18] mb-5">
+          <h2 className="font-cormorant font-semibold text-[#1F1612] text-4xl xl:text-5xl leading-[1] tracking-[-0.02em] mb-6">
             {aboutData.heading}
           </h2>
 
-          <div className="space-y-3.5 text-ink/85 text-sm leading-relaxed mb-7">
+          <div className="space-y-3.5 text-[#1F1612]/70 text-sm leading-relaxed mb-8 font-grotesk">
             {aboutData.paragraphs.map((p, idx) => (
               <p key={idx}>{p}</p>
             ))}
           </div>
 
-          <div>
-            <Link
-              to="/about"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-foam/40 text-ink hover:bg-foam hover:text-ink text-xs sm:text-sm font-semibold tracking-wide transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-caramel focus-visible:ring-offset-2"
-            >
-              <span>Our Story</span>
-              <ArrowRight className="w-4 h-4 text-ink group-hover:text-ink group-hover:translate-x-1 transition-all" />
-            </Link>
-          </div>
+          <Link
+            to="/about"
+            className="bd-btn self-start"
+          >
+            Our Story
+          </Link>
         </div>
 
         {/* Center Panel: ~40% image slot or fallback */}

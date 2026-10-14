@@ -30,7 +30,7 @@ export const CraftRitual = ({ eyebrow, heading, cards }) => {
   };
 
   return (
-    <section className="py-20 lg:py-28 px-6 sm:px-10 lg:px-16 bg-foam text-ink">
+    <section className="py-10 sm:py-14 lg:py-16 px-6 sm:px-10 lg:px-16 bg-foam text-ink">
       <div className="max-w-6xl mx-auto">
         <motion.div
           className="text-center mb-14 lg:mb-20"

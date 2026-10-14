@@ -33,7 +33,7 @@ export const OurStory = ({ eyebrow, heading, paragraphs }) => {
       };
 
   return (
-    <section className="py-20 lg:py-28 px-6 sm:px-10 lg:px-16 bg-foam text-ink">
+    <section className="py-16 sm:py-20 lg:py-24 px-6 sm:px-10 lg:px-16 bg-foam text-ink">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           <motion.div

@@ -23,7 +23,7 @@ const Layout = () => {
       <OfferBar onVisibilityChange={handleBarVisibility} />
       <Navbar barVisible={barVisible} />
 
-      <main className="flex-1" style={{ paddingTop: barVisible ? '8.5rem' : '7rem' }}>
+      <main className="flex-1" style={{ paddingTop: barVisible ? '6.5rem' : '4.5rem' }}>
         <Outlet />
       </main>
 

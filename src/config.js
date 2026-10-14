@@ -59,16 +59,16 @@ export const OFFER_BAR_MESSAGE = 'Student discount: 10% off on all orders with a
 
 /** Palette tokens — keep in sync with tailwind.config.js */
 export const COLORS = {
-  foam:    '#FDF8FA',
-  ink:     '#221220',
-  latte:   '#C48B9F',
-  caramel: '#EA5C89',
-  almond:  '#F3DFE7',
-  plum:    '#432A3B',
+  foam:    '#FBF7F1',
+  ink:     '#1F1612',
+  latte:   '#C9A27E',
+  caramel: '#A8612E',
+  almond:  '#EADBC8',
+  espresso:'#2E1E14',
 };
 
 /** DEMO MODE */
-export const DEMO_MODE = true;
+export const DEMO_MODE = false;
 
 if (DEMO_MODE && process.env.NODE_ENV === 'production') {
   console.warn("DEMO_MODE is true in production! Some content will appear as placeholders.");

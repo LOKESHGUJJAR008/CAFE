@@ -121,6 +121,6 @@
     <!-- Text overlay at bottom -->
     <rect x="0" y="540" width="520" height="80" fill="url(#cafeBg)" opacity="0.9"/>
     <text x="260" y="575" text-anchor="middle" font-family="'Playfair Display', serif" font-size="20" font-weight="700" fill="#FBF7F1">Crafted With Love</text>
-    <text x="260" y="598" text-anchor="middle" font-family="'Inter', sans-serif" font-size="12" fill="#EA5C89" letter-spacing="3">TATVA CAFÉ • TALWANDI</text>
+    <text x="260" y="598" text-anchor="middle" font-family="'Inter', sans-serif" font-size="12" fill="#C9A27E" letter-spacing="3">TATVA CAFÉ • TALWANDI</text>
   </g>
 </svg>

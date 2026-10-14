@@ -724,15 +724,15 @@ export const FlipMenu = () => {
       <div className="relative w-full max-w-5xl mx-auto px-4 md:px-12 pb-6 pt-2 overflow-visible">
         <div className="relative w-full p-2.5 sm:p-4 rounded-2xl leather-folio-casing border border-[#4A3022]/80">
           
-          {/* Antique Rose-Gold Corner Brackets */}
-          <div className="absolute top-1 left-1 w-6 h-6 rounded-tl-lg border-t-2 border-l-2 border-[#C48B9F] shadow-[inset_1px_1px_0_rgba(255,255,255,0.4)] pointer-events-none" />
-          <div className="absolute top-1 right-1 w-6 h-6 rounded-tr-lg border-t-2 border-r-2 border-[#C48B9F] shadow-[inset_-1px_1px_0_rgba(255,255,255,0.4)] pointer-events-none" />
-          <div className="absolute bottom-1 left-1 w-6 h-6 rounded-bl-lg border-b-2 border-l-2 border-[#C48B9F] shadow-[inset_1px_-1px_0_rgba(255,255,255,0.4)] pointer-events-none" />
-          <div className="absolute bottom-1 right-1 w-6 h-6 rounded-br-lg border-b-2 border-r-2 border-[#C48B9F] shadow-[inset_-1px_-1px_0_rgba(255,255,255,0.4)] pointer-events-none" />
+          {/* Antique Brass-Gold Corner Brackets */}
+          <div className="absolute top-1 left-1 w-6 h-6 rounded-tl-lg border-t-2 border-l-2 border-[#C9A27E] shadow-[inset_1px_1px_0_rgba(255,255,255,0.4)] pointer-events-none" />
+          <div className="absolute top-1 right-1 w-6 h-6 rounded-tr-lg border-t-2 border-r-2 border-[#C9A27E] shadow-[inset_-1px_1px_0_rgba(255,255,255,0.4)] pointer-events-none" />
+          <div className="absolute bottom-1 left-1 w-6 h-6 rounded-bl-lg border-b-2 border-l-2 border-[#C9A27E] shadow-[inset_1px_-1px_0_rgba(255,255,255,0.4)] pointer-events-none" />
+          <div className="absolute bottom-1 right-1 w-6 h-6 rounded-br-lg border-b-2 border-r-2 border-[#C9A27E] shadow-[inset_-1px_-1px_0_rgba(255,255,255,0.4)] pointer-events-none" />
 
-          {/* Radiant Rose Silk Bookmark Ribbon Hanging from Top Spine */}
-          <div className="absolute top-[-10px] left-1/2 -translate-x-1/2 w-4 h-14 bg-gradient-to-b from-[#EA5C89] to-[#C43E69] rounded-b shadow-md z-30 pointer-events-none flex flex-col justify-end">
-            <div className="w-full h-2 bg-[#C43E69] clip-ribbon-tail" />
+          {/* Warm Amber Caramel Silk Bookmark Ribbon Hanging from Top Spine */}
+          <div className="absolute top-[-10px] left-1/2 -translate-x-1/2 w-4 h-14 bg-gradient-to-b from-[#A8612E] to-[#783F1A] rounded-b shadow-md z-30 pointer-events-none flex flex-col justify-end">
+            <div className="w-full h-2 bg-[#783F1A] clip-ribbon-tail" />
           </div>
 
           {/* 3D Stacked Deckle Paper Outer Edges Wrapper */}

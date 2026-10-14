@@ -29,7 +29,7 @@ export const Sanctuary = ({ eyebrow, heading, images }) => {
   };
 
   return (
-    <section className="py-20 lg:py-28 px-6 sm:px-10 lg:px-16 bg-foam text-ink">
+    <section className="py-16 sm:py-20 lg:py-24 px-6 sm:px-10 lg:px-16 bg-foam text-ink">
       <div className="max-w-6xl mx-auto">
         <motion.div
           className="text-center mb-14 lg:mb-16"

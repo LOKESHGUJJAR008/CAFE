@@ -3,21 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --color-foam: #FDF8FA;
-  --color-ink: #221220;
-  --color-latte: #C48B9F;
-  --color-caramel: #EA5C89;
-  --color-almond: #F3DFE7;
-  --color-plum: #432A3B;
-  --color-plum-dark: #2D1827;
+  --color-foam: #FBF7F1;
+  --color-ink: #1F1612;
+  --color-latte: #C9A27E;
+  --color-caramel: #A8612E;
+  --color-almond: #EADBC8;
+  --color-espresso: #2E1E14;
+  --color-mustard: #C9A012;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    color: #221220; /* ink */
-    background-color: #FDF8FA; /* foam */
+    font-family: 'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
+    color: #1F1612;
+    background-color: #FBF7F1;
     overflow-x: hidden;
   }
 
@@ -26,23 +26,23 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
     letter-spacing: -0.01em;
   }
 
-  /* Custom subtle rose/mauve scrollbar */
+  /* Custom caramel/latte scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #FDF8FA;
+    background: #FBF7F1;
   }
   ::-webkit-scrollbar-thumb {
-    background: #C48B9F;
+    background: #C9A27E;
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #EA5C89;
+    background: #A8612E;
   }
 
   .scrollbar-none {
@@ -55,64 +55,213 @@
 }
 
 /* ==========================================================================
+   EDITORIAL BD-STYLE UTILITIES
+   ========================================================================== */
+
+/* Eyebrow label — small all-caps tracking */
+.bd-eyebrow {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #A8612E;
+}
+
+/* Editorial massive headline — Cormorant Garamond */
+.bd-headline {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+/* Nav link style — Space Grotesk ALL CAPS */
+.bd-nav-link {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1F1612;
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.2s;
+}
+
+.bd-nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1.5px;
+  background: #1F1612;
+  transition: width 0.25s ease;
+}
+
+.bd-nav-link:hover::after,
+.bd-nav-link.active::after {
+  width: 100%;
+}
+
+/* Rectangular CTA button — sharp corners, outlined */
+.bd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2.5rem;
+  border: 1.5px solid #1F1612;
+  background: transparent;
+  color: #1F1612;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background 0.22s ease, color 0.22s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.bd-btn:hover {
+  background: #1F1612;
+  color: #FBF7F1;
+}
+
+.bd-btn-light {
+  border-color: #FBF7F1;
+  color: #FBF7F1;
+}
+
+.bd-btn-light:hover {
+  background: #FBF7F1;
+  color: #1F1612;
+}
+
+.bd-btn-caramel {
+  border-color: #A8612E;
+  color: #A8612E;
+}
+
+.bd-btn-caramel:hover {
+  background: #A8612E;
+  color: #FBF7F1;
+}
+
+/* Mustard offer bar */
+.bd-offer-bar {
+  background: #C9A012;
+  color: #1F1612;
+  width: 100%;
+  padding: 0.625rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  position: relative;
+  z-index: 60;
+}
+
+/* Editorial 2-col split section */
+.bd-split-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .bd-split-section {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* Image grid — no border radius, edge to edge */
+.bd-image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+.bd-image-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Section separator — thin line */
+.bd-separator {
+  width: 100%;
+  height: 1px;
+  background: rgba(31, 22, 18, 0.12);
+}
+
+/* ==========================================================================
    TATVA Aesthetic Luxury Menu Book Styles & Minimalist Lining
    ========================================================================== */
 
-/* Serene Minimalist Blush-Cream Parchment Background */
+/* Serene Minimalist Warm Parchment Background */
 .book-paper-texture {
-  background-color: #FDF8FA;
+  background-color: #FBF7F1;
   background-image: 
     radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.7) 0%, transparent 80%),
-    linear-gradient(135deg, rgba(234, 92, 137, 0.04) 0%, transparent 100%);
+    linear-gradient(135deg, rgba(168, 97, 46, 0.04) 0%, transparent 100%);
 }
 
 /* Center Spine Gutter Shadows for realistic 3D page curvature */
 .book-gutter-left {
-  box-shadow: inset -18px 0 24px -10px rgba(54, 30, 48, 0.12),
-              inset -4px 0 8px -2px rgba(54, 30, 48, 0.18);
+  box-shadow: inset -18px 0 24px -10px rgba(31, 22, 18, 0.12),
+              inset -4px 0 8px -2px rgba(31, 22, 18, 0.18);
 }
 
 .book-gutter-right {
-  box-shadow: inset 18px 0 24px -10px rgba(54, 30, 48, 0.12),
-              inset 4px 0 8px -2px rgba(54, 30, 48, 0.18);
+  box-shadow: inset 18px 0 24px -10px rgba(31, 22, 18, 0.12),
+              inset 4px 0 8px -2px rgba(31, 22, 18, 0.18);
 }
 
-/* Stacked 3D Paper Deckle Edges with Blush Tint */
+/* Stacked 3D Paper Deckle Edges with Warm Linen Tint */
 .deckle-edge-left {
   box-shadow: 
-    -2px 0 0 0 #F2E3E9,
-    -4px 0 0 0 #EAD0DB,
-    -6px 0 0 0 #DEC0CD,
-    -8px 0 2px 0 rgba(54, 30, 48, 0.08),
-    -14px 10px 24px 0 rgba(54, 30, 48, 0.2);
+    -2px 0 0 0 #F4EBD9,
+    -4px 0 0 0 #EADBC8,
+    -6px 0 0 0 #DFCBB5,
+    -8px 0 2px 0 rgba(31, 22, 18, 0.08),
+    -14px 10px 24px 0 rgba(31, 22, 18, 0.2);
 }
 
 .deckle-edge-right {
   box-shadow: 
-    2px 0 0 0 #F2E3E9,
-    4px 0 0 0 #EAD0DB,
-    6px 0 0 0 #DEC0CD,
-    8px 0 2px 0 rgba(54, 30, 48, 0.08),
-    14px 10px 24px 0 rgba(54, 30, 48, 0.2);
+    2px 0 0 0 #F4EBD9,
+    4px 0 0 0 #EADBC8,
+    6px 0 0 0 #DFCBB5,
+    8px 0 2px 0 rgba(31, 22, 18, 0.08),
+    14px 10px 24px 0 rgba(31, 22, 18, 0.2);
 }
 
 /* Center Binding Crease Line with Sewn Stitch illusion */
 .book-spine-crease {
   background: linear-gradient(
     to right,
-    rgba(54, 30, 48, 0.22) 0%,
-    rgba(54, 30, 48, 0.08) 25%,
-    rgba(54, 30, 48, 0.02) 45%,
+    rgba(31, 22, 18, 0.22) 0%,
+    rgba(31, 22, 18, 0.08) 25%,
+    rgba(31, 22, 18, 0.02) 45%,
     rgba(255, 255, 255, 0.15) 50%,
-    rgba(54, 30, 48, 0.02) 55%,
-    rgba(54, 30, 48, 0.08) 75%,
-    rgba(54, 30, 48, 0.22) 100%
+    rgba(31, 22, 18, 0.02) 55%,
+    rgba(31, 22, 18, 0.08) 75%,
+    rgba(31, 22, 18, 0.22) 100%
   );
 }
 
-/* Minimalist Rose-Gold Filigree Border Lining */
+/* Minimalist Antique Bronze Filigree Border Lining */
 .page-filigree-border {
-  border: 1px solid rgba(196, 139, 159, 0.35);
+  border: 1px solid rgba(201, 162, 126, 0.35);
   position: relative;
 }
 
@@ -120,7 +269,7 @@
   content: '';
   position: absolute;
   inset: 4px;
-  border: 1.5px solid rgba(234, 92, 137, 0.28);
+  border: 1.5px solid rgba(168, 97, 46, 0.28);
   pointer-events: none;
   border-radius: 2px;
 }
@@ -139,15 +288,29 @@
   animation: cornerPeel 2.4s ease-in-out infinite;
 }
 
-/* Velvety Plum Wine Folio Casing matching the TATVA Brand Theme */
+/* Rich Espresso Saddle Leather Folio Casing */
 .leather-folio-casing {
   background: 
-    radial-gradient(circle at 20% 30%, rgba(90, 59, 80, 0.85) 0%, transparent 60%),
-    radial-gradient(circle at 80% 70%, rgba(56, 33, 50, 0.95) 0%, transparent 60%),
-    linear-gradient(145deg, #432A3B 0%, #2D1827 100%);
+    radial-gradient(circle at 20% 30%, rgba(58, 37, 24, 0.85) 0%, transparent 60%),
+    radial-gradient(circle at 80% 70%, rgba(31, 22, 18, 0.95) 0%, transparent 60%),
+    linear-gradient(145deg, #2E1E14 0%, #160F0B 100%);
   box-shadow: 
-    0 25px 60px -15px rgba(45, 24, 39, 0.5),
-    0 10px 25px -5px rgba(45, 24, 39, 0.35),
+    0 25px 60px -15px rgba(20, 14, 11, 0.5),
+    0 10px 25px -5px rgba(20, 14, 11, 0.35),
     inset 0 1px 1px 0 rgba(255, 255, 255, 0.12),
     inset 0 -2px 4px 0 rgba(0, 0, 0, 0.45);
+}
+
+/* Marquee animation for scrolling text */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }

@@ -28,25 +28,24 @@ export const Atmosphere = () => {
           transition={{ duration: 0.55, ease: 'easeOut' }}
           className="max-w-xl"
         >
-          <span className="text-xs font-bold uppercase tracking-[0.25em] text-caramel mb-3 block font-inter">
+          <span className="bd-eyebrow block mb-4">
             Atmosphere
           </span>
 
-          <h2 className="font-playfair font-bold text-3xl sm:text-4xl lg:text-5xl text-foam tracking-tight leading-[1.15] mb-5">
+          <h2 className="font-cormorant font-semibold text-[#FBF7F1] text-5xl sm:text-6xl leading-[1] tracking-[-0.02em] mb-6">
             {atmosphereData.heading}
           </h2>
 
-          <p className="text-foam/85 text-sm sm:text-base leading-relaxed mb-8">
+          <p className="text-[#FBF7F1]/70 text-sm sm:text-base leading-relaxed mb-10 font-grotesk">
             {atmosphereData.description}
           </p>
 
           <div>
             <Link
               to="/contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full border border-foam/40 text-foam hover:bg-foam hover:text-ink text-xs sm:text-sm font-semibold tracking-wide transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-caramel focus-visible:ring-offset-2"
+              className="bd-btn bd-btn-light"
             >
-              <span>Visit Our Café</span>
-              <ArrowRight className="w-4 h-4 text-foam group-hover:text-ink group-hover:translate-x-1 transition-all" />
+              Visit Our Café
             </Link>
           </div>
         </motion.div>

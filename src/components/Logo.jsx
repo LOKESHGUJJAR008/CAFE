@@ -81,7 +81,7 @@ export const Logo = ({ size = 'md', theme = 'light', showSubtitle = true, classN
     ? 'text-[9px] tracking-[0.35em] mt-0.5' 
     : 'text-[7.5px] sm:text-[8px] tracking-[0.3em] mt-0.5';
 
-  const crestColor = 'text-caramel'; // Radiant Tatva Pink
+  const crestColor = 'text-caramel'; // Classic Artisan Amber Caramel
   const titleColor = theme === 'light' ? 'text-ink' : 'text-foam';
   const subColor   = theme === 'light' ? 'text-latte' : 'text-caramel/90';
 
