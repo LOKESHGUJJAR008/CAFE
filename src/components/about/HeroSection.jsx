@@ -59,20 +59,20 @@ export const HeroSection = ({
         animate="animate"
       >
         {/* Subtle Timeless Eyebrow */}
-        <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.3em] text-caramel mb-4 sm:mb-5 font-inter">
+        <p className="bd-eyebrow block mb-4 sm:mb-5">
           {eyebrow}
         </p>
 
         {/* Timeless Headline */}
-        <h1 className="font-playfair font-normal sm:font-medium text-4xl sm:text-6xl lg:text-7xl text-foam leading-[1.12] tracking-tight mb-5 sm:mb-6">
+        <h1 className="font-cormorant font-semibold text-5xl sm:text-7xl lg:text-8xl text-[#FBF7F1] leading-[0.95] tracking-[-0.03em] mb-6">
           Where time{' '}
-          <span className="italic font-normal text-latte">
+          <span className="italic font-normal text-[#C9A012]">
             slows.
           </span>
         </h1>
 
         {/* Quiet Poetic Narrative */}
-        <p className="text-foam/85 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl mx-auto font-light">
+        <p className="text-[#FBF7F1]/85 text-xs sm:text-sm uppercase tracking-[0.18em] font-grotesk leading-relaxed max-w-xl mx-auto">
           {subtitle}
         </p>
 

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { LayoutGrid, BookOpen } from 'lucide-react';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
 import { useCart } from '../context/CartContext';
 import FlipMenu from '../components/menu/FlipMenu';
+import FullMenuGrid from '../components/menu/FullMenuGrid';
 
 /* ─── Shared easing ─────────────────────────────────────────────────── */
 const EASE = [0.22, 1, 0.36, 1];
@@ -16,48 +18,84 @@ const fadeUp = (delay = 0, rm = false) => ({
 export const MenuPage = () => {
   useDocumentMeta({
     title: 'Artisan Menu | TATVA Café • Talwandi, Kota',
-    description: 'Explore the handcrafted botanical & artisan coffee menu at TATVA Café.',
+    description: 'Explore the handcrafted botanical & artisan coffee menu at TATVA Café with custom cards and curated pairings.',
   });
 
+  const [viewMode, setViewMode] = useState('grid'); // 'grid' | 'journal'
   const rm = useReducedMotion();
   const { totalItems, subtotal } = useCart();
   const openCart = () => window.dispatchEvent(new Event('open-cart'));
 
   return (
-    <div className="bg-foam text-ink min-h-screen pb-32 overflow-x-hidden">
+    <div className="bg-[#FBF7F1] text-[#1F1612] min-h-screen pb-32 overflow-x-hidden">
       {/* ── HEADER ──────────────────────────────────────────────────── */}
-      <div className="max-w-6xl mx-auto px-6 pt-24 pb-8 lg:pt-32 border-b border-latte/30">
+      <div className="max-w-7xl mx-auto px-6 pt-24 pb-8 lg:pt-32 border-b border-[#1F1612]/10">
         <div className="flex flex-col items-center text-center">
           <motion.span
             {...fadeUp(0, rm)}
-            className="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-caramel mb-2 font-inter"
+            className="bd-eyebrow block mb-3"
           >
-            Our Menu
+            Daily Café & Botanical Kitchen
           </motion.span>
           <motion.h1
             {...fadeUp(0.08, rm)}
-            className="font-playfair font-bold text-4xl sm:text-5xl text-ink"
+            className="font-cormorant font-semibold text-5xl sm:text-6xl text-[#1F1612] tracking-[-0.02em]"
           >
-            Brewed fresh, served warm
+            Brewed Fresh, Served Warm
           </motion.h1>
           <motion.p
             {...fadeUp(0.16, rm)}
-            className="mt-2 text-ink/70 max-w-lg font-inter text-sm sm:text-base leading-relaxed"
+            className="mt-3 text-[#1F1612]/70 max-w-lg font-grotesk text-xs sm:text-sm tracking-wide uppercase leading-relaxed"
           >
-            Artisan coffee, comforting bakes, and royal flavors.
+            Artisan coffee, single-origin brews, house bakes, and royal pairings.
           </motion.p>
+
+          {/* View Mode Switcher */}
+          <motion.div
+            {...fadeUp(0.24, rm)}
+            className="mt-8 flex items-center p-1 bg-[#1F1612]/5 border border-[#1F1612]/15 rounded-none"
+          >
+            <button
+              onClick={() => setViewMode('grid')}
+              className={`flex items-center gap-2 px-5 py-2 text-xs font-grotesk font-semibold uppercase tracking-[0.18em] transition-all duration-200 ${
+                viewMode === 'grid'
+                  ? 'bg-[#1F1612] text-[#C9A012] shadow-sm'
+                  : 'text-[#1F1612]/70 hover:text-[#1F1612]'
+              }`}
+            >
+              <LayoutGrid className="w-3.5 h-3.5" />
+              Artisan Cards Grid
+            </button>
+            <button
+              onClick={() => setViewMode('journal')}
+              className={`flex items-center gap-2 px-5 py-2 text-xs font-grotesk font-semibold uppercase tracking-[0.18em] transition-all duration-200 ${
+                viewMode === 'journal'
+                  ? 'bg-[#1F1612] text-[#C9A012] shadow-sm'
+                  : 'text-[#1F1612]/70 hover:text-[#1F1612]'
+              }`}
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              Journal Flipbook
+            </button>
+          </motion.div>
         </div>
       </div>
 
       {/* ── ALLERGEN NOTICE ─────────────────────────────────────────── */}
-      <div className="max-w-6xl mx-auto px-6 py-3.5 flex flex-col items-center border-b border-latte/20 mb-6 bg-foam/60 backdrop-blur-xs">
-        <p className="text-[11px] text-ink/60 italic text-center font-inter">
-          Ingredients and allergens: please ask our team before ordering.
+      <div className="max-w-7xl mx-auto px-6 py-3 flex flex-col items-center border-b border-[#1F1612]/10 mb-6 bg-[#FBF7F1]/80">
+        <p className="text-[11px] text-[#1F1612]/60 italic text-center font-grotesk">
+          Ingredients and allergens: please inform our baristas before ordering.
         </p>
       </div>
 
-      {/* ── INTERACTIVE FLIPBOOK MENU ─────────────────────────────────── */}
-      <FlipMenu />
+      {/* ── DYNAMIC VIEW: CUSTOM CARDS OR FLIPBOOK ────────────────────── */}
+      {viewMode === 'grid' ? (
+        <FullMenuGrid />
+      ) : (
+        <div className="mt-4">
+          <FlipMenu />
+        </div>
+      )}
 
       {/* ── MOBILE CART BAR ─────────────────────────────────────────── */}
       <AnimatePresence>
@@ -68,19 +106,19 @@ export const MenuPage = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={rm ? { opacity: 0 } : { opacity: 0, y: 24 }}
             transition={{ duration: 0.4, ease: EASE }}
-            className="fixed bottom-4 inset-x-4 z-40 bg-foam/95 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgba(31,22,18,0.15)] border border-latte/30 p-4 flex items-center justify-between"
+            className="fixed bottom-4 inset-x-4 z-40 bg-[#1F1612] text-[#FBF7F1] border border-[#C9A012]/40 p-4 flex items-center justify-between shadow-2xl"
           >
             <div className="flex flex-col">
-              <span className="text-xs text-ink/70 font-medium uppercase tracking-wider font-inter">
-                {totalItems} item{totalItems !== 1 && 's'}
+              <span className="text-[10px] text-[#C9A27E] font-semibold uppercase tracking-widest font-grotesk">
+                {totalItems} item{totalItems !== 1 && 's'} in order
               </span>
-              <span className="font-bold text-ink text-lg font-inter">₹{subtotal}</span>
+              <span className="font-cormorant font-bold text-2xl text-[#FBF7F1]">₹{subtotal}</span>
             </div>
             <button
               onClick={openCart}
-              className="px-6 py-2.5 rounded-full bg-caramel text-foam font-bold font-inter text-sm shadow-warm hover:bg-caramel/90 transition-colors"
+              className="px-6 py-2.5 bg-[#C9A012] hover:bg-[#E5B815] text-[#1F1612] font-bold font-grotesk text-xs uppercase tracking-[0.16em] transition-colors"
             >
-              View order
+              View Order →
             </button>
           </motion.div>
         )}

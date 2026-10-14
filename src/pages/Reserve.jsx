@@ -86,38 +86,38 @@ const ReservePage = () => {
   };
 
   const inputCls = (key) =>
-    `w-full px-4 py-3 rounded-xl border bg-foam text-ink text-sm font-inter
-     focus:outline-none focus:ring-2 focus:ring-caramel focus:border-transparent
-     transition-colors placeholder:text-ink/40
-     ${errors[key] ? 'border-red-400 bg-red-50/40' : 'border-latte/50 hover:border-latte'}`;
+    `w-full px-4 py-3 border bg-[#FBF7F1] text-[#1F1612] text-sm font-grotesk
+     focus:outline-none focus:border-[#C9A012] focus:ring-1 focus:ring-[#C9A012]
+     transition-all placeholder:text-[#1F1612]/40
+     ${errors[key] ? 'border-red-400 bg-red-50/40' : 'border-[#1F1612]/15 hover:border-[#1F1612]/40'}`;
 
-  const labelCls = 'block text-xs font-bold uppercase tracking-[0.15em] text-ink/60 mb-1.5 font-inter';
+  const labelCls = 'block text-[10px] font-bold uppercase tracking-[0.2em] text-[#1F1612]/70 mb-2 font-grotesk';
 
   return (
-    <div className="bg-foam text-ink min-h-screen">
+    <div className="bg-[#FBF7F1] text-[#1F1612] min-h-screen">
       {/* ── Hero Banner ── */}
-      <section className="bg-ink text-foam py-24 px-6 sm:px-10 text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(168,97,46,0.18)_0%,transparent_70%)] pointer-events-none" />
+      <section className="bg-[#1F1612] text-[#FBF7F1] py-24 sm:py-28 px-6 sm:px-10 text-center relative overflow-hidden border-b border-[#FBF7F1]/10">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,160,18,0.15)_0%,transparent_70%)] pointer-events-none" />
         <motion.div
           initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="relative max-w-2xl mx-auto"
         >
-          <span className="inline-block text-[11px] font-bold uppercase tracking-[0.3em] text-caramel bg-caramel/10 border border-caramel/25 px-4 py-1.5 rounded-full mb-6">
-            Reservations
+          <span className="bd-eyebrow block mb-3">
+            Table Reservations
           </span>
-          <h1 className="font-playfair font-bold text-4xl sm:text-5xl lg:text-6xl text-foam leading-tight mb-4">
+          <h1 className="font-cormorant font-semibold text-5xl sm:text-6xl lg:text-7xl text-[#FBF7F1] leading-[0.95] tracking-[-0.02em] mb-4">
             Book a Table at<br />
-            <span className="text-caramel italic font-normal">TATVA</span>
+            <span className="text-[#C9A012] italic font-normal">TATVA</span>
           </h1>
-          <p className="text-almond/75 text-base sm:text-lg">
-            Reserve your cosy spot via WhatsApp — we'll confirm in minutes.
+          <p className="text-[#FBF7F1]/75 font-grotesk text-xs sm:text-sm uppercase tracking-[0.16em] max-w-md mx-auto">
+            Reserve your quiet corner or lounge table via WhatsApp — confirmed in minutes.
           </p>
         </motion.div>
       </section>
 
-      {/* ── Form ── */}
+      {/* ── Form: Luxury Editorial Custom Card ── */}
       <section className="py-16 sm:py-24 px-6 sm:px-10 lg:px-16">
         <div className="max-w-xl mx-auto">
           {submitted ? (
@@ -125,17 +125,17 @@ const ReservePage = () => {
               initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4 }}
-              className="bg-almond rounded-3xl p-10 text-center shadow-warm-lg"
+              className="bg-[#FFFFFF] border border-[#C9A012] p-10 sm:p-12 text-center shadow-lg"
             >
-              <CheckCircle className="w-14 h-14 text-caramel mx-auto mb-4" strokeWidth={1.5} />
-              <h2 className="font-playfair font-bold text-2xl text-ink mb-3">Request Sent!</h2>
-              <p className="text-ink/70 text-sm leading-relaxed mb-6">
-                Your reservation request has been sent via WhatsApp.<br />
-                The café will confirm your booking shortly.
+              <CheckCircle className="w-14 h-14 text-[#C9A012] mx-auto mb-4" strokeWidth={1.5} />
+              <h2 className="font-cormorant font-semibold text-3xl text-[#1F1612] mb-3">Request Sent!</h2>
+              <p className="font-grotesk text-xs sm:text-sm text-[#1F1612]/70 leading-relaxed mb-6">
+                Your reservation request has been dispatched via WhatsApp.<br />
+                Our team will confirm your table shortly.
               </p>
               <button
                 onClick={() => { setSubmitted(false); setFields({ name: '', phone: '', date: '', time: '', guests: 2, note: '' }); }}
-                className="px-8 py-3 rounded-full bg-caramel hover:bg-caramel/90 text-foam font-bold text-sm tracking-wide transition-all shadow-warm"
+                className="bd-btn bd-btn-caramel"
               >
                 Make Another Reservation
               </button>
@@ -147,7 +147,7 @@ const ReservePage = () => {
               initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="bg-almond rounded-3xl p-8 sm:p-10 shadow-warm-lg flex flex-col gap-6"
+              className="bg-[#FFFFFF] border border-[#1F1612]/15 hover:border-[#C9A012] p-8 sm:p-12 shadow-[0_8px_32px_rgba(31,22,18,0.06)] transition-all duration-500 flex flex-col gap-6"
               aria-label="Reserve a table"
             >
               {/* Name */}
@@ -300,15 +300,15 @@ const ReservePage = () => {
               {/* Submit */}
               <button
                 type="submit"
-                className="w-full py-4 rounded-full bg-caramel hover:bg-caramel/90 text-foam font-bold text-sm tracking-wide
-                           flex items-center justify-center gap-2 shadow-warm transition-all
-                           hover:-translate-y-0.5 active:scale-95
-                           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-caramel focus-visible:ring-offset-2"
+                className="w-full py-4 bg-[#C9A012] hover:bg-[#E5B815] text-[#1F1612] font-grotesk font-bold text-xs uppercase tracking-[0.2em]
+                           flex items-center justify-center gap-2 transition-all shadow-sm
+                           hover:-translate-y-0.5 active:scale-98
+                           focus-visible:outline-none"
               >
                 <MessageCircle className="w-4 h-4" />
-                Reserve on WhatsApp
+                Reserve on WhatsApp →
               </button>
-              <p className="text-center text-[11px] text-ink/50 -mt-3 font-inter">
+              <p className="text-center text-[11px] text-[#1F1612]/50 -mt-2 font-grotesk">
                 The café will confirm your booking on WhatsApp · No payment collected here
               </p>
             </motion.form>

@@ -29,19 +29,19 @@ export const Sanctuary = ({ eyebrow, heading, images }) => {
   };
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 px-6 sm:px-10 lg:px-16 bg-foam text-ink">
+    <section className="py-20 sm:py-24 px-6 sm:px-10 lg:px-16 bg-[#FBF7F1] text-[#1F1612] border-b border-[#1F1612]/10">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          className="text-center mb-14 lg:mb-16"
+          className="text-center mb-14 lg:mb-18"
           initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, ease: ANIMATION.ease }}
         >
-          <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-caramel mb-3 block font-inter">
+          <span className="bd-eyebrow block mb-3">
             {eyebrow}
           </span>
-          <h2 className="font-playfair font-bold text-3xl sm:text-4xl lg:text-5xl text-ink leading-snug">
+          <h2 className="font-cormorant font-semibold text-5xl sm:text-6xl text-[#1F1612] leading-[1] tracking-[-0.02em]">
             {heading}
           </h2>
         </motion.div>
@@ -59,17 +59,29 @@ export const Sanctuary = ({ eyebrow, heading, images }) => {
               <motion.div
                 key={img.id}
                 variants={itemVariants}
-                className="flex-shrink-0 w-[80%] md:w-[45%] lg:w-[35%] snap-start snap-center"
+                className="flex-shrink-0 w-[80%] md:w-[45%] lg:w-[35%] snap-start snap-center group"
                 whileHover={prefersReducedMotion ? {} : 'hover'}
               >
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden relative">
-                  <ProgressiveImage
-                    src={getImage(img.slot)}
-                    alt={img.alt}
-                    className="w-full h-full object-cover"
-                    placeholder={getImage(img.slot)}
-                    sizes="(max-width: 1023px) 80vw, (max-width: 1279px) 45vw, 35vw"
-                  />
+                <div className="bg-[#FFFFFF] border border-[#1F1612]/15 hover:border-[#C9A012] transition-all duration-500 overflow-hidden shadow-[0_4px_24px_rgba(31,22,18,0.04)] hover:shadow-[0_16px_36px_rgba(201,160,18,0.18)]">
+                  <div className="aspect-[4/3] overflow-hidden relative border-b border-[#1F1612]/10">
+                    <ProgressiveImage
+                      src={getImage(img.slot)}
+                      alt={img.alt}
+                      className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
+                      placeholder={getImage(img.slot)}
+                      sizes="(max-width: 1023px) 80vw, (max-width: 1279px) 45vw, 35vw"
+                    />
+                    <div className="absolute top-3 left-3 bg-[#1F1612]/90 backdrop-blur-sm px-2.5 py-1 border border-[#C9A012]/40">
+                      <span className="font-grotesk text-[8px] font-bold uppercase tracking-[0.25em] text-[#C9A012]">
+                        Aesthetic Corner
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-4 bg-[#FFFFFF]">
+                    <p className="font-cormorant font-semibold text-lg text-[#1F1612] line-clamp-1">
+                      {img.alt}
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -87,16 +99,28 @@ export const Sanctuary = ({ eyebrow, heading, images }) => {
               <motion.div
                 key={img.id}
                 variants={itemVariants}
-                className="aspect-[4/3] rounded-2xl overflow-hidden relative"
+                className="group bg-[#FFFFFF] border border-[#1F1612]/15 hover:border-[#C9A012] transition-all duration-500 overflow-hidden shadow-sm mb-6"
                 whileHover={prefersReducedMotion ? {} : 'hover'}
               >
-                <ProgressiveImage
-                  src={getImage(img.slot)}
-                  alt={img.alt}
-                  className="w-full h-full object-cover"
-                  placeholder={getImage(img.slot)}
-                  sizes="(max-width: 767px) 100vw, 50vw"
-                />
+                <div className="aspect-[4/3] overflow-hidden relative border-b border-[#1F1612]/10">
+                  <ProgressiveImage
+                    src={getImage(img.slot)}
+                    alt={img.alt}
+                    className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
+                    placeholder={getImage(img.slot)}
+                    sizes="(max-width: 767px) 100vw, 50vw"
+                  />
+                  <div className="absolute top-3 left-3 bg-[#1F1612]/90 backdrop-blur-sm px-2.5 py-1 border border-[#C9A012]/40">
+                    <span className="font-grotesk text-[8px] font-bold uppercase tracking-[0.25em] text-[#C9A012]">
+                      Aesthetic Corner
+                    </span>
+                  </div>
+                </div>
+                <div className="p-4 bg-[#FFFFFF]">
+                  <p className="font-cormorant font-semibold text-lg text-[#1F1612] line-clamp-1">
+                    {img.alt}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </motion.div>

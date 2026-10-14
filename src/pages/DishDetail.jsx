@@ -254,48 +254,61 @@ export default function DishDetail() {
         <section className="mt-20 border-t border-latte/20 bg-almond/20">
           <div className="max-w-7xl mx-auto px-6 md:px-12 py-16">
             <Reveal>
-              <h2 className="font-playfair font-bold text-2xl md:text-3xl text-ink mb-10 text-center">
-                You may also like
-              </h2>
+              <div className="text-center mb-10">
+                <span className="bd-eyebrow block mb-2">You May Also Savor</span>
+                <h2 className="font-cormorant font-semibold text-4xl text-[#1F1612]">
+                  Pairing Recommendations
+                </h2>
+              </div>
             </Reveal>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
               {relatedItems.map((relItem, idx) => (
                 <Reveal key={relItem.slug} delay={idx * 0.1}>
                   <Link 
                     to={`/menu/${relItem.slug}`}
-                    className="flex flex-col bg-foam border border-latte/30 rounded-3xl p-6 group hover:border-caramel hover:shadow-warm transition-all duration-300"
+                    className="flex flex-col bg-[#FFFFFF] border border-[#1F1612]/15 hover:border-[#C9A012] transition-all duration-500 overflow-hidden shadow-[0_4px_24px_rgba(31,22,18,0.04)] hover:shadow-[0_16px_36px_rgba(201,160,18,0.18)] hover:-translate-y-1.5 group h-full"
                   >
-                    <div className="w-full aspect-[4/3] rounded-2xl bg-almond/40 mb-4 flex items-center justify-center p-4 overflow-hidden relative">
+                    <div className="w-full aspect-[4/3] bg-[#F7F2EB] p-6 flex items-center justify-center overflow-hidden relative border-b border-[#1F1612]/10">
                        <motion.img 
                          src={relItem.image} 
                          alt={relItem.name}
-                         className="w-full h-full object-contain filter drop-shadow-lg group-hover:scale-105 transition-transform duration-500"
+                         className="w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-700 ease-out"
                        />
+                       {relItem.badge && (
+                         <div className="absolute top-3 left-3 bg-[#1F1612] text-[#C9A012] border border-[#C9A012]/40 px-2.5 py-0.5 font-grotesk text-[8px] font-bold uppercase tracking-[0.2em]">
+                           {relItem.badge}
+                         </div>
+                       )}
+                       {relItem.diet && (
+                         <div className="absolute top-3 right-3 bg-white/95 p-1 border border-[#1F1612]/10 shadow-xs">
+                           <DietBadge diet={relItem.diet} size="xs" />
+                         </div>
+                       )}
                     </div>
-                    <div className="flex items-start gap-1.5 mb-1 mt-2">
-                      <DietBadge diet={relItem.diet} size="xs" />
-                      <h3 className="font-playfair font-bold text-lg text-ink group-hover:text-caramel transition-colors leading-tight">
+
+                    <div className="p-5 flex flex-col flex-1 bg-[#FFFFFF]">
+                      <h3 className="font-cormorant font-semibold text-2xl text-[#1F1612] group-hover:text-[#A8612E] transition-colors leading-tight mb-1">
                         {relItem.name}
                       </h3>
-                    </div>
-                    <p className="text-sm text-ink/70 line-clamp-1 mt-1 mb-3">
-                      {relItem.description}
-                    </p>
-                    <div className="flex items-center justify-between mt-auto">
-                      <span className="font-playfair font-bold text-lg text-caramel">
-                        {relItem.formattedPrice}
-                      </span>
-                      <button 
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          addToCart(relItem, 1);
-                        }}
-                        aria-label={`Add ${relItem.name} to cart`}
-                        className="w-8 h-8 rounded-full bg-almond/50 flex items-center justify-center text-ink hover:bg-caramel hover:text-foam transition-colors z-10"
-                      >
-                        <Plus className="w-4 h-4" />
-                      </button>
+                      <p className="font-grotesk text-xs text-[#1F1612]/70 line-clamp-2 mt-1 mb-4 flex-1">
+                        {relItem.description}
+                      </p>
+                      <div className="flex items-center justify-between mt-auto pt-3 border-t border-[#1F1612]/10">
+                        <span className="font-cormorant font-bold text-2xl text-[#1F1612]">
+                          {relItem.formattedPrice}
+                        </span>
+                        <button 
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            addToCart(relItem, 1);
+                          }}
+                          aria-label={`Add ${relItem.name} to cart`}
+                          className="px-3 py-1.5 bg-[#1F1612] hover:bg-[#C9A012] text-[#FBF7F1] hover:text-[#1F1612] font-grotesk text-[10px] font-bold uppercase tracking-[0.16em] transition-all flex items-center gap-1 z-10"
+                        >
+                          <Plus className="w-3 h-3" /> Quick Add
+                        </button>
+                      </div>
                     </div>
                   </Link>
                 </Reveal>

@@ -97,8 +97,8 @@ export const Reviews = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.45, ease: 'easeOut', delay: i * 0.08 }}
-              className="bg-[#FBF7F1] p-7 sm:p-8 flex flex-col justify-between gap-6
-                         hover:bg-[#EADBC8]/30 transition-colors duration-300"
+              className="bg-[#FFFFFF] p-7 sm:p-8 flex flex-col justify-between gap-6
+                         border border-[#1F1612]/10 hover:border-[#C9A012] shadow-xs hover:shadow-[0_12px_28px_rgba(201,160,18,0.12)] hover:-translate-y-1 transition-all duration-300"
             >
               <div>
                 <Stars count={rev.rating} />
