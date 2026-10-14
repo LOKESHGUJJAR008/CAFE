@@ -8,8 +8,8 @@ export const GalleryClosingCTA = () => {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="bg-[#14100E] text-[#FAF7F2] py-16 sm:py-24 border-t-2 border-[#14100E] selection:bg-[#FAF7F2] selection:text-[#14100E] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-[#14100E] text-[#FAF7F2] py-16 sm:py-20 border-t-2 border-[#14100E] selection:bg-[#FAF7F2] selection:text-[#14100E] overflow-hidden">
+      <div className="w-full px-4 sm:px-8 lg:px-12 xl:px-16">
         
         {/* Main Swiss Poster Box */}
         <div className="border-2 border-[#FAF7F2]/40 bg-[#14100E] shadow-[0_24px_70px_rgba(0,0,0,0.5)]">
