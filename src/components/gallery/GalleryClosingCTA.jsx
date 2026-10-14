@@ -1,106 +1,97 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Calendar, MapPin } from 'lucide-react';
-import KineticHeadline from './KineticHeadline';
-import MagneticButton from './MagneticButton';
+import { ArrowRight, Calendar, Compass } from 'lucide-react';
+import lateNight01 from '../../assets/images/gallery/late-night/01-lamp-steam-book.png';
 
-const EASE = [0.22, 1, 0.36, 1];
-
-export const GalleryClosingCTA = ({ selectedMood = 'slow-mornings' }) => {
+export const GalleryClosingCTA = () => {
   const prefersReducedMotion = useReducedMotion();
-  const isLateNight = selectedMood === 'late-night';
 
   return (
-    <section
-      className="relative py-20 sm:py-28 px-6 sm:px-10 lg:px-12 border-t transition-colors duration-700 overflow-hidden"
-      style={{
-        backgroundColor: 'var(--gallery-panel)',
-        color: 'var(--gallery-text)',
-        borderColor: 'var(--gallery-border)',
-      }}
-    >
-      {/* Background ambient radial glow using brand tokens */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-40 -z-10"
-        style={{
-          background:
-            'radial-gradient(circle at 50% 40%, var(--gallery-glow) 0%, transparent 70%)',
-        }}
-        aria-hidden="true"
-      />
+    <section className="bg-[#14100E] text-[#FAF7F2] py-16 sm:py-24 border-t-2 border-[#14100E] selection:bg-[#FAF7F2] selection:text-[#14100E] overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Main Swiss Poster Box */}
+        <div className="border-2 border-[#FAF7F2]/40 bg-[#14100E] shadow-[0_24px_70px_rgba(0,0,0,0.5)]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 divide-y-2 lg:divide-y-0 lg:divide-x-2 divide-[#FAF7F2]/30">
+            
+            {/* ── Left Side: High Contrast Atmosphere & Stepped Plate (5 cols) ── */}
+            <div className="lg:col-span-5 relative aspect-[16/10] lg:aspect-auto min-h-[300px] overflow-hidden group bg-[#0B0908]">
+              <img
+                src={lateNight01}
+                alt="Late night sanctuary atmosphere"
+                className="w-full h-full object-cover grayscale contrast-125 opacity-75 group-hover:scale-105 group-hover:opacity-90 transition-all duration-700 ease-out"
+              />
 
-      <div className="max-w-4xl mx-auto text-center relative z-10">
-        {/* Small Brand Line */}
-        <motion.div
-          initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5, ease: EASE }}
-          className="inline-block text-[11px] sm:text-xs font-bold uppercase tracking-[0.28em] mb-4 font-inter transition-colors duration-500"
-          style={{ color: 'var(--gallery-accent)' }}
-        >
-          Tatva Cafe
-        </motion.div>
+              {/* Stepped White Label: GIDDYUP. — */}
+              <div className="absolute top-6 left-6 bg-[#FAF7F2] text-[#14100E] border-2 border-[#14100E] p-4 sm:p-5 shadow-xl z-10">
+                <span className="block font-grotesk text-[8px] font-bold uppercase tracking-[0.25em] text-[#14100E]/60 mb-1">
+                  CALL TO SANCTUARY
+                </span>
+                <span className="block font-grotesk font-black text-2xl uppercase tracking-tight text-[#14100E] leading-none">
+                  GIDDYUP.
+                </span>
+                <div className="w-6 h-[2px] bg-[#14100E] mt-2" />
+              </div>
 
-        {/* Headline */}
-        <KineticHeadline
-          as="h2"
-          text="Your Next Favourite Moment Awaits."
-          delay={0.08}
-          className="font-playfair font-bold text-3xl sm:text-5xl lg:text-6xl leading-[1.14] tracking-tight mb-5 transition-colors duration-500"
-          style={{ color: 'var(--gallery-text)' }}
-        />
+              {/* Inverted display 10P in corner */}
+              <div className="absolute right-4 bottom-4 font-grotesk font-black text-6xl sm:text-7xl text-[#FAF7F2]/60 select-none pointer-events-none">
+                10<span className="text-3xl font-black align-top">P</span>
+              </div>
+            </div>
 
-        {/* Text */}
-        <motion.p
-          initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: EASE, delay: 0.16 }}
-          className="font-inter text-base sm:text-xl max-w-lg mx-auto mb-10 leading-relaxed font-normal transition-colors duration-500"
-          style={{ color: 'var(--gallery-subtext)' }}
-        >
-          Come for the coffee. Stay for the feeling.
-        </motion.p>
+            {/* ── Right Side: Headline & Brutalist CTAs (7 cols) ── */}
+            <div className="lg:col-span-7 p-6 sm:p-10 lg:p-14 flex flex-col justify-between bg-[#14100E]">
+              <div>
+                {/* Section Stamp */}
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-2.5 h-2.5 bg-[#FAF7F2]" />
+                  <span className="font-grotesk font-black text-[10px] sm:text-xs uppercase tracking-[0.28em] text-[#FAF7F2]/70">
+                    SANCTUARY INVITATION · EST. KOTA
+                  </span>
+                </div>
 
-        {/* CTAs */}
-        <motion.div
-          initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: EASE, delay: 0.24 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5"
-        >
-          <MagneticButton>
-            <Link
-              to="/reserve"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full font-inter font-semibold text-sm sm:text-base tracking-wide shadow-[0_8px_24px_rgba(168,97,46,0.25)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8612E]"
-              style={{
-                backgroundColor: 'var(--gallery-accent)',
-                color: isLateNight ? '#1F1612' : '#FBF7F1',
-              }}
-            >
-              <Calendar className="w-4 h-4" />
-              <span>Reserve Your Table</span>
-            </Link>
-          </MagneticButton>
+                {/* Giant Headline */}
+                <h2 className="font-grotesk font-black text-3xl sm:text-5xl lg:text-6xl uppercase tracking-tighter leading-[0.94] text-[#FAF7F2] mb-6">
+                  Experience The<br />
+                  Space In Person.
+                </h2>
 
-          <MagneticButton>
-            <Link
-              to="/contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full border font-inter font-semibold text-sm sm:text-base tracking-wide transition-all transform hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8612E]"
-              style={{
-                backgroundColor: 'var(--gallery-bg)',
-                color: 'var(--gallery-text)',
-                borderColor: 'var(--gallery-border)',
-              }}
-            >
-              <MapPin className="w-4 h-4" style={{ color: 'var(--gallery-accent)' }} />
-              <span>Visit Our Café</span>
-            </Link>
-          </MagneticButton>
-        </motion.div>
+                <p className="font-grotesk text-xs sm:text-sm uppercase tracking-wider text-[#FAF7F2]/70 max-w-lg leading-relaxed mb-8">
+                  From slow morning pour-overs to midnight espresso sessions. Step into our brutalist stone sanctuary and taste coffee the way it was engineered to be experienced.
+                </p>
+              </div>
+
+              {/* Brutalist Button Actions */}
+              <div className="pt-8 border-t-2 border-[#FAF7F2]/20 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                <Link
+                  to="/reserve"
+                  className="inline-flex items-center justify-center gap-3 px-7 py-4 bg-[#FAF7F2] text-[#14100E] font-grotesk font-black text-xs uppercase tracking-[0.22em] border-2 border-[#FAF7F2] hover:bg-transparent hover:text-[#FAF7F2] transition-colors group"
+                >
+                  <Calendar className="w-4 h-4" />
+                  <span>01 / RESERVE YOUR TABLE</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+
+                <Link
+                  to="/menu"
+                  className="inline-flex items-center justify-center gap-3 px-7 py-4 bg-transparent text-[#FAF7F2] font-grotesk font-black text-xs uppercase tracking-[0.22em] border-2 border-[#FAF7F2]/40 hover:border-[#FAF7F2] hover:bg-[#FAF7F2]/10 transition-colors"
+                >
+                  <Compass className="w-4 h-4" />
+                  <span>02 / EXPLORE MENU</span>
+                </Link>
+              </div>
+
+              {/* Lower Ticker Stamp */}
+              <div className="mt-8 pt-4 border-t border-[#FAF7F2]/10 flex items-center justify-between text-[9px] font-grotesk uppercase tracking-widest text-[#FAF7F2]/40">
+                <span>TATVA PRIME · GUMANPURA, KOTA</span>
+                <span>OPEN DAILY 08:00 — 23:00</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </section>
   );

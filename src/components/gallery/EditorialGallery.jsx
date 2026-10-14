@@ -37,7 +37,7 @@ export const EditorialGallery = () => {
   };
 
   return (
-    <section className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#FAF7F2] text-[#14100E] border-y border-[#14100E]/15 selection:bg-[#14100E] selection:text-[#FAF7F2]">
+    <section id="editorial-grid" className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#FAF7F2] text-[#14100E] border-y border-[#14100E]/15 selection:bg-[#14100E] selection:text-[#FAF7F2]">
       {/* ── Section Title & Manifesto Header ── */}
       <div className="max-w-7xl mx-auto mb-10 sm:mb-14">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-2 border-[#14100E] pb-6">
