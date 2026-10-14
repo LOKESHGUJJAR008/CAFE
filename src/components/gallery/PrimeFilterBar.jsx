@@ -13,7 +13,7 @@ export const PrimeFilterBar = ({ activeFilter = 'all', onSelectFilter }) => {
 
   return (
     <section className="bg-[#FAF7F2] py-8 border-b-2 border-[#14100E] selection:bg-[#14100E] selection:text-[#FAF7F2]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-4 sm:px-8 lg:px-12 xl:px-16">
         
         {/* Header Label Strip */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5 pb-3 border-b border-[#14100E]/20">

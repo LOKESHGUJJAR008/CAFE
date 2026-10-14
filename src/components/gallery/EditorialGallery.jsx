@@ -37,9 +37,9 @@ export const EditorialGallery = () => {
   };
 
   return (
-    <section id="editorial-grid" className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#FAF7F2] text-[#14100E] border-y border-[#14100E]/15 selection:bg-[#14100E] selection:text-[#FAF7F2]">
+    <section id="editorial-grid" className="py-12 sm:py-20 px-4 sm:px-8 lg:px-12 xl:px-16 bg-[#FAF7F2] text-[#14100E] border-y border-[#14100E]/15 selection:bg-[#14100E] selection:text-[#FAF7F2]">
       {/* ── Section Title & Manifesto Header ── */}
-      <div className="max-w-7xl mx-auto mb-10 sm:mb-14">
+      <div className="w-full mb-10 sm:mb-14">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-2 border-[#14100E] pb-6">
           <div>
             <span className="font-grotesk text-[10px] font-bold uppercase tracking-[0.3em] text-[#A8612E] block mb-2">
@@ -58,7 +58,7 @@ export const EditorialGallery = () => {
       </div>
 
       {/* ── CNBC Prime Inspired Modular Grid Container ── */}
-      <div className="max-w-7xl mx-auto border-2 border-[#14100E] bg-[#FAF7F2] shadow-[0_24px_60px_rgba(20,16,14,0.12)] overflow-hidden">
+      <div className="w-full border-2 border-[#14100E] bg-[#FAF7F2] shadow-[0_24px_60px_rgba(20,16,14,0.12)] overflow-hidden">
         
         {/* ══════════════════════════════════════════════════════════════
             ROW 1: Top 3-Column Asymmetric Cluster

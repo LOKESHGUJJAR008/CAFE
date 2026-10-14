@@ -17,7 +17,7 @@ export const PrimeDossier = () => {
 
   return (
     <section className="bg-[#FAF7F2] text-[#14100E] py-14 sm:py-20 border-b-2 border-[#14100E] selection:bg-[#14100E] selection:text-[#FAF7F2]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-4 sm:px-8 lg:px-12 xl:px-16">
         
         {/* Section Header Ticker */}
         <div className="flex items-center justify-between border-b-2 border-[#14100E] pb-4 mb-8">
