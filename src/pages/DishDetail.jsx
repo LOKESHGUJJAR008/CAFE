@@ -87,9 +87,25 @@ export default function DishDetail() {
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="min-h-screen bg-foam pt-28 pb-32 md:pb-16 flex flex-col"
+      className="min-h-screen bg-[#FAF7F2] text-[#14100E] pb-32 md:pb-16 flex flex-col selection:bg-[#14100E] selection:text-[#FAF7F2]"
     >
-      <main className="flex-1 max-w-7xl mx-auto w-full px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+      {/* ── Top Running Archival Ticker (Flush with Navbar) ── */}
+      <div className="w-full border-b-2 border-[#14100E] bg-[#FAF7F2] py-2.5 px-4 sm:px-8 lg:px-12 xl:px-16 overflow-x-auto scrollbar-none mb-6">
+        <div className="w-full flex items-center justify-between gap-6 whitespace-nowrap text-[10px] sm:text-xs font-grotesk font-black uppercase tracking-[0.28em] text-[#14100E]">
+          <div className="flex items-center gap-3">
+            <span className="w-2.5 h-2.5 bg-[#14100E]" />
+            <span>TATVA CULINARY ARCHIVE // SPECIMEN #{item.slug.toUpperCase()}</span>
+          </div>
+          <span className="text-[#14100E]/30 font-normal">/</span>
+          <span>CATEGORY: {category.title.toUpperCase()}</span>
+          <span className="text-[#14100E]/30 font-normal">/</span>
+          <span>DIAL-IN CRAFT & FRESH BAKE</span>
+          <span className="text-[#14100E]/30 font-normal">/</span>
+          <span>TALWANDI, KOTA</span>
+        </div>
+      </div>
+
+      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-8 lg:px-12 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
         
         {/* LEFT COLUMN: Image & Animations */}
         <motion.div 

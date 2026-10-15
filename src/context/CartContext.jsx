@@ -117,7 +117,23 @@ export function CartProvider({ children }) {
   );
 }
 
+const fallbackCart = {
+  cart: [],
+  addToCart: () => {},
+  removeFromCart: () => {},
+  updateQty: () => {},
+  clearCart: () => {},
+  totalItems: 0,
+  subtotal: 0,
+  isCartOpen: false,
+  setIsCartOpen: () => {},
+  openCart: () => {},
+  closeCart: () => {},
+  toggleCart: () => {},
+};
+
 // eslint-disable-next-line react-refresh/only-export-components
 export function useCart() {
-  return useContext(CartContext);
+  const ctx = useContext(CartContext);
+  return ctx || fallbackCart;
 }

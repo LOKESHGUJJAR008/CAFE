@@ -1,103 +1,105 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ANIMATION } from '../../config';
 
-export const QuietMilestones = ({ eyebrow, heading, items }) => {
-  const { prefersReducedMotion } = useReducedMotion();
-  const lineRef = useRef(null);
-  const [lineHeight, setLineHeight] = useState(0);
+export const QuietMilestones = ({
+  eyebrow = 'Quiet Milestones',
+  heading = 'The Archival Chronology',
+}) => {
+  const prefersReducedMotion = useReducedMotion();
 
-  useEffect(() => {
-    if (prefersReducedMotion || !lineRef.current) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const rect = entry.target.getBoundingClientRect();
-            const viewportHeight = window.innerHeight;
-            const progress = Math.min(1, Math.max(0, 1 - rect.top / viewportHeight));
-            setLineHeight(progress * 100);
-          }
-        });
-      },
-      { threshold: Array.from({ length: 101 }, (_, i) => i / 100) }
-    );
-
-    observer.observe(lineRef.current);
-    return () => observer.disconnect();
-  }, [prefersReducedMotion]);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15 },
+  const MILESTONES = [
+    {
+      year: '2019',
+      status: 'COMMENCEMENT',
+      title: 'The First Extraction in Talwandi',
+      detail: 'TATVA opened its modest first espresso counter in Talwandi, Kota with a single Italian lever machine and a singular dream to introduce single-origin coffee to Rajasthan students.',
+      coordinates: 'STAGE 01 // FOUNDATION',
     },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: ANIMATION.ease },
+    {
+      year: '2021',
+      status: 'ROAST PROTOCOL',
+      title: 'Our Signature Single-Origin Roast Born',
+      detail: 'Formulated our direct-trade partnership with heritage estates in Chikmagalur, dialing in the signature cinnamon-medium roast curve that defines TATVA.',
+      coordinates: 'STAGE 02 // DIRECT TERROIR',
     },
-  };
+    {
+      year: '2023',
+      status: 'RECOGNITION',
+      title: 'Celebrated as Kota\'s Acoustic Sanctuary',
+      detail: 'Recognized across Rajasthan as the premier aesthetic study haven and specialty coffee house, hosting students, thinkers, and quiet conversations.',
+      coordinates: 'STAGE 03 // COMMUNITY',
+    },
+    {
+      year: '2024',
+      status: 'PRESENT ERA',
+      title: 'Architectural Expansion & Editorial Gallery',
+      detail: 'Unveiled the expanded modern brutalist sanctuary space with dedicated study lofts, botanical courtyard, and precision analog cupping bars.',
+      coordinates: 'STAGE 04 // PRIME SANCTUARY',
+    },
+  ];
 
   return (
-    <section className="py-20 lg:py-28 px-6 sm:px-10 lg:px-16 bg-[#FBF7F1] text-[#1F1612] border-b border-[#1F1612]/10">
-      <div className="max-w-2xl mx-auto">
-        <motion.div
-          className="text-center mb-14 lg:mb-18"
-          initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: ANIMATION.ease }}
-        >
-          <span className="bd-eyebrow block mb-3">
-            {eyebrow}
-          </span>
-          <h2 className="font-cormorant font-semibold text-5xl sm:text-6xl text-[#1F1612] leading-[1] tracking-[-0.02em]">
-            {heading}
-          </h2>
-        </motion.div>
+    <section className="py-16 sm:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 bg-[#FAF7F2] text-[#14100E] border-b-2 border-[#14100E] selection:bg-[#14100E] selection:text-[#FAF7F2]">
+      <div className="w-full">
+        {/* Section Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 pb-6 border-b-2 border-[#14100E]">
+          <div>
+            <div className="inline-block bg-[#FAF7F2] border-2 border-[#14100E] px-3 py-1 shadow-[3px_3px_0px_#14100E] mb-3">
+              <span className="font-grotesk text-[9px] sm:text-[10px] font-black uppercase tracking-[0.25em] text-[#14100E]">
+                {eyebrow}
+              </span>
+            </div>
+            <h2 className="font-grotesk font-black text-3xl sm:text-5xl uppercase tracking-tighter text-[#14100E]">
+              {heading}
+            </h2>
+          </div>
+          <div className="font-grotesk text-xs uppercase tracking-widest text-[#14100E]/70 max-w-xs sm:text-right">
+            TIMELINE OF MEASURED GROWTH IN KOTA
+          </div>
+        </div>
 
-        <div className="relative" ref={lineRef}>
-          <div className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 bg-[#1F1612]/10" />
-          <div
-            className="absolute left-1/2 top-0 w-px -translate-x-1/2 bg-[#C9A012]"
-            style={{
-              height: prefersReducedMotion ? '100%' : `${lineHeight}%`,
-              transformOrigin: 'top center',
-            }}
-          />
-
-          <motion.div
-            className="space-y-10"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            {items.map((item) => (
-              <motion.div
-                key={item.year}
-                variants={itemVariants}
-                className="relative flex flex-col items-center"
-              >
-                <div className="relative z-10 w-3.5 h-3.5 bg-[#C9A012] border-2 border-[#FFFFFF] shadow-sm flex-shrink-0" />
-                <div className="mt-4 w-full max-w-md bg-[#FFFFFF] border border-[#1F1612]/15 hover:border-[#C9A012] p-6 text-center shadow-[0_4px_20px_rgba(31,22,18,0.04)] hover:shadow-[0_12px_28px_rgba(201,160,18,0.15)] transition-all duration-300">
-                  <span className="font-cormorant font-bold text-3xl text-[#C9A012] italic block mb-2">
+        {/* Archival Ledger Grid */}
+        <div className="border-2 border-[#14100E] bg-[#FAF7F2] shadow-[0_16px_40px_rgba(20,16,14,0.06)] divide-y-2 divide-[#14100E]">
+          {MILESTONES.map((item, idx) => (
+            <motion.div
+              key={item.year}
+              initial={prefersReducedMotion ? {} : { opacity: 0, x: -16 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="p-6 sm:p-8 hover:bg-[#14100E]/5 transition-colors group"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-baseline">
+                {/* Year + Status */}
+                <div className="lg:col-span-3 flex sm:flex-col justify-between sm:justify-start gap-2">
+                  <span className="font-grotesk font-black text-4xl sm:text-5xl lg:text-6xl text-[#14100E] leading-none tracking-tighter group-hover:text-[#A8612E] transition-colors">
                     {item.year}
                   </span>
-                  <p className="font-grotesk text-xs sm:text-sm text-[#1F1612]/75 leading-relaxed">
-                    {item.text}
+                  <span className="font-mono text-[9px] font-bold text-[#A8612E] tracking-widest">
+                    {item.coordinates}
+                  </span>
+                </div>
+
+                {/* Milestone Details */}
+                <div className="lg:col-span-7">
+                  <div className="inline-block border border-[#14100E] bg-[#FAF7F2] px-2 py-0.5 text-[8px] sm:text-[9px] font-grotesk font-black uppercase tracking-wider mb-2">
+                    {item.status}
+                  </div>
+                  <h3 className="font-grotesk font-black text-xl sm:text-2xl uppercase tracking-tight text-[#14100E] mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="font-grotesk text-xs sm:text-sm text-[#14100E]/75 leading-relaxed">
+                    {item.detail}
                   </p>
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
+
+                {/* Stage Indicator */}
+                <div className="lg:col-span-2 text-right hidden lg:block">
+                  <span className="w-3 h-3 inline-block bg-[#14100E] group-hover:bg-[#A8612E] transition-colors" />
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

@@ -32,8 +32,29 @@ export const Hero = () => {
         />
       </motion.div>
 
+      {/* ── Top Running Archival Ticker (Flush with Navbar) ── */}
+      <div className="relative z-20 w-full border-b border-[#FAF7F2]/20 bg-[#14100E]/80 backdrop-blur-md py-2.5 px-4 sm:px-8 lg:px-12 overflow-x-auto scrollbar-none">
+        <div className="w-full flex items-center justify-between gap-6 whitespace-nowrap text-[10px] sm:text-xs font-grotesk font-black uppercase tracking-[0.28em] text-[#FAF7F2]">
+          <div className="flex items-center gap-3">
+            <span className="w-2.5 h-2.5 bg-[#C9A012]" />
+            <span>TATVA ARTISAN SANCTUARY // TALWANDI, KOTA</span>
+          </div>
+          <span className="text-[#FAF7F2]/30 font-normal">/</span>
+          <span>ESTABLISHED: 2024</span>
+          <span className="text-[#FAF7F2]/30 font-normal">/</span>
+          <span>100% SINGLE-ORIGIN ROASTS</span>
+          <span className="text-[#FAF7F2]/30 font-normal">/</span>
+          <span>ACOUSTIC QUIET: 42 dB</span>
+          <span className="text-[#FAF7F2]/30 font-normal">/</span>
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span>OPEN TODAY · 08:00 — 23:00</span>
+          </div>
+        </div>
+      </div>
+
       {/* ── Center Content ── */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-[100svh] px-6 text-center">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100svh-44px)] px-6 text-center">
 
         {/* Boxed Brand Badge — BD style center-top box */}
         <motion.div

@@ -26,25 +26,48 @@ export const MenuPage = () => {
   const { totalItems, subtotal, openCart } = useCart();
 
   return (
-    <div className="bg-[#FBF7F1] text-[#1F1612] min-h-screen pb-32 overflow-x-hidden">
+    <div className="bg-[#FAF7F2] text-[#14100E] min-h-screen pb-32 overflow-x-hidden selection:bg-[#14100E] selection:text-[#FAF7F2]">
+      {/* ── Top Running Archival Ticker (Flush with Navbar) ── */}
+      <div className="w-full border-b-2 border-[#14100E] bg-[#FAF7F2] py-2.5 px-4 sm:px-8 lg:px-12 xl:px-16 overflow-x-auto scrollbar-none">
+        <div className="w-full flex items-center justify-between gap-6 whitespace-nowrap text-[10px] sm:text-xs font-grotesk font-black uppercase tracking-[0.28em] text-[#14100E]">
+          <div className="flex items-center gap-3">
+            <span className="w-2.5 h-2.5 bg-[#14100E]" />
+            <span>TATVA BOTANICAL KITCHEN // MENU COMPENDIUM</span>
+          </div>
+          <span className="text-[#14100E]/30 font-normal">/</span>
+          <span>CHIKMAGALUR SINGLE-ORIGIN ARABICA</span>
+          <span className="text-[#14100E]/30 font-normal">/</span>
+          <span>DIAL-IN: 9.0 BAR EXTRACTION</span>
+          <span className="text-[#14100E]/30 font-normal">/</span>
+          <span>HANDCRAFTED PATISSERIE</span>
+          <span className="text-[#14100E]/30 font-normal">/</span>
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
+            <span>KITCHEN ACTIVE · 08:00 — 23:00</span>
+          </div>
+        </div>
+      </div>
+
       {/* ── HEADER ──────────────────────────────────────────────────── */}
-      <div className="max-w-7xl mx-auto px-6 pt-24 pb-8 lg:pt-32 border-b border-[#1F1612]/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 pt-8 pb-8 border-b-2 border-[#14100E]">
         <div className="flex flex-col items-center text-center">
-          <motion.span
+          <motion.div
             {...fadeUp(0, rm)}
-            className="bd-eyebrow block mb-3"
+            className="inline-block bg-[#FAF7F2] border-2 border-[#14100E] px-3 py-1 shadow-[3px_3px_0px_#14100E] mb-3"
           >
-            Daily Café & Botanical Kitchen
-          </motion.span>
+            <span className="font-grotesk text-[9px] sm:text-[10px] font-black uppercase tracking-[0.25em] text-[#14100E]">
+              DAILY CAFÉ & BOTANICAL KITCHEN
+            </span>
+          </motion.div>
           <motion.h1
             {...fadeUp(0.08, rm)}
-            className="font-cormorant font-semibold text-5xl sm:text-6xl text-[#1F1612] tracking-[-0.02em]"
+            className="font-grotesk font-black text-4xl sm:text-6xl text-[#14100E] uppercase tracking-tighter"
           >
             Brewed Fresh, Served Warm
           </motion.h1>
           <motion.p
             {...fadeUp(0.16, rm)}
-            className="mt-3 text-[#1F1612]/70 max-w-lg font-grotesk text-xs sm:text-sm tracking-wide uppercase leading-relaxed"
+            className="mt-2 text-[#14100E]/70 max-w-lg font-grotesk text-xs sm:text-sm tracking-wide uppercase leading-relaxed"
           >
             Artisan coffee, single-origin brews, house bakes, and royal pairings.
           </motion.p>
@@ -52,14 +75,14 @@ export const MenuPage = () => {
           {/* View Mode Switcher */}
           <motion.div
             {...fadeUp(0.24, rm)}
-            className="mt-8 flex items-center p-1 bg-[#1F1612]/5 border border-[#1F1612]/15 rounded-none"
+            className="mt-6 flex items-center p-1 bg-[#FAF7F2] border-2 border-[#14100E] shadow-[3px_3px_0px_#14100E]"
           >
             <button
               onClick={() => setViewMode('grid')}
-              className={`flex items-center gap-2 px-5 py-2 text-xs font-grotesk font-semibold uppercase tracking-[0.18em] transition-all duration-200 ${
+              className={`flex items-center gap-2 px-5 py-2 text-xs font-grotesk font-black uppercase tracking-[0.18em] transition-all duration-200 ${
                 viewMode === 'grid'
-                  ? 'bg-[#1F1612] text-[#C9A012] shadow-sm'
-                  : 'text-[#1F1612]/70 hover:text-[#1F1612]'
+                  ? 'bg-[#14100E] text-[#FAF7F2]'
+                  : 'text-[#14100E]/70 hover:text-[#14100E]'
               }`}
             >
               <LayoutGrid className="w-3.5 h-3.5" />
@@ -67,10 +90,10 @@ export const MenuPage = () => {
             </button>
             <button
               onClick={() => setViewMode('journal')}
-              className={`flex items-center gap-2 px-5 py-2 text-xs font-grotesk font-semibold uppercase tracking-[0.18em] transition-all duration-200 ${
+              className={`flex items-center gap-2 px-5 py-2 text-xs font-grotesk font-black uppercase tracking-[0.18em] transition-all duration-200 ${
                 viewMode === 'journal'
-                  ? 'bg-[#1F1612] text-[#C9A012] shadow-sm'
-                  : 'text-[#1F1612]/70 hover:text-[#1F1612]'
+                  ? 'bg-[#14100E] text-[#FAF7F2]'
+                  : 'text-[#14100E]/70 hover:text-[#14100E]'
               }`}
             >
               <BookOpen className="w-3.5 h-3.5" />

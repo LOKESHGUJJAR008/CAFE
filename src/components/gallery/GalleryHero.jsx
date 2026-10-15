@@ -29,7 +29,7 @@ export const GalleryHero = () => {
   };
 
   return (
-    <header className="relative bg-[#FAF7F2] text-[#14100E] pt-32 sm:pt-36 lg:pt-40 pb-8 sm:pb-12 border-b-2 border-[#14100E] overflow-hidden selection:bg-[#14100E] selection:text-[#FAF7F2]">
+    <header className="relative bg-[#FAF7F2] text-[#14100E] pt-4 sm:pt-6 pb-8 sm:pb-12 border-b-2 border-[#14100E] overflow-hidden selection:bg-[#14100E] selection:text-[#FAF7F2]">
       
       {/* ── Top Running Archival Ticker (Full Width Edge-to-Edge) ── */}
       <div className="w-full border-y-2 border-[#14100E] bg-[#FAF7F2] py-2.5 px-4 sm:px-8 lg:px-12 xl:px-16 mb-8 overflow-x-auto scrollbar-none">
