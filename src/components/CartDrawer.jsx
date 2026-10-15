@@ -28,8 +28,11 @@ function saveMode(data) {
   } catch { /* ignore */ }
 }
 
-export default function CartDrawer({ isOpen, onClose }) {
-  const { cart, subtotal, totalItems, updateQty, removeFromCart } = useCart();
+export default function CartDrawer({ isOpen: propIsOpen, onClose: propOnClose }) {
+  const { cart, subtotal, totalItems, updateQty, removeFromCart, isCartOpen, closeCart } = useCart();
+  const isOpen = propIsOpen !== undefined ? propIsOpen : isCartOpen;
+  const onClose = propOnClose || closeCart;
+
   const drawerRef = React.useRef(null);
   const location = useLocation();
 
@@ -43,9 +46,13 @@ export default function CartDrawer({ isOpen, onClose }) {
     });
   };
 
-  // Close on route change
+  // Close only when route actually changes
+  const prevPathRef = React.useRef(location.pathname);
   useEffect(() => {
-    if (isOpen) onClose();
+    if (prevPathRef.current !== location.pathname) {
+      prevPathRef.current = location.pathname;
+      if (isOpen) onClose();
+    }
   }, [location.pathname, isOpen, onClose]);
 
   // Lock body scroll

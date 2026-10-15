@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, useEffect } from 'react';
+import React, { createContext, useContext, useReducer, useEffect, useState } from 'react';
 
 const CartContext = createContext();
 
@@ -42,6 +42,17 @@ function cartReducer(state, action) {
 
 export function CartProvider({ children }) {
   const [state, dispatch] = useReducer(cartReducer, initialState);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const openCart = () => setIsCartOpen(true);
+  const closeCart = () => setIsCartOpen(false);
+  const toggleCart = () => setIsCartOpen(prev => !prev);
+
+  useEffect(() => {
+    const handleOpen = () => setIsCartOpen(true);
+    window.addEventListener('open-cart', handleOpen);
+    return () => window.removeEventListener('open-cart', handleOpen);
+  }, []);
 
   useEffect(() => {
     try {
@@ -71,6 +82,7 @@ export function CartProvider({ children }) {
         price: item.price,
         formattedPrice: item.formattedPrice,
         image: item.image,
+        diet: item.diet,
         qty 
       }
     });
@@ -84,7 +96,22 @@ export function CartProvider({ children }) {
   const subtotal = state.items.reduce((acc, item) => acc + (item.price * item.qty), 0);
 
   return (
-    <CartContext.Provider value={{ cart: state.items, addToCart, removeFromCart, updateQty, clearCart, totalItems, subtotal }}>
+    <CartContext.Provider
+      value={{
+        cart: state.items,
+        addToCart,
+        removeFromCart,
+        updateQty,
+        clearCart,
+        totalItems,
+        subtotal,
+        isCartOpen,
+        setIsCartOpen,
+        openCart,
+        closeCart,
+        toggleCart,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

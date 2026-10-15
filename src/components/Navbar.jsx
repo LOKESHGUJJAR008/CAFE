@@ -19,10 +19,9 @@ export const Navbar = ({ barVisible = false }) => {
   const [scrolled,   setScrolled]   = useState(false);
   const [hidden,     setHidden]     = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [cartOpen,   setCartOpen]   = useState(false);
   const lastScrollY  = useRef(0);
   const location     = useLocation();
-  const { totalItems } = useCart();
+  const { totalItems, isCartOpen, openCart, closeCart } = useCart();
 
   useEffect(() => {
     const onScroll = () => {
@@ -47,20 +46,17 @@ export const Navbar = ({ barVisible = false }) => {
 
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') setMobileOpen(false); };
-    const onOpenCart = () => setCartOpen(true);
     window.addEventListener('keydown', onKey);
-    window.addEventListener('open-cart', onOpenCart);
     return () => {
       window.removeEventListener('keydown', onKey);
-      window.removeEventListener('open-cart', onOpenCart);
     };
   }, []);
 
   useEffect(() => {
-    if (cartOpen) return; // CartDrawer handles its own body lock
+    if (isCartOpen) return; // CartDrawer handles its own body lock
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
-  }, [mobileOpen, cartOpen]);
+  }, [mobileOpen, isCartOpen]);
 
   const pillClass = scrolled
     ? 'py-2 px-4 sm:px-6 bg-[#FBF7F1]/90 shadow-[0_8px_30px_rgba(31,22,18,0.16)] backdrop-blur-xl'
@@ -128,7 +124,7 @@ export const Navbar = ({ barVisible = false }) => {
 
               <button
                 type="button"
-                onClick={() => setCartOpen(true)}
+                onClick={openCart}
                 aria-label="Open cart"
                 className="relative p-2.5 rounded-full bg-[#EADBC8]/60 hover:bg-[#EADBC8] border border-[#C9A27E]/30
                            text-[#1F1612] hover:text-[#A8612E] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8612E]"
@@ -226,7 +222,7 @@ export const Navbar = ({ barVisible = false }) => {
           </>
         )}
       </AnimatePresence>
-      <CartDrawer isOpen={cartOpen} onClose={() => setCartOpen(false)} />
+      <CartDrawer isOpen={isCartOpen} onClose={closeCart} />
     </>
   );
 };

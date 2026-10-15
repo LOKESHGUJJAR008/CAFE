@@ -151,12 +151,15 @@ const FlipItemRow = ({ item, addToCart }) => {
             </span>
           )}
           <button
+            type="button"
             aria-label={`Add ${item.name} to order`}
             onClick={handleAdd}
+            onPointerDown={e => e.stopPropagation()}
+            onMouseDown={e => e.stopPropagation()}
+            onTouchStart={e => e.stopPropagation()}
             className={`w-5 h-5 sm:w-5.5 sm:h-5.5 rounded-full ${
               added ? 'bg-[#2E7D32] text-white scale-110 shadow-sm' : 'bg-almond/80 hover:bg-caramel hover:text-foam text-ink border border-caramel/20'
             } flex items-center justify-center transition-all duration-200 pointer-events-auto shrink-0`}
-            onPointerDown={e => e.stopPropagation()}
           >
             {added ? (
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-3 h-3" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">

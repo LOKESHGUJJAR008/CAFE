@@ -20,8 +20,7 @@ export const MenuPage = () => {
   });
 
   const rm = useReducedMotion();
-  const { totalItems, subtotal } = useCart();
-  const openCart = () => window.dispatchEvent(new Event('open-cart'));
+  const { totalItems, subtotal, openCart } = useCart();
 
   return (
     <div className="bg-foam text-ink min-h-screen pb-32 overflow-x-hidden">
@@ -68,7 +67,7 @@ export const MenuPage = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={rm ? { opacity: 0 } : { opacity: 0, y: 24 }}
             transition={{ duration: 0.4, ease: EASE }}
-            className="fixed bottom-4 inset-x-4 z-40 bg-foam/95 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgba(31,22,18,0.15)] border border-latte/30 p-4 flex items-center justify-between"
+            className="fixed bottom-4 inset-x-4 max-w-xl mx-auto z-40 bg-foam/95 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgba(31,22,18,0.15)] border border-latte/30 p-4 flex items-center justify-between"
           >
             <div className="flex flex-col">
               <span className="text-xs text-ink/70 font-medium uppercase tracking-wider font-inter">
@@ -77,6 +76,7 @@ export const MenuPage = () => {
               <span className="font-bold text-ink text-lg font-inter">₹{subtotal}</span>
             </div>
             <button
+              type="button"
               onClick={openCart}
               className="px-6 py-2.5 rounded-full bg-caramel text-foam font-bold font-inter text-sm shadow-warm hover:bg-caramel/90 transition-colors"
             >
