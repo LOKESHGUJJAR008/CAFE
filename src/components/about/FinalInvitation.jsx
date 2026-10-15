@@ -59,11 +59,11 @@ export const FinalInvitation = ({ eyebrow, quote, buttonText, buttonLink, image 
         className="relative z-20 max-w-2xl mx-auto px-6 text-center"
         variants={contentVariants}
       >
-        <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-caramel mb-4 block font-inter">
+        <span className="bd-eyebrow block mb-4">
           {eyebrow}
         </span>
         <motion.p
-          className="font-playfair italic text-3xl sm:text-4xl lg:text-5xl text-foam leading-snug mb-10"
+          className="font-cormorant italic font-medium text-4xl sm:text-5xl lg:text-6xl text-[#FBF7F1] leading-tight mb-10"
           initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
           animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: ANIMATION.ease, delay: 0.5 }}
@@ -72,9 +72,7 @@ export const FinalInvitation = ({ eyebrow, quote, buttonText, buttonLink, image 
         </motion.p>
         <Link
           to={buttonLink}
-          className="inline-flex items-center justify-center px-8 py-4 rounded-full border-2 border-caramel text-caramel hover:bg-caramel hover:text-foam font-semibold tracking-wide transition-all duration-300"
-          whileHover={prefersReducedMotion ? {} : { boxShadow: '0 0 25px rgba(168,97,46,0.5)' }}
-          whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
+          className="bd-btn bd-btn-caramel"
         >
           {buttonText}
         </Link>

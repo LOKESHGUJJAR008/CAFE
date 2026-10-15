@@ -7,37 +7,39 @@ export default {
   theme: {
     extend: {
       colors: {
-        foam: '#FDF8FA',     // serene blush cream (clean, aesthetic, easy-to-read)
-        ink: '#221220',      // deep aubergine charcoal (high-contrast, crystal-clear readability)
-        latte: '#C48B9F',    // dusty rose / mauve quartz
-        caramel: '#EA5C89',  // radiant blossom rose (signature Tatva pink from logo)
-        almond: '#F3DFE7',   // pale blush silk
-        plum: {
-          DEFAULT: '#432A3B',
-          dark: '#2D1827',
-          deep: '#1E0E1B',
-          light: '#5A3B50',
-          velvet: '#382132',
+        foam: '#FBF7F1',     // pristine warm alabaster / cream
+        ink: '#1F1612',      // deep roasted espresso charcoal
+        latte: '#C9A27E',    // warm cafe au lait / soft hazelnut taupe
+        caramel: '#A8612E',  // artisan roasted warm amber caramel
+        almond: '#EADBC8',   // delicate warm oat / linen almond
+        espresso: {
+          DEFAULT: '#1F1612',
+          dark: '#140E0B',
+          deep: '#0D0907',
+          light: '#2E1E14',
+          roast: '#3A2518',
         },
         tatva: {
-          pink: '#EA5C89',
-          blush: '#FCE7EE',
-          mauve: '#C48B9F',
-          wine: '#432A3B',
-          night: '#221220',
+          caramel: '#A8612E',
+          latte: '#C9A27E',
+          almond: '#EADBC8',
+          espresso: '#1F1612',
+          cream: '#FBF7F1',
         }
       },
       fontFamily: {
         playfair: ['"Playfair Display"', 'serif'],
+        cormorant: ['"Cormorant Garamond"', 'Georgia', 'serif'],
         inter: ['Inter', 'sans-serif'],
+        grotesk: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
         caveat: ['Caveat', 'cursive', 'sans-serif'],
       },
       boxShadow: {
-        'warm-sm': '0 2px 8px -2px rgba(34, 18, 32, 0.08), 0 1px 4px -1px rgba(234, 92, 137, 0.06)',
-        'warm': '0 8px 24px -4px rgba(34, 18, 32, 0.12), 0 4px 12px -2px rgba(234, 92, 137, 0.08)',
-        'warm-lg': '0 16px 36px -6px rgba(34, 18, 32, 0.16), 0 8px 20px -3px rgba(234, 92, 137, 0.12)',
-        'glow-caramel': '0 0 25px rgba(234, 92, 137, 0.35)',
-        'glow-rose': '0 0 30px rgba(234, 92, 137, 0.45)',
+        'warm-sm': '0 2px 8px -2px rgba(31, 22, 18, 0.08), 0 1px 4px -1px rgba(168, 97, 46, 0.06)',
+        'warm': '0 8px 24px -4px rgba(31, 22, 18, 0.12), 0 4px 12px -2px rgba(168, 97, 46, 0.08)',
+        'warm-lg': '0 16px 36px -6px rgba(31, 22, 18, 0.16), 0 8px 20px -3px rgba(168, 97, 46, 0.12)',
+        'glow-caramel': '0 0 25px rgba(168, 97, 46, 0.35)',
+        'glow-amber': '0 0 30px rgba(168, 97, 46, 0.45)',
       },
       borderRadius: {
         '3xl': '1.5rem',

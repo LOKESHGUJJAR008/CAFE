@@ -46,27 +46,27 @@ export const QuietMilestones = ({ eyebrow, heading, items }) => {
   };
 
   return (
-    <section className="py-20 lg:py-28 px-6 sm:px-10 lg:px-16 bg-foam text-ink">
-      <div className="max-w-xl mx-auto">
+    <section className="py-20 lg:py-28 px-6 sm:px-10 lg:px-16 bg-[#FBF7F1] text-[#1F1612] border-b border-[#1F1612]/10">
+      <div className="max-w-2xl mx-auto">
         <motion.div
-          className="text-center mb-14 lg:mb-16"
+          className="text-center mb-14 lg:mb-18"
           initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, ease: ANIMATION.ease }}
         >
-          <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-caramel mb-3 block font-inter">
+          <span className="bd-eyebrow block mb-3">
             {eyebrow}
           </span>
-          <h2 className="font-playfair font-bold text-3xl sm:text-4xl lg:text-5xl text-ink leading-snug">
+          <h2 className="font-cormorant font-semibold text-5xl sm:text-6xl text-[#1F1612] leading-[1] tracking-[-0.02em]">
             {heading}
           </h2>
         </motion.div>
 
         <div className="relative" ref={lineRef}>
-          <div className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-caramel to-transparent" />
+          <div className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 bg-[#1F1612]/10" />
           <div
-            className="absolute left-1/2 top-0 w-px -translate-x-1/2 bg-caramel"
+            className="absolute left-1/2 top-0 w-px -translate-x-1/2 bg-[#C9A012]"
             style={{
               height: prefersReducedMotion ? '100%' : `${lineHeight}%`,
               transformOrigin: 'top center',
@@ -74,7 +74,7 @@ export const QuietMilestones = ({ eyebrow, heading, items }) => {
           />
 
           <motion.div
-            className="space-y-12 lg:space-y-16"
+            className="space-y-10"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -86,12 +86,12 @@ export const QuietMilestones = ({ eyebrow, heading, items }) => {
                 variants={itemVariants}
                 className="relative flex flex-col items-center"
               >
-                <div className="relative z-10 w-4 h-4 rounded-full bg-foam border-2 border-caramel flex-shrink-0" />
-                <div className="text-center mt-4 w-full max-w-xs">
-                  <span className="font-playfair font-bold text-xl text-caramel block mb-1">
+                <div className="relative z-10 w-3.5 h-3.5 bg-[#C9A012] border-2 border-[#FFFFFF] shadow-sm flex-shrink-0" />
+                <div className="mt-4 w-full max-w-md bg-[#FFFFFF] border border-[#1F1612]/15 hover:border-[#C9A012] p-6 text-center shadow-[0_4px_20px_rgba(31,22,18,0.04)] hover:shadow-[0_12px_28px_rgba(201,160,18,0.15)] transition-all duration-300">
+                  <span className="font-cormorant font-bold text-3xl text-[#C9A012] italic block mb-2">
                     {item.year}
                   </span>
-                  <p className="text-ink/75 text-sm sm:text-base leading-relaxed">
+                  <p className="font-grotesk text-xs sm:text-sm text-[#1F1612]/75 leading-relaxed">
                     {item.text}
                   </p>
                 </div>

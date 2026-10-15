@@ -38,7 +38,7 @@ const EVENTS = [
   },
 ];
 
-/* ─── Card ─────────────────────────────────────────────────────────────────── */
+/* ─── Luxury Editorial Event Card ─────────────────────────────────────── */
 const EventCard = ({ event }) => {
   const waMsg = encodeURIComponent(
     `Hi TATVA Café, I'd like to know about ${event.title}.`
@@ -48,31 +48,38 @@ const EventCard = ({ event }) => {
   return (
     <article
       className="snap-start flex-shrink-0 w-[85%] md:w-[380px]
-                 rounded-3xl bg-gradient-to-br from-ink via-ink to-caramel/80
-                 border border-white/10 p-6 flex flex-col justify-between gap-5
-                 shadow-warm-lg"
+                 bg-[#1F1612] border border-[#C9A012]/25 hover:border-[#C9A012]
+                 p-6 sm:p-8 flex flex-col justify-between gap-6
+                 transition-all duration-500 shadow-lg hover:shadow-[0_16px_36px_rgba(201,160,18,0.2)] group"
     >
       {/* Top: title + time chips */}
       <div>
-        <h3 className="font-playfair font-bold text-xl sm:text-2xl text-foam leading-snug mb-4">
+        <div className="flex items-center justify-between mb-3">
+          <span className="font-grotesk text-[9px] uppercase tracking-[0.25em] text-[#C9A012] font-semibold">
+            {event.day} Series
+          </span>
+          <span className="w-2 h-2 rounded-full bg-[#C9A012]/80 group-hover:bg-[#C9A012] transition-colors" />
+        </div>
+
+        <h3 className="font-cormorant font-semibold text-2xl sm:text-3xl text-[#FBF7F1] leading-snug mb-4 group-hover:text-[#F3E5D8] transition-colors">
           {event.title}
         </h3>
 
         {/* Day + Time chips */}
         <div className="flex flex-wrap gap-2 mb-4">
-          <span className="inline-flex items-center gap-1.5 bg-foam/10 border border-foam/15
-                           text-foam/80 text-xs font-semibold px-3 py-1.5 rounded-full font-inter">
-            <Clock className="w-3 h-3 text-caramel flex-shrink-0" strokeWidth={2} />
+          <span className="inline-flex items-center gap-1.5 bg-[#FBF7F1]/5 border border-[#FBF7F1]/15
+                           text-[#FBF7F1]/80 text-[10px] font-grotesk uppercase tracking-wider px-3 py-1.5">
+            <Clock className="w-3 h-3 text-[#C9A012] flex-shrink-0" strokeWidth={2} />
             {event.day}
           </span>
-          <span className="inline-flex items-center gap-1.5 bg-foam/10 border border-foam/15
-                           text-foam/80 text-xs font-semibold px-3 py-1.5 rounded-full font-inter">
-            <Clock className="w-3 h-3 text-caramel flex-shrink-0" strokeWidth={2} />
+          <span className="inline-flex items-center gap-1.5 bg-[#FBF7F1]/5 border border-[#FBF7F1]/15
+                           text-[#FBF7F1]/80 text-[10px] font-grotesk uppercase tracking-wider px-3 py-1.5">
+            <Clock className="w-3 h-3 text-[#C9A012] flex-shrink-0" strokeWidth={2} />
             {event.time}
           </span>
         </div>
 
-        <p className="text-foam/70 text-sm leading-relaxed font-inter">
+        <p className="text-[#FBF7F1]/70 text-xs sm:text-sm leading-relaxed font-grotesk">
           {event.description}
         </p>
       </div>
@@ -83,13 +90,13 @@ const EventCard = ({ event }) => {
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center justify-center gap-2
-                   w-full px-5 py-3 rounded-full
-                   bg-caramel hover:bg-caramel/80 text-ink
-                   text-xs font-bold tracking-wide transition-all shadow-warm
-                   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foam"
+                   w-full px-5 py-3
+                   bg-[#C9A012] hover:bg-[#E5B815] text-[#1F1612]
+                   font-grotesk text-[10px] font-bold uppercase tracking-[0.18em] transition-all
+                   focus-visible:outline-none"
       >
-        <MessageCircle className="w-4 h-4" strokeWidth={2} />
-        Ask on WhatsApp
+        <MessageCircle className="w-3.5 h-3.5" strokeWidth={2} />
+        Ask on WhatsApp →
       </a>
     </article>
   );
@@ -112,27 +119,27 @@ export const StudyHub = () => {
   return (
     <section
       id="study-hub"
-      className="bg-ink py-16 md:py-24 overflow-hidden"
+      className="bg-[#1F1612] py-20 md:py-24 overflow-hidden border-t border-[#FBF7F1]/10"
       aria-label="Study Hub and Events"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12">
 
         {/* ── Header row with desktop arrow buttons ── */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-12">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-14">
           <motion.div
             initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
           >
-            <span className="block text-[11px] font-bold uppercase tracking-[0.25em] text-caramel mb-3 font-inter">
-              Happenings
+            <span className="bd-eyebrow block mb-3">
+              Happenings &amp; Community
             </span>
-            <h2 className="font-playfair font-bold text-3xl sm:text-4xl lg:text-5xl text-foam tracking-tight">
-              Study Hub &amp; Events
+            <h2 className="font-cormorant font-semibold text-5xl sm:text-6xl text-[#FBF7F1] leading-[1] tracking-[-0.02em]">
+              Study Hub &amp; Gatherings
             </h2>
-            <p className="mt-3 text-foam/70 text-sm sm:text-base max-w-md font-inter">
-              Quiet study hours every morning, and weekend meetups that bring the TATVA community together.
+            <p className="mt-3 text-[#FBF7F1]/70 text-xs sm:text-sm font-grotesk uppercase tracking-wider max-w-md">
+              Distraction-free morning study blocks, tasting sessions &amp; weekend community hours.
             </p>
           </motion.div>
 

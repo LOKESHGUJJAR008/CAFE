@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Coffee, ShoppingBag } from 'lucide-react';
+import { X, ShoppingBag } from 'lucide-react';
 import Logo from './Logo';
 import { WHATSAPP_URL } from '../config';
 import { useCart } from '../context/CartContext';
@@ -39,10 +39,6 @@ export const Navbar = ({ barVisible = false }) => {
     setPrevPath(location.pathname);
     setMobileOpen(false);
   }
-  
-  useEffect(() => {
-    // Other side effects on mount if any, or empty
-  }, [location.pathname]);
 
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') setMobileOpen(false); };
@@ -58,27 +54,32 @@ export const Navbar = ({ barVisible = false }) => {
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen, isCartOpen]);
 
-  const pillClass = scrolled
-    ? 'py-2 px-4 sm:px-6 bg-[#FBF7F1]/90 shadow-[0_8px_30px_rgba(31,22,18,0.16)] backdrop-blur-xl'
-    : 'py-3 px-5 sm:px-8 bg-[#FBF7F1]/85 shadow-[0_4px_16px_rgba(31,22,18,0.08)] backdrop-blur-xl';
-
   return (
     <>
-      <div
-        className="fixed inset-x-0 z-50 flex justify-center px-4 pointer-events-none"
-        style={{ top: barVisible ? '2.75rem' : '1rem' }}
+      {/* ── Full-width flat sticky navbar ── */}
+      <motion.header
+        role="banner"
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: hidden ? -100 : 0, opacity: 1 }}
+        transition={{ duration: 0.32, ease: [0.25, 1, 0.5, 1] }}
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? 'bg-[#FBF7F1]/98 shadow-[0_1px_0_0_rgba(31,22,18,0.12)] backdrop-blur-sm'
+            : 'bg-[#FBF7F1]'
+        }`}
+        style={{ top: barVisible ? '2.5rem' : '0' }}
       >
-        <motion.header
-          role="banner"
-          initial={{ y: -80, opacity: 0 }}
-          animate={{ y: hidden ? -100 : 0, opacity: 1 }}
-          transition={{ duration: 0.38, ease: [0.25, 1, 0.5, 1] }}
-          className={`pointer-events-auto w-full max-w-5xl rounded-full border border-[#C9A27E]/50 transition-all duration-300 ${pillClass}`}
-        >
-          <div className="flex items-center justify-between gap-4">
+        <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-14">
+          <div className="flex items-center justify-between h-[68px]">
+            
+            {/* Logo */}
             <Logo size="md" theme="light" className="flex-shrink-0" />
 
-            <nav className="hidden md:flex items-center gap-6 lg:gap-8" aria-label="Main navigation">
+            {/* ── Center Nav Links — ALL CAPS editorial ── */}
+            <nav
+              className="hidden md:flex items-center gap-8 lg:gap-10"
+              aria-label="Main navigation"
+            >
               {NAV_LINKS.map(({ to, label }) => (
                 <NavLink
                   key={to}
@@ -87,47 +88,66 @@ export const Navbar = ({ barVisible = false }) => {
                   className={({ isActive }) => {
                     const isMenuActive = to === '/menu' && location.pathname.startsWith('/menu');
                     const active = isActive || isMenuActive;
-                    return `relative text-sm font-medium tracking-wide transition-colors duration-200
+                    return `relative font-grotesk text-[11px] font-semibold tracking-[0.15em] uppercase
+                     transition-colors duration-200 pb-0.5
                      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8612E]
-                     rounded-sm group
-                     ${active ? 'text-[#A8612E]' : 'text-[#1F1612] hover:text-[#A8612E]'}`;
+                     ${active ? 'text-[#1F1612]' : 'text-[#1F1612]/60 hover:text-[#1F1612]'}`;
                   }}
                 >
                   {({ isActive }) => {
                     const isMenuActive = to === '/menu' && location.pathname.startsWith('/menu');
                     const active = isActive || isMenuActive;
                     return (
-                    <>
-                      {label}
-                      <span className={`absolute -bottom-1 left-1/2 -translate-x-1/2 h-[2px] bg-[#A8612E] transition-all duration-300 ${active ? 'w-full' : 'w-0 group-hover:w-full'}`} />
-                      {active && <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#A8612E]" />}
-                    </>
-                  )}}
+                      <>
+                        {label}
+                        {/* Underline */}
+                        <span
+                          className={`absolute -bottom-0.5 left-0 h-[1.5px] bg-[#1F1612] transition-all duration-300 ${
+                            active ? 'w-full' : 'w-0 group-hover:w-full'
+                          }`}
+                        />
+                      </>
+                    );
+                  }}
                 </NavLink>
               ))}
             </nav>
 
+            {/* ── Right Side Actions ── */}
             <div className="flex items-center gap-3 flex-shrink-0">
+              {/* Reserve CTA — handwritten Caveat style */}
+              <Link
+                to="/reserve"
+                className="hidden md:inline-flex items-center gap-1.5 px-5 py-2
+                           border border-[#1F1612] text-[#1F1612] hover:bg-[#1F1612] hover:text-[#FBF7F1]
+                           font-grotesk text-[11px] font-semibold tracking-[0.12em] uppercase
+                           transition-all duration-200
+                           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8612E]"
+              >
+                Reserve a Table
+              </Link>
+
+              {/* Handwritten "Order Online" à la BD */}
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="hidden md:inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-semibold
-                           bg-[#A8612E] hover:bg-[#92541f] text-[#FBF7F1]
-                           shadow-[0_4px_14px_rgba(168,97,46,0.35)]
-                           transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0
-                           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8612E] whitespace-nowrap"
+                className="hidden md:inline-flex items-center gap-1.5 font-caveat text-base font-bold
+                           text-[#A8612E] hover:text-[#1F1612] transition-colors duration-200
+                           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8612E]
+                           tracking-wide"
+                aria-label="Order on WhatsApp"
               >
-                <Coffee className="w-3.5 h-3.5 opacity-80" />
-                Order on WhatsApp
+                Order Online
               </a>
 
+              {/* Cart Button */}
               <button
                 type="button"
                 onClick={openCart}
                 aria-label="Open cart"
-                className="relative p-2.5 rounded-full bg-[#EADBC8]/60 hover:bg-[#EADBC8] border border-[#C9A27E]/30
-                           text-[#1F1612] hover:text-[#A8612E] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8612E]"
+                className="relative p-2 text-[#1F1612]/70 hover:text-[#1F1612] transition-colors
+                           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8612E]"
               >
                 <ShoppingBag className="w-5 h-5" />
                 <AnimatePresence>
@@ -136,7 +156,7 @@ export const Navbar = ({ barVisible = false }) => {
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       exit={{ scale: 0 }}
-                      className="absolute -top-1 -right-1 bg-[#A8612E] text-[#FBF7F1] text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-[#FBF7F1]"
+                      className="absolute -top-0.5 -right-0.5 bg-[#A8612E] text-[#FBF7F1] text-[9px] font-bold w-4 h-4 flex items-center justify-center rounded-full"
                     >
                       {totalItems}
                     </motion.span>
@@ -144,58 +164,84 @@ export const Navbar = ({ barVisible = false }) => {
                 </AnimatePresence>
               </button>
 
+              {/* Mobile Hamburger */}
               <button
                 type="button"
                 onClick={() => setMobileOpen((v) => !v)}
                 aria-expanded={mobileOpen}
                 aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-                className="md:hidden p-2 rounded-full bg-[#EADBC8]/60 border border-[#C9A27E]/30
-                           text-[#1F1612] hover:text-[#A8612E] hover:border-[#A8612E]/40
-                           transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8612E]"
+                className="md:hidden flex flex-col gap-[5px] p-2 text-[#1F1612] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8612E]"
               >
                 <AnimatePresence mode="wait" initial={false}>
                   {mobileOpen ? (
-                    <motion.span key="close" initial={{ opacity: 0, rotate: -90, scale: 0.7 }} animate={{ opacity: 1, rotate: 0, scale: 1 }} exit={{ opacity: 0, rotate: 90, scale: 0.7 }} transition={{ duration: 0.18 }} className="block">
+                    <motion.span key="close" initial={{ opacity: 0, rotate: -90 }} animate={{ opacity: 1, rotate: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.15 }} className="block">
                       <X className="w-5 h-5" />
                     </motion.span>
                   ) : (
-                    <motion.span key="open" initial={{ opacity: 0, rotate: 90, scale: 0.7 }} animate={{ opacity: 1, rotate: 0, scale: 1 }} exit={{ opacity: 0, rotate: -90, scale: 0.7 }} transition={{ duration: 0.18 }} className="block">
-                      <Menu className="w-5 h-5" />
+                    <motion.span key="open" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.15 }} className="block">
+                      <span className="flex flex-col gap-[5px]">
+                        <span className="block w-5 h-[1.5px] bg-[#1F1612]" />
+                        <span className="block w-4 h-[1.5px] bg-[#1F1612]" />
+                        <span className="block w-5 h-[1.5px] bg-[#1F1612]" />
+                      </span>
                     </motion.span>
                   )}
                 </AnimatePresence>
               </button>
             </div>
           </div>
-        </motion.header>
-      </div>
+        </div>
 
+        {/* Bottom border line */}
+        <div className="w-full h-[1px] bg-[#1F1612]/10" />
+      </motion.header>
+
+      {/* ── Mobile Full-Screen Menu ── */}
       <AnimatePresence>
         {mobileOpen && (
           <>
-            <motion.div key="backdrop" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }} className="fixed inset-0 z-40 bg-[#1F1612]/20 backdrop-blur-[2px] md:hidden" onClick={() => setMobileOpen(false)} />
             <motion.div
-              key="dropdown"
-              initial={{ opacity: 0, scale: 0.94, y: -12 }}
-              animate={{ opacity: 1, scale: 1,    y: 0   }}
-              exit={{   opacity: 0, scale: 0.94, y: -12  }}
-              transition={{ duration: 0.22, ease: 'easeOut' }}
-              className="fixed top-[80px] inset-x-4 z-50 md:hidden mx-auto max-w-sm
-                         bg-[#FBF7F1]/96 backdrop-blur-xl border border-[#C9A27E]/40
-                         shadow-[0_16px_48px_rgba(31,22,18,0.15)] rounded-3xl p-6 flex flex-col gap-5"
+              key="backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-40 bg-[#FBF7F1] md:hidden"
+              onClick={() => setMobileOpen(false)}
+            />
+            <motion.div
+              key="mobile-menu"
+              initial={{ opacity: 0, x: '100%' }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: '100%' }}
+              transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
+              className="fixed inset-y-0 right-0 z-50 w-full max-w-xs md:hidden
+                         bg-[#FBF7F1] border-l border-[#1F1612]/10 flex flex-col px-8 py-12"
             >
-              <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
+              {/* Close */}
+              <button
+                onClick={() => setMobileOpen(false)}
+                className="absolute top-6 right-6 p-2 text-[#1F1612]/60 hover:text-[#1F1612]"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <nav className="flex flex-col gap-1 mt-8" aria-label="Mobile navigation">
                 {NAV_LINKS.map(({ to, label }, i) => (
-                  <motion.div key={to} initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.04, duration: 0.2 }}>
+                  <motion.div
+                    key={to}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.05, duration: 0.2 }}
+                  >
                     <NavLink
                       to={to}
                       end={to === '/'}
                       onClick={() => setMobileOpen(false)}
                       className={({ isActive }) => {
-                        const isMenuActive = to === '/menu' && location.pathname.startsWith('/menu');
-                        const active = isActive || isMenuActive;
-                        return `block w-full text-2xl font-playfair font-bold py-2 px-2 rounded-xl transition-colors
-                         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8612E]
+                        const active = isActive || (to === '/menu' && location.pathname.startsWith('/menu'));
+                        return `block font-cormorant text-4xl font-semibold py-2 transition-colors border-b border-[#1F1612]/8
+                         focus-visible:outline-none
                          ${active ? 'text-[#A8612E]' : 'text-[#1F1612] hover:text-[#A8612E]'}`;
                       }}
                     >
@@ -204,20 +250,25 @@ export const Navbar = ({ barVisible = false }) => {
                   </motion.div>
                 ))}
               </nav>
-              <hr className="border-[#C9A27E]/30" />
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noreferrer"
-                onClick={() => setMobileOpen(false)}
-                className="w-full py-4 rounded-full text-base font-bold bg-[#A8612E] hover:bg-[#92541f] text-[#FBF7F1]
-                           flex items-center justify-center gap-2 shadow-[0_4px_14px_rgba(168,97,46,0.35)]
-                           transition-all hover:scale-[1.02] active:scale-[0.98]
-                           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A8612E]"
-              >
-                <Coffee className="w-4 h-4 opacity-80" />
-                Order on WhatsApp
-              </a>
+
+              <div className="mt-auto flex flex-col gap-3">
+                <Link
+                  to="/reserve"
+                  onClick={() => setMobileOpen(false)}
+                  className="bd-btn w-full justify-center"
+                >
+                  Reserve a Table
+                </Link>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setMobileOpen(false)}
+                  className="font-caveat text-xl text-[#A8612E] text-center py-2 font-bold"
+                >
+                  Order Online ↗
+                </a>
+              </div>
             </motion.div>
           </>
         )}
