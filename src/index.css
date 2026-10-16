@@ -207,61 +207,65 @@
    TATVA Aesthetic Luxury Menu Book Styles & Minimalist Lining
    ========================================================================== */
 
-/* Serene Minimalist Warm Parchment Background */
+/* ==========================================================================
+   TATVA Aesthetic Luxury Menu Book Styles & Minimalist Lining
+   ========================================================================== */
+
+/* Warm Ivory Paper Background (#F6F0E6) */
 .book-paper-texture {
-  background-color: #FBF7F1;
+  background-color: #F6F0E6;
   background-image: 
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.7) 0%, transparent 80%),
-    linear-gradient(135deg, rgba(168, 97, 46, 0.04) 0%, transparent 100%);
+    radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.75) 0%, transparent 80%),
+    linear-gradient(135deg, rgba(182, 154, 104, 0.06) 0%, transparent 100%);
 }
 
 /* Center Spine Gutter Shadows for realistic 3D page curvature */
 .book-gutter-left {
-  box-shadow: inset -18px 0 24px -10px rgba(31, 22, 18, 0.12),
-              inset -4px 0 8px -2px rgba(31, 22, 18, 0.18);
+  box-shadow: inset -20px 0 26px -10px rgba(56, 39, 31, 0.16),
+              inset -4px 0 8px -2px rgba(56, 39, 31, 0.22);
 }
 
 .book-gutter-right {
-  box-shadow: inset 18px 0 24px -10px rgba(31, 22, 18, 0.12),
-              inset 4px 0 8px -2px rgba(31, 22, 18, 0.18);
+  box-shadow: inset 20px 0 26px -10px rgba(56, 39, 31, 0.16),
+              inset 4px 0 8px -2px rgba(56, 39, 31, 0.22);
 }
 
-/* Stacked 3D Paper Deckle Edges with Warm Linen Tint */
+/* Stacked 3D Paper Deckle Edges with Warm Linen & Gilded Tone */
 .deckle-edge-left {
   box-shadow: 
-    -2px 0 0 0 #F4EBD9,
-    -4px 0 0 0 #EADBC8,
-    -6px 0 0 0 #DFCBB5,
-    -8px 0 2px 0 rgba(31, 22, 18, 0.08),
-    -14px 10px 24px 0 rgba(31, 22, 18, 0.2);
+    -2px 0 0 0 #EDE4D3,
+    -4px 0 0 0 #E2D5C0,
+    -6px 0 0 0 #D5C4AC,
+    -8px 0 2px 0 rgba(56, 39, 31, 0.1),
+    -16px 12px 28px 0 rgba(56, 39, 31, 0.28);
 }
 
 .deckle-edge-right {
   box-shadow: 
-    2px 0 0 0 #F4EBD9,
-    4px 0 0 0 #EADBC8,
-    6px 0 0 0 #DFCBB5,
-    8px 0 2px 0 rgba(31, 22, 18, 0.08),
-    14px 10px 24px 0 rgba(31, 22, 18, 0.2);
+    2px 0 0 0 #EDE4D3,
+    4px 0 0 0 #E2D5C0,
+    6px 0 0 0 #D5C4AC,
+    8px 0 2px 0 rgba(56, 39, 31, 0.1),
+    16px 12px 28px 0 rgba(56, 39, 31, 0.28);
 }
 
 /* Center Binding Crease Line with Sewn Stitch illusion */
 .book-spine-crease {
   background: linear-gradient(
     to right,
-    rgba(31, 22, 18, 0.22) 0%,
-    rgba(31, 22, 18, 0.08) 25%,
-    rgba(31, 22, 18, 0.02) 45%,
-    rgba(255, 255, 255, 0.15) 50%,
-    rgba(31, 22, 18, 0.02) 55%,
-    rgba(31, 22, 18, 0.08) 75%,
-    rgba(31, 22, 18, 0.22) 100%
+    rgba(56, 39, 31, 0.3) 0%,
+    rgba(56, 39, 31, 0.12) 25%,
+    rgba(56, 39, 31, 0.02) 45%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(56, 39, 31, 0.02) 55%,
+    rgba(56, 39, 31, 0.12) 75%,
+    rgba(56, 39, 31, 0.3) 100%
   );
 }
 
-/* Minimalist Antique Bronze Filigree Border Lining */
+/* Luxury Antique Gold Filigree Border Lining */
 .page-filigree-border {
-  border: 1px solid rgba(201, 162, 126, 0.35);
+  border: 1px solid rgba(182, 154, 104, 0.45);
   position: relative;
 }
 
@@ -269,7 +273,7 @@
   content: '';
   position: absolute;
   inset: 4px;
-  border: 1.5px solid rgba(168, 97, 46, 0.28);
+  border: 1px solid rgba(182, 154, 104, 0.25);
   pointer-events: none;
   border-radius: 2px;
 }
@@ -288,17 +292,17 @@
   animation: cornerPeel 2.4s ease-in-out infinite;
 }
 
-/* Rich Espresso Saddle Leather Folio Casing */
+/* Rich Espresso Saddle Leather Folio Casing (#38271F) */
 .leather-folio-casing {
   background: 
-    radial-gradient(circle at 20% 30%, rgba(58, 37, 24, 0.85) 0%, transparent 60%),
-    radial-gradient(circle at 80% 70%, rgba(31, 22, 18, 0.95) 0%, transparent 60%),
-    linear-gradient(145deg, #2E1E14 0%, #160F0B 100%);
+    radial-gradient(circle at 20% 30%, rgba(68, 47, 35, 0.92) 0%, transparent 60%),
+    radial-gradient(circle at 80% 70%, rgba(38, 25, 18, 0.98) 0%, transparent 60%),
+    linear-gradient(145deg, #38271F 0%, #1A120E 100%);
   box-shadow: 
-    0 25px 60px -15px rgba(20, 14, 11, 0.5),
-    0 10px 25px -5px rgba(20, 14, 11, 0.35),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.12),
-    inset 0 -2px 4px 0 rgba(0, 0, 0, 0.45);
+    0 35px 80px -15px rgba(26, 18, 14, 0.55),
+    0 15px 35px -5px rgba(26, 18, 14, 0.38),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -3px 6px 0 rgba(0, 0, 0, 0.55);
 }
 
 /* Marquee animation for scrolling text */
@@ -314,3 +318,42 @@
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+/* ==========================================================================
+   Dish Priority & Dietary Spotlight Filter Rules
+   ========================================================================== */
+
+#tatva-menu-book-wrapper[data-filter="signature"] .priority-star-dish {
+  border-color: #B69A68 !important;
+  box-shadow: 0 0 0 2px rgba(182, 154, 104, 0.45), 0 6px 18px rgba(182, 154, 104, 0.2) !important;
+  transform: translateY(-1px);
+}
+
+#tatva-menu-book-wrapper[data-filter="signature"] .priority-dish {
+  border-color: rgba(182, 154, 104, 0.4);
+  background-color: rgba(182, 154, 104, 0.08);
+}
+
+#tatva-menu-book-wrapper[data-filter="signature"] .non-priority-dish {
+  opacity: 0.38;
+  filter: grayscale(0.2);
+  transition: opacity 0.25s ease, filter 0.25s ease;
+}
+
+#tatva-menu-book-wrapper[data-filter="signature"] .non-priority-dish:hover {
+  opacity: 0.95;
+  filter: none;
+}
+
+#tatva-menu-book-wrapper[data-filter="veg"] .non-veg-dish {
+  opacity: 0.22;
+  filter: grayscale(0.6);
+  pointer-events: none;
+  transition: opacity 0.25s ease, filter 0.25s ease;
+}
+
+#tatva-menu-book-wrapper[data-filter="veg"] .veg-dish {
+  border-left: 2px solid #2E7D32;
+  padding-left: 6px;
+}
+

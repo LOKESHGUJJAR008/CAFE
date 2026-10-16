@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { LayoutGrid, BookOpen } from 'lucide-react';
+import { Sparkles, ArrowRight } from 'lucide-react';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
 import { useCart } from '../context/CartContext';
 import FlipMenu from '../components/menu/FlipMenu';
-import FullMenuGrid from '../components/menu/FullMenuGrid';
 
 /* ─── Shared easing ─────────────────────────────────────────────────── */
 const EASE = [0.22, 1, 0.36, 1];
@@ -18,106 +17,71 @@ const fadeUp = (delay = 0, rm = false) => ({
 export const MenuPage = () => {
   useDocumentMeta({
     title: 'Artisan Menu | TATVA Café • Talwandi, Kota',
-    description: 'Explore the handcrafted botanical & artisan coffee menu at TATVA Café with custom cards and curated pairings.',
+    description: 'Explore the handcrafted botanical & artisan coffee flipbook menu at TATVA Café with curated pairings.',
   });
 
-  const [viewMode, setViewMode] = useState('grid'); // 'grid' | 'journal'
   const rm = useReducedMotion();
   const { totalItems, subtotal, openCart } = useCart();
 
   return (
-    <div className="bg-[#FAF7F2] text-[#14100E] min-h-screen pb-32 overflow-x-hidden selection:bg-[#14100E] selection:text-[#FAF7F2]">
+    <div className="bg-foam text-ink min-h-screen pb-32 overflow-x-clip selection:bg-ink selection:text-foam">
       {/* ── Top Running Archival Ticker (Flush with Navbar) ── */}
-      <div className="w-full border-b-2 border-[#14100E] bg-[#FAF7F2] py-2.5 px-4 sm:px-8 lg:px-12 xl:px-16 overflow-x-auto scrollbar-none">
-        <div className="w-full flex items-center justify-between gap-6 whitespace-nowrap text-[10px] sm:text-xs font-grotesk font-black uppercase tracking-[0.28em] text-[#14100E]">
-          <div className="flex items-center gap-3">
-            <span className="w-2.5 h-2.5 bg-[#14100E]" />
-            <span>TATVA BOTANICAL KITCHEN // MENU COMPENDIUM</span>
+      <div className="w-full border-b border-latte/30 bg-almond/20 py-2 px-4 sm:px-8 lg:px-12 xl:px-16 overflow-x-auto scrollbar-none">
+        <div className="w-full flex items-center justify-between gap-6 whitespace-nowrap text-[10px] sm:text-[11px] font-inter font-semibold uppercase tracking-[0.24em] text-ink/80">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-caramel" />
+            <span>TATVA BOTANICAL KITCHEN • COMPENDIUM</span>
           </div>
-          <span className="text-[#14100E]/30 font-normal">/</span>
-          <span>CHIKMAGALUR SINGLE-ORIGIN ARABICA</span>
-          <span className="text-[#14100E]/30 font-normal">/</span>
-          <span>DIAL-IN: 9.0 BAR EXTRACTION</span>
-          <span className="text-[#14100E]/30 font-normal">/</span>
-          <span>HANDCRAFTED PATISSERIE</span>
-          <span className="text-[#14100E]/30 font-normal">/</span>
+          <span className="text-latte/60 font-normal">/</span>
+          <span>100% CHIKMAGALUR SINGLE-ORIGIN ARABICA</span>
+          <span className="text-latte/60 font-normal">/</span>
+          <span>HAND-ROLLED SOURDOUGH &amp; PATISSERIE</span>
+          <span className="text-latte/60 font-normal">/</span>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
-            <span>KITCHEN ACTIVE · 08:00 — 23:00</span>
+            <span>KITCHEN &amp; BREW BAR ACTIVE</span>
           </div>
         </div>
       </div>
 
       {/* ── HEADER ──────────────────────────────────────────────────── */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 pt-8 pb-8 border-b-2 border-[#14100E]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 pt-8 pb-6">
         <div className="flex flex-col items-center text-center">
           <motion.div
             {...fadeUp(0, rm)}
-            className="inline-block bg-[#FAF7F2] border-2 border-[#14100E] px-3 py-1 shadow-[3px_3px_0px_#14100E] mb-3"
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-almond/60 border border-caramel/30 text-caramel text-[11px] font-bold tracking-[0.22em] uppercase font-inter mb-3"
           >
-            <span className="font-grotesk text-[9px] sm:text-[10px] font-black uppercase tracking-[0.25em] text-[#14100E]">
-              DAILY CAFÉ & BOTANICAL KITCHEN
-            </span>
+            <Sparkles className="w-3 h-3 text-caramel" />
+            <span>Artisan Compendium • Kota Sanctuary</span>
           </motion.div>
+          
           <motion.h1
             {...fadeUp(0.08, rm)}
-            className="font-grotesk font-black text-4xl sm:text-6xl text-[#14100E] uppercase tracking-tighter"
+            className="font-playfair font-bold text-4xl sm:text-5xl lg:text-6xl text-ink tracking-tight"
           >
-            Brewed Fresh, Served Warm
+            The TATVA Menu Book
           </motion.h1>
+          
           <motion.p
             {...fadeUp(0.16, rm)}
-            className="mt-2 text-[#14100E]/70 max-w-lg font-grotesk text-xs sm:text-sm tracking-wide uppercase leading-relaxed"
+            className="mt-2.5 text-ink/70 max-w-xl font-inter text-xs sm:text-sm tracking-normal leading-relaxed"
           >
-            Artisan coffee, single-origin brews, house bakes, and royal pairings.
+            Turn authentic artisan pages of our physical leather folio. Discover single-origin coffees, chilled nitro infusions, and chef-curated pairings.
           </motion.p>
-
-          {/* View Mode Switcher */}
-          <motion.div
-            {...fadeUp(0.24, rm)}
-            className="mt-6 flex items-center p-1 bg-[#FAF7F2] border-2 border-[#14100E] shadow-[3px_3px_0px_#14100E]"
-          >
-            <button
-              onClick={() => setViewMode('grid')}
-              className={`flex items-center gap-2 px-5 py-2 text-xs font-grotesk font-black uppercase tracking-[0.18em] transition-all duration-200 ${
-                viewMode === 'grid'
-                  ? 'bg-[#14100E] text-[#FAF7F2]'
-                  : 'text-[#14100E]/70 hover:text-[#14100E]'
-              }`}
-            >
-              <LayoutGrid className="w-3.5 h-3.5" />
-              Artisan Cards Grid
-            </button>
-            <button
-              onClick={() => setViewMode('journal')}
-              className={`flex items-center gap-2 px-5 py-2 text-xs font-grotesk font-black uppercase tracking-[0.18em] transition-all duration-200 ${
-                viewMode === 'journal'
-                  ? 'bg-[#14100E] text-[#FAF7F2]'
-                  : 'text-[#14100E]/70 hover:text-[#14100E]'
-              }`}
-            >
-              <BookOpen className="w-3.5 h-3.5" />
-              Journal Flipbook
-            </button>
-          </motion.div>
         </div>
       </div>
 
       {/* ── ALLERGEN NOTICE ─────────────────────────────────────────── */}
-      <div className="max-w-7xl mx-auto px-6 py-3 flex flex-col items-center border-b border-[#1F1612]/10 mb-6 bg-[#FBF7F1]/80">
-        <p className="text-[11px] text-[#1F1612]/60 italic text-center font-grotesk">
-          Ingredients and allergens: please inform our baristas before ordering.
+      <div className="max-w-5xl mx-auto px-6 py-2 flex flex-col items-center border-y border-latte/20 mb-4 bg-almond/15 rounded-lg">
+        <p className="text-[11px] text-ink/65 italic text-center font-inter">
+          Fresh ingredients, pure extracts &amp; zero artificial syrups. Please inform our baristas of any dietary allergies.
         </p>
       </div>
 
-      {/* ── DYNAMIC VIEW: CUSTOM CARDS OR FLIPBOOK ────────────────────── */}
-      {viewMode === 'grid' ? (
-        <FullMenuGrid />
-      ) : (
-        <div className="mt-4">
-          <FlipMenu />
-        </div>
-      )}
+      {/* ── DEDICATED FLIPBOOK MENU ─────────────────────────────────── */}
+      <div className="mt-2 pb-24 md:pb-12">
+        <FlipMenu />
+      </div>
 
       {/* ── MOBILE CART BAR ─────────────────────────────────────────── */}
       <AnimatePresence>
@@ -128,20 +92,21 @@ export const MenuPage = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={rm ? { opacity: 0 } : { opacity: 0, y: 24 }}
             transition={{ duration: 0.4, ease: EASE }}
-            className="fixed bottom-4 inset-x-4 max-w-xl mx-auto z-40 bg-[#1F1612] text-[#FBF7F1] border border-[#C9A012]/40 p-4 flex items-center justify-between shadow-2xl"
+            className="fixed bottom-4 inset-x-4 max-w-xl mx-auto z-40 bg-ink text-foam border border-latte/40 p-3.5 sm:p-4 rounded-xl flex items-center justify-between shadow-2xl backdrop-blur-md"
           >
             <div className="flex flex-col">
-              <span className="text-[10px] text-[#C9A27E] font-semibold uppercase tracking-widest font-grotesk">
+              <span className="text-[10px] text-latte font-semibold uppercase tracking-widest font-inter">
                 {totalItems} item{totalItems !== 1 && 's'} in order
               </span>
-              <span className="font-cormorant font-bold text-2xl text-[#FBF7F1]">₹{subtotal}</span>
+              <span className="font-playfair font-bold text-2xl text-foam">₹{subtotal}</span>
             </div>
             <button
               type="button"
               onClick={openCart}
-              className="px-6 py-2.5 bg-[#C9A012] hover:bg-[#E5B815] text-[#1F1612] font-bold font-grotesk text-xs uppercase tracking-[0.16em] transition-colors"
+              className="px-5 py-2.5 bg-caramel hover:bg-[#8C4E22] text-foam font-bold font-inter text-xs uppercase tracking-[0.16em] rounded-lg transition-colors flex items-center gap-1.5 shadow-md active:scale-95"
             >
-              View Order →
+              <span>View Order</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </motion.div>
         )}
@@ -151,3 +116,4 @@ export const MenuPage = () => {
 };
 
 export default MenuPage;
+

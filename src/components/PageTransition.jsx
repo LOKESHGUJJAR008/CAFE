@@ -3,13 +3,14 @@ import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { variants } from '../lib/variants';
 
-interface PageTransitionProps {
-  children: React.ReactNode;
-  className?: string;
-  transitionType?: 'fade' | 'slide' | 'scale' | 'fade-up';
-  loadingComponent?: React.ReactNode;
-  loadingDelay?: number;
-}
+/**
+ * @typedef {Object} PageTransitionProps
+ * @property {React.ReactNode} children
+ * @property {string} [className]
+ * @property {'fade' | 'slide' | 'scale' | 'fade-up'} [transitionType]
+ * @property {React.ReactNode} [loadingComponent]
+ * @property {number} [loadingDelay]
+ */
 
 const transitionVariants = {
   fade: {
@@ -44,7 +45,7 @@ export const PageTransition = ({
   transitionType = 'fade-up',
   loadingComponent = null,
   loadingDelay = 200,
-}: PageTransitionProps) => {
+}) => {
   const location = useLocation();
   const { prefersReducedMotion } = useReducedMotion();
   const [isLoading, setIsLoading] = useState(false);
@@ -104,12 +105,7 @@ export const PageTransition = ({
   );
 };
 
-export interface LayoutTransitionProps {
-  children: React.ReactNode;
-  className?: string;
-}
-
-export const LayoutTransition = ({ children, className = '' }: LayoutTransitionProps) => {
+export const LayoutTransition = ({ children, className = '' }) => {
   const { prefersReducedMotion } = useReducedMotion();
 
   return (
@@ -125,13 +121,7 @@ export const LayoutTransition = ({ children, className = '' }: LayoutTransitionP
   );
 };
 
-export interface SharedLayoutProps {
-  children: React.ReactNode;
-  layoutId?: string;
-  className?: string;
-}
-
-export const SharedLayout = ({ children, layoutId, className = '' }: SharedLayoutProps) => {
+export const SharedLayout = ({ children, layoutId, className = '' }) => {
   const { prefersReducedMotion } = useReducedMotion();
 
   return (
