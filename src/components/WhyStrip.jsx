@@ -7,12 +7,12 @@ export const WhyStrip = () => {
 
   return (
     <section
-      className="bg-[#FBF7F1] py-20 md:py-32 px-6 sm:px-10 lg:px-14"
+      className="bg-[#FAF7F2] py-12 md:py-16 px-6 sm:px-10 lg:px-14 border-b-2 border-[#14100E]"
       aria-label="Why TATVA"
     >
       <div className="max-w-7xl mx-auto">
         {/* Top thin rule */}
-        <div className="w-full h-[1px] bg-[#1F1612]/10 mb-16" />
+        <div className="w-full h-[1px] bg-[#14100E]/10 mb-10" />
 
         {/* Editorial split: Left = big serif, Right = small caps prose */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">

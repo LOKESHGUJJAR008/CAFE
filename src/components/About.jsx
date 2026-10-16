@@ -1,143 +1,203 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Compass, Sparkles, MapPin, Coffee } from 'lucide-react';
 import { aboutData } from '../data/about';
 
-/**
- * Story Section (replaces Home About)
- * Desktop: three-panel band, equal height (~520px)
- *   Left (38%): espresso panel with eyebrow, heading, 2 paragraphs, pill button
- *   Center (40%): image slot getHomeImage('story') with designed fallback
- *   Right (22%): cream panel with Est. 2021, vertical rule, Talwandi, Kota, and tagline
- * Mobile: purpose-built order: image (4/3) -> espresso panel -> slim cream strip
- */
+// High-end architectural and detail photography
+import sanctuaryImg from '../assets/images/about-sanctuary.jpg';
+import latteDetailImg from '../assets/images/about-latte-detail.jpg';
+
 export const Story = () => {
   const prefersReducedMotion = useReducedMotion();
-
-  const renderVisualStage = (className = "") => (
-    <div className={`relative overflow-hidden w-full h-full flex items-center justify-center ${className}`}>
-      <img
-        src="/images/gallery/cafe-1.webp"
-        alt="TATVA Café atmosphere and story"
-        width={600}
-        height={520}
-        loading="lazy"
-        className="w-full h-full object-cover"
-      />
-    </div>
-  );
 
   return (
     <section
       id="story"
-      className="relative w-full bg-foam text-ink overflow-hidden"
+      className="relative w-full bg-[#FAF7F2] text-[#14100E] border-b-2 border-[#14100E] selection:bg-[#14100E] selection:text-[#FAF7F2] overflow-hidden"
+      aria-label="The TATVA Story"
     >
-      {/* ── DESKTOP (>=1024px): Three-panel band, equal height ~520px ── */}
-      <motion.div
-        initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-60px' }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-        className="hidden lg:flex w-full h-[520px]"
-      >
-        {/* Left Panel: ~38% foam */}
-        <div className="w-[38%] bg-[#FBF7F1] p-10 xl:p-12 flex flex-col justify-center border-r border-[#1F1612]/10">
-          <span className="bd-eyebrow block mb-4">
-            {aboutData.eyebrow}
-          </span>
+      {/* ── Top Archival Running Ribbon (Full Width) ── */}
+      <div className="border-b-2 border-[#14100E] py-2.5 px-6 overflow-hidden bg-[#FAF7F2] select-none">
+        <div className="flex items-center justify-between gap-6 whitespace-nowrap text-xs text-[#14100E]">
+          {[...Array(5)].map((_, i) => (
+            <div key={i} className="flex items-center gap-4">
+              <span className="w-8 h-[1px] bg-[#14100E]/40" />
+              <span className="font-grotesk text-[10px] font-black uppercase tracking-[0.25em] text-[#A8612E]">
+                PROVENANCE & ARCHIVE · 01
+              </span>
+              <span className="w-8 h-[1px] bg-[#14100E]/40" />
+              <span className="font-cormorant italic text-base font-medium text-[#14100E]">
+                The Sanctuary in <span className="font-semibold not-italic">Talwandi</span>
+              </span>
+              <span className="w-8 h-[1px] bg-[#14100E]/40" />
+              <span className="font-grotesk text-[11px] font-semibold uppercase tracking-wider text-[#14100E]/80">
+                Where Time Slows Down
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
 
-          <h2 className="font-cormorant font-semibold text-[#1F1612] text-4xl xl:text-5xl leading-[1] tracking-[-0.02em] mb-6">
-            {aboutData.heading}
-          </h2>
+      {/* ── 3-Panel Swiss Editorial Grid (Full Width Edge-to-Edge) ── */}
+      <div className="w-full grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x-2 divide-[#14100E] bg-[#FAF7F2]">
+        
+        {/* ══════════════════════════════════════════════════════════════
+            PANEL 1: Narrative & Manifesto (Left ~38% / 5 cols)
+            Interactive opposite color inversion on hover
+            ══════════════════════════════════════════════════════════════ */}
+        <div className="lg:col-span-5 p-8 sm:p-12 xl:p-14 flex flex-col justify-between bg-[#FAF7F2] hover:bg-[#14100E] transition-all duration-500 group cursor-default select-none">
+          <div>
+            {/* Eyebrow Stamp */}
+            <div className="flex items-center gap-2 mb-4">
+              <span className="inline-block bg-[#14100E] text-[#FAF7F2] group-hover:bg-[#FAF7F2] group-hover:text-[#14100E] px-3 py-1 font-grotesk font-black text-[9px] uppercase tracking-[0.25em] transition-colors duration-300">
+                OUR GENESIS · TALWANDI
+              </span>
+              <span className="font-grotesk text-[10px] uppercase tracking-widest text-[#A8612E] group-hover:text-[#C9A27E] font-bold transition-colors">
+                EST. 2021
+              </span>
+            </div>
 
-          <div className="space-y-3.5 text-[#1F1612]/70 text-sm leading-relaxed mb-8 font-grotesk">
-            {aboutData.paragraphs.map((p, idx) => (
-              <p key={idx}>{p}</p>
-            ))}
+            {/* Massive Editorial Headline */}
+            <h2 className="font-grotesk font-black text-4xl sm:text-5xl xl:text-6xl text-[#14100E] group-hover:text-[#FAF7F2] uppercase tracking-tight leading-[0.95] mb-6 transition-colors duration-300">
+              More Than<br />
+              <span className="font-cormorant italic font-normal text-[#A8612E] group-hover:text-[#C9A27E] transition-colors">
+                Just Coffee.
+              </span>
+            </h2>
+
+            {/* Prose */}
+            <div className="space-y-4 text-xs sm:text-[13px] leading-relaxed text-[#14100E]/75 group-hover:text-[#FAF7F2]/80 font-grotesk transition-colors duration-300">
+              <p>
+                Nestled in the bustling student sanctuary of Talwandi, Kota, TATVA was founded with a singular aspiration: to create a warm, architectural refuge where time slows down. We unite modern minimalist coffee culture with heartfelt Indian hospitality.
+              </p>
+              <p>
+                Every batch of single-origin Arabica is roasted with precision and dialed in daily by our passionate baristas. Whether you are studying for high-stakes exams, catching up with close friends, or seeking a quiet corner with a sketchbook, you'll always find your sanctuary here.
+              </p>
+            </div>
+
+            {/* 3 Pillar Micro-Badges */}
+            <div className="mt-8 pt-6 border-t border-[#14100E]/15 group-hover:border-[#FAF7F2]/20 flex flex-col gap-2.5 transition-colors">
+              {[
+                { num: '01', title: 'Single-Origin Arabica', sub: 'Dialed in daily at 9 bar pressure' },
+                { num: '02', title: 'Acoustic Sanctuary', sub: 'High-speed optical fiber & quiet corners' },
+                { num: '03', title: 'Artisanal Patisserie', sub: 'Fresh bakes handcrafted every morning' },
+              ].map((item) => (
+                <div key={item.num} className="flex items-start gap-3 text-xs font-grotesk">
+                  <span className="font-bold text-[#A8612E] group-hover:text-[#C9A27E] tracking-wider transition-colors">
+                    {item.num}
+                  </span>
+                  <div>
+                    <span className="font-semibold text-[#14100E] group-hover:text-[#FAF7F2] uppercase tracking-wider block transition-colors">
+                      {item.title}
+                    </span>
+                    <span className="text-[11px] text-[#14100E]/50 group-hover:text-[#FAF7F2]/50 transition-colors">
+                      {item.sub}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <Link
-            to="/about"
-            className="bd-btn self-start"
-          >
-            Our Story
-          </Link>
-        </div>
-
-        {/* Center Panel: ~40% image slot or fallback */}
-        <div className="w-[40%] h-full">
-          {renderVisualStage("h-full")}
-        </div>
-
-        {/* Right Panel: ~22% narrow cream panel */}
-        <div className="w-[22%] bg-foam p-8 flex flex-col items-center justify-center text-center border-l border-latte/40/20">
-          <span className="text-xs font-bold uppercase tracking-[0.25em] text-ink font-inter">
-            {aboutData.est}
-          </span>
-
-          <div className="w-px h-10 bg-foam/25 my-4" />
-
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-ink font-inter">
-            {aboutData.location}
-          </span>
-
-          <div className="w-px h-10 bg-foam/25 my-4" />
-
-          <p className="font-playfair italic text-lg xl:text-xl text-caramel leading-snug max-w-[200px]">
-            “{aboutData.tagline}”
-          </p>
-        </div>
-      </motion.div>
-
-      {/* ── MOBILE / TABLET (<1024px): Purpose-built vertical flow ── */}
-      <div className="lg:hidden flex flex-col w-full">
-        {/* 1. Image first (aspect 4/3) */}
-        <div className="w-full aspect-[4/3] relative">
-          {renderVisualStage()}
-        </div>
-
-        {/* 2. Full-width Espresso Panel */}
-        <div className="w-full bg-foam px-6 py-12 sm:px-10 sm:py-14">
-          <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-caramel mb-2 block font-inter">
-            {aboutData.eyebrow}
-          </span>
-
-          <h2 className="font-playfair font-bold text-3xl sm:text-4xl text-ink tracking-tight leading-[1.2] mb-5">
-            {aboutData.heading}
-          </h2>
-
-          <div className="space-y-3.5 text-ink/85 text-sm sm:text-base leading-relaxed mb-7">
-            {aboutData.paragraphs.map((p, idx) => (
-              <p key={idx}>{p}</p>
-            ))}
+          {/* Action Button */}
+          <div className="mt-10 pt-4">
+            <Link
+              to="/about"
+              className="inline-flex items-center justify-center rounded-full border border-[#14100E] group-hover:border-[#FAF7F2] px-8 py-3 text-xs font-grotesk font-bold uppercase tracking-[0.2em] text-[#14100E] group-hover:text-[#FAF7F2] group-hover:hover:!bg-[#FAF7F2] group-hover:hover:!text-[#14100E] transition-all duration-300 shadow-sm"
+            >
+              <span>EXPLORE FULL CHRONICLE</span>
+              <ArrowRight className="w-3.5 h-3.5 ml-2" />
+            </Link>
           </div>
-
-          <Link
-            to="/about"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-foam/40 text-ink hover:bg-foam hover:text-ink text-xs sm:text-sm font-semibold tracking-wide transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-caramel"
-          >
-            <span>Our Story</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
         </div>
 
-        {/* 3. Slim Cream Strip with Est. 2021, divider, Talwandi, Kota, and Tagline */}
-        <div className="w-full bg-foam px-6 py-6 border-t border-latte/40/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <div className="flex items-center gap-3">
-            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-ink font-inter">
-              {aboutData.est}
+        {/* ══════════════════════════════════════════════════════════════
+            PANEL 2: Cinematic Architectural Sanctuary Image (Center ~42% / 5 cols)
+            ══════════════════════════════════════════════════════════════ */}
+        <div className="lg:col-span-4 relative bg-[#14100E] overflow-hidden group min-h-[440px] lg:min-h-[620px] flex items-center justify-center">
+          <img
+            src={sanctuaryImg}
+            alt="TATVA Café Sanctuary Interior with Golden Light and Oak Counter"
+            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-95 group-hover:opacity-100"
+          />
+
+          {/* Top-Left Darkroom Archive Stamp */}
+          <div className="absolute top-5 left-5 bg-[#FAF7F2] text-[#14100E] px-3.5 py-2 border border-[#14100E] shadow-xl z-10 select-none">
+            <span className="block text-[8px] font-grotesk font-black tracking-[0.25em] uppercase text-[#14100E]/70">
+              ARCHIVE NEGATIVE 04-A
             </span>
-            <div className="w-px h-4 bg-foam/30" />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-ink font-inter">
-              {aboutData.location}
+            <span className="block text-xs font-grotesk font-black tracking-tight leading-none uppercase text-[#14100E] mt-0.5">
+              THE TALWANDI SANCTUARY
             </span>
           </div>
 
-          <p className="font-playfair italic text-base sm:text-lg text-caramel">
-            “{aboutData.tagline}”
-          </p>
+          {/* Bottom Coordinates Strip */}
+          <div className="absolute bottom-5 inset-x-5 flex items-center justify-between bg-[#14100E]/80 backdrop-blur-md text-[#FAF7F2] px-4 py-2 border border-[#FAF7F2]/20 text-[10px] font-grotesk tracking-wider">
+            <span className="flex items-center gap-1.5 uppercase font-bold text-[#C9A27E]">
+              <MapPin className="w-3 h-3 text-[#A8612E]" />
+              Talwandi, Kota · Rajasthan
+            </span>
+            <span className="font-mono text-[#FAF7F2]/60 hidden sm:inline">
+              25.1384° N, 75.8456° E
+            </span>
+          </div>
         </div>
+
+        {/* ══════════════════════════════════════════════════════════════
+            PANEL 3: Macro Craft Detail & Provenance Stats (Right ~25% / 3 cols)
+            ══════════════════════════════════════════════════════════════ */}
+        <div className="lg:col-span-3 flex flex-col divide-y-2 divide-[#14100E] bg-[#FAF7F2]">
+          
+          {/* Top Half: Macro Craft Photo (Microfoam Tulip & Limestone Table) */}
+          <div className="relative aspect-square sm:aspect-[4/3] lg:aspect-square overflow-hidden group bg-[#14100E]">
+            <img
+              src={latteDetailImg}
+              alt="Artisanal Latte Microfoam Tulip Detail on Limestone Counter"
+              className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            />
+            
+            {/* Minimal Inset Badge */}
+            <div className="absolute top-4 right-4 bg-[#FAF7F2] text-[#14100E] px-2.5 py-1 text-[8px] font-grotesk font-black uppercase tracking-[0.2em] border border-[#14100E]">
+              CRAFT RITUAL
+            </div>
+            <div className="absolute bottom-3 left-3 bg-[#14100E]/75 backdrop-blur-sm text-[#FAF7F2] px-2.5 py-1 text-[9px] font-grotesk tracking-wider uppercase">
+              100% Arabica Micro-Lot
+            </div>
+          </div>
+
+          {/* Bottom Half: Provenance & Manifesto Stats Box */}
+          <div className="p-8 xl:p-10 flex flex-col justify-between flex-1 bg-[#FAF7F2] hover:bg-[#14100E] transition-all duration-500 group cursor-default select-none">
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <span className="font-grotesk font-black text-3xl sm:text-4xl text-[#14100E] group-hover:text-[#FAF7F2] tracking-tighter transition-colors">
+                  2021
+                </span>
+                <span className="font-grotesk text-[9px] font-bold uppercase tracking-[0.25em] text-[#A8612E] group-hover:text-[#C9A27E] transition-colors">
+                  FOUNDED
+                </span>
+              </div>
+
+              <div className="w-8 h-[2px] bg-[#14100E] group-hover:bg-[#C9A27E] mb-6 transition-colors" />
+
+              <p className="font-cormorant italic text-xl xl:text-2xl text-[#14100E] group-hover:text-[#FAF7F2] leading-snug mb-6 transition-colors">
+                “Where every sip feels like home.”
+              </p>
+            </div>
+
+            <div className="pt-4 border-t border-[#14100E]/15 group-hover:border-[#FAF7F2]/20 transition-colors">
+              <span className="block font-grotesk text-[10px] font-bold uppercase tracking-[0.2em] text-[#14100E]/60 group-hover:text-[#FAF7F2]/60">
+                COMMUNITY RATING
+              </span>
+              <div className="flex items-center gap-1.5 mt-1 font-grotesk text-xs font-bold text-[#14100E] group-hover:text-[#FAF7F2]">
+                <span className="text-[#A8612E] group-hover:text-[#C9A27E]">★★★★★</span>
+                <span>4.9 / 5.0 (650+ Reviews)</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </section>
   );

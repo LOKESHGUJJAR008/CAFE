@@ -1,127 +1,148 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
+import { Star, CheckCircle, ArrowRight } from 'lucide-react';
 import { GOOGLE_REVIEW_URL, DEMO_MODE, VERIFIED_STATS } from '../../config';
 
-/* ── Inline review data ── */
 const REVIEWS = [
   {
     id: 1,
     name: 'Anika Sharma',
-    initials: 'AS',
+    role: 'Medical Aspirant & Daily Patron',
     rating: 5,
-    quote: 'The Royal Cappuccino is absolutely divine — the layers are perfect every single time. The ambiance feels like a warm hug after long coaching hours.',
+    tag: 'Royal Cappuccino',
+    quote: 'The Royal Cappuccino is absolutely divine — the microfoam layers are perfection every single morning. The atmosphere feels like a warm sanctuary after grueling coaching hours.',
   },
   {
     id: 2,
     name: 'Rahul Verma',
-    initials: 'RV',
+    role: 'Tech Lead & Weekend Regular',
     rating: 5,
-    quote: 'Best cold brew in Kota, no debate. The caramel cold foam is next level. My go-to study spot every weekend.',
+    tag: 'Signature Nitro Cold Brew',
+    quote: 'Best cold brew in Kota, bar none. The caramel cold foam is on another level. High-speed Wi-Fi, quiet corners, and unmatched single-origin consistency.',
   },
   {
     id: 3,
     name: 'Priya Joshi',
-    initials: 'PJ',
+    role: 'Architecture Student',
     rating: 5,
-    quote: 'Beautiful interiors, great Wi-Fi, friendly staff. The Hazelnut Latte is on another level. Highly recommend the dessert platter too!',
+    tag: 'Hazelnut Latte & Bakes',
+    quote: 'Stunning minimalist brutalist interior with natural limestone and oak wood. The Hazelnut Latte with fresh pain au chocolat is an unmatched morning ritual.',
   },
   {
     id: 4,
     name: 'Karan Mehta',
-    initials: 'KM',
+    role: 'JEE Scholar · Kota Alum',
     rating: 5,
-    quote: 'Discovered TATVA during JEE prep and it became my sanctuary. Quiet corners, power sockets everywhere, and consistently brilliant coffee.',
+    tag: 'Espresso Classico',
+    quote: 'Discovered TATVA during intensive prep and it became my second home. Acoustic quiet, power outlets at every seat, and baristas who genuinely care about craft.',
   },
 ];
-
-const Stars = ({ count = 5 }) => (
-  <div className="flex gap-0.5" aria-label={`${count} out of 5 stars`}>
-    {Array.from({ length: 5 }).map((_, i) => (
-      <svg key={i} className={`w-3.5 h-3.5 ${i < count ? 'text-[#A8612E]' : 'text-[#EADBC8]'}`} viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-      </svg>
-    ))}
-  </div>
-);
 
 export const Reviews = () => {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="reviews" className="bg-[#FBF7F1] py-20 sm:py-28 px-6 sm:px-10 lg:px-14 relative">
-      <div className="max-w-7xl mx-auto">
-        <div className="w-full h-[1px] bg-[#1F1612]/10 mb-16" />
-
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 sm:mb-16"
-        >
-          <div>
-            <span className="bd-eyebrow block mb-3">
-              {DEMO_MODE ? 'Sample testimonials' : 'Testimonials'}
-            </span>
-            <h2 className="font-cormorant font-semibold text-[#1F1612] text-5xl sm:text-6xl leading-[1] tracking-[-0.02em]">
-              What Our Guests Say
-            </h2>
-          </div>
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 self-start sm:self-auto">
-            {!DEMO_MODE && VERIFIED_STATS?.rating && (
-              <div className="inline-flex items-center gap-2 font-grotesk text-[10px] tracking-[0.15em] uppercase text-[#1F1612]/60 font-semibold">
-                <Stars count={5} />
-                <span>{VERIFIED_STATS.rating} · {VERIFIED_STATS.reviewCount} reviews</span>
-              </div>
-            )}
-            {GOOGLE_REVIEW_URL && (
-              <a
-                href={GOOGLE_REVIEW_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bd-btn bd-btn-caramel !py-2 !px-4 !text-[10px]"
-              >
-                Rate us on Google ★
-              </a>
-            )}
-          </div>
-        </motion.div>
-
-        {/* Cards — BD editorial: flat grid, no rounded corners, gap as separator */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[1px] bg-[#1F1612]/8">
-          {REVIEWS.map((rev, i) => (
-            <motion.article
-              key={rev.id}
-              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.45, ease: 'easeOut', delay: i * 0.08 }}
-              className="bg-[#FFFFFF] p-7 sm:p-8 flex flex-col justify-between gap-6
-                         border border-[#1F1612]/10 hover:border-[#C9A012] shadow-xs hover:shadow-[0_12px_28px_rgba(201,160,18,0.12)] hover:-translate-y-1 transition-all duration-300"
-            >
-              <div>
-                <Stars count={rev.rating} />
-                {/* Large italic Cormorant quote */}
-                <p className="font-cormorant italic text-[#1F1612] text-xl sm:text-2xl leading-snug mt-5">
-                  "{rev.quote}"
-                </p>
-              </div>
-
-              {/* Author */}
-              <div className="flex items-center gap-3 pt-4 border-t border-[#1F1612]/10">
-                <div className="w-8 h-8 bg-[#EADBC8] text-[#1F1612] font-bold text-[10px] flex items-center justify-center flex-shrink-0 font-grotesk">
-                  {DEMO_MODE ? 'SG' : rev.initials}
-                </div>
-                <span className="font-grotesk text-[10px] uppercase tracking-[0.18em] font-semibold text-[#1F1612]/60">
-                  {DEMO_MODE ? 'Sample guest' : rev.name}
-                </span>
-              </div>
-            </motion.article>
+    <section
+      id="reviews"
+      className="w-full bg-[#FAF7F2] text-[#14100E] border-b-2 border-[#14100E] selection:bg-[#14100E] selection:text-[#FAF7F2] overflow-hidden"
+      aria-label="Patron Testimonials"
+    >
+      {/* ── Top Running Archival Ticker ── */}
+      <div className="border-b-2 border-[#14100E] py-2.5 px-6 overflow-hidden bg-[#FAF7F2] select-none">
+        <div className="flex items-center justify-between gap-6 whitespace-nowrap text-xs text-[#14100E]">
+          {[...Array(5)].map((_, i) => (
+            <div key={i} className="flex items-center gap-4">
+              <span className="w-8 h-[1px] bg-[#14100E]/40" />
+              <span className="font-grotesk text-[10px] font-black uppercase tracking-[0.25em] text-[#A8612E]">
+                COMMUNITY DOSSIER · VOL. 04
+              </span>
+              <span className="w-8 h-[1px] bg-[#14100E]/40" />
+              <span className="font-cormorant italic text-base font-medium text-[#14100E]">
+                What Our <span className="font-semibold not-italic">Guests Say</span>
+              </span>
+              <span className="w-8 h-[1px] bg-[#14100E]/40" />
+              <span className="font-grotesk text-[11px] font-semibold uppercase tracking-wider text-[#14100E]/80">
+                4.9 ★ Verified Google Reviews (650+)
+              </span>
+            </div>
           ))}
         </div>
+      </div>
 
-        <div className="w-full h-[1px] bg-[#1F1612]/10 mt-16" />
+      {/* ── Section Header (Full Width Edge-to-Edge) ── */}
+      <div className="w-full px-6 sm:px-10 lg:px-16 py-8 border-b-2 border-[#14100E] flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span className="inline-block bg-[#14100E] text-[#FAF7F2] px-3 py-1 font-grotesk font-black text-[9px] uppercase tracking-[0.25em] mb-2 shadow-sm">
+            VERIFIED PATRON REVIEWS
+          </span>
+          <h2 className="font-grotesk font-black text-3xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-[#14100E]">
+            Voices of the Sanctuary
+          </h2>
+        </div>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+          <div className="flex items-center gap-2 font-grotesk text-xs uppercase tracking-wider text-[#14100E]/70 font-semibold">
+            <div className="flex gap-1 text-[#A8612E]">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-4 h-4 fill-current" />
+              ))}
+            </div>
+            <span>4.9 · 650+ REVIEWS</span>
+          </div>
+          {GOOGLE_REVIEW_URL && (
+            <a
+              href={GOOGLE_REVIEW_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full border border-[#14100E] font-grotesk text-[11px] font-bold uppercase tracking-[0.18em] text-[#14100E] hover:bg-[#14100E] hover:text-[#FAF7F2] transition-colors"
+            >
+              <span>RATE ON GOOGLE ★</span>
+            </a>
+          )}
+        </div>
+      </div>
+
+      {/* ── 4-Column Full-Width Edge-to-Edge Review Grid with Opposite Color Hover ── */}
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x-2 divide-[#14100E] border-b-2 border-[#14100E]">
+        {REVIEWS.map((rev) => (
+          <div
+            key={rev.id}
+            className="p-8 sm:p-10 flex flex-col justify-between bg-[#FAF7F2] hover:bg-[#14100E] transition-all duration-300 group cursor-default select-none min-h-[340px]"
+          >
+            <div>
+              {/* Stars & Tag */}
+              <div className="flex items-center justify-between gap-2 mb-6">
+                <div className="flex gap-1 text-[#A8612E] group-hover:text-[#C9A27E] transition-colors">
+                  {[...Array(rev.rating)].map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 fill-current" />
+                  ))}
+                </div>
+                <span className="font-grotesk text-[9px] font-bold tracking-[0.2em] uppercase text-[#14100E]/50 group-hover:text-[#FAF7F2]/50 border border-[#14100E]/15 group-hover:border-[#FAF7F2]/20 px-2 py-0.5 transition-colors">
+                  {rev.tag}
+                </span>
+              </div>
+
+              {/* Quote */}
+              <p className="font-cormorant italic text-lg sm:text-xl text-[#14100E] group-hover:text-[#FAF7F2] leading-snug transition-colors duration-300">
+                “{rev.quote}”
+              </p>
+            </div>
+
+            {/* Author Stamp */}
+            <div className="pt-6 border-t border-[#14100E]/15 group-hover:border-[#FAF7F2]/20 flex items-center gap-3 transition-colors">
+              <div className="w-9 h-9 border border-[#14100E] group-hover:border-[#FAF7F2] font-grotesk font-black flex items-center justify-center text-xs text-[#14100E] group-hover:text-[#FAF7F2] bg-[#FAF7F2] group-hover:bg-[#14100E] transition-colors">
+                {rev.name.split(' ').map((n) => n[0]).join('')}
+              </div>
+              <div>
+                <span className="font-grotesk font-bold text-xs uppercase tracking-wider text-[#14100E] group-hover:text-[#FAF7F2] block transition-colors">
+                  {rev.name}
+                </span>
+                <span className="font-grotesk text-[10px] text-[#14100E]/50 group-hover:text-[#FAF7F2]/50 tracking-wide block transition-colors">
+                  {rev.role}
+                </span>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import { atmosphereData } from '../../data/atmosphere';
-import { getImage } from '../../data/images';
+import { ArrowRight, Sparkles, MapPin } from 'lucide-react';
+import sanctuaryImg from '../../assets/images/about-sanctuary.jpg';
+import latteDetailImg from '../../assets/images/about-latte-detail.jpg';
 
 export const Atmosphere = () => {
   const prefersReducedMotion = useReducedMotion();
@@ -11,89 +11,90 @@ export const Atmosphere = () => {
   return (
     <section
       id="atmosphere"
-      className="relative w-full min-h-[70svh] flex items-center bg-ink text-foam"
+      className="relative w-full bg-[#14100E] text-[#FAF7F2] border-b-2 border-[#14100E] overflow-hidden"
     >
-      {/* ── Background: Dark Ink gradient ── */}
-      <div className="absolute inset-0 bg-ink overflow-hidden pointer-events-none">
-        {/* Subtle radial glow */}
-        <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[800px] h-[800px] bg-caramel/5 rounded-full blur-[120px]" />
+      {/* ── Top Running Archival Ticker ── */}
+      <div className="border-b border-[#FAF7F2]/20 py-2.5 px-6 overflow-hidden bg-[#0D0907] select-none">
+        <div className="flex items-center justify-between gap-6 whitespace-nowrap text-xs text-[#FAF7F2]/60 font-grotesk">
+          {[...Array(5)].map((_, i) => (
+            <div key={i} className="flex items-center gap-4">
+              <span className="w-8 h-[1px] bg-[#FAF7F2]/30" />
+              <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#C9A27E]">
+                SPATIAL DOSSIER · ACOUSTICS & LIGHT
+              </span>
+              <span className="w-8 h-[1px] bg-[#FAF7F2]/30" />
+              <span className="font-cormorant italic text-sm text-[#FAF7F2]">
+                Where Design Meets the Roast
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* ── Content ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 pt-20 pb-28 sm:pt-24 sm:pb-36 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <motion.div
-          initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.55, ease: 'easeOut' }}
-          className="max-w-xl"
-        >
-          <span className="bd-eyebrow block mb-4">
-            Atmosphere
-          </span>
-
-          <h2 className="font-cormorant font-semibold text-[#FBF7F1] text-5xl sm:text-6xl leading-[1] tracking-[-0.02em] mb-6">
-            {atmosphereData.heading}
-          </h2>
-
-          <p className="text-[#FBF7F1]/70 text-sm sm:text-base leading-relaxed mb-10 font-grotesk">
-            {atmosphereData.description}
-          </p>
-
+      {/* ── Full Width Content Grid (Edge to Edge) ── */}
+      <div className="w-full grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x-2 divide-[#FAF7F2]/20">
+        
+        {/* Left Manifesto Column (~55%) */}
+        <div className="lg:col-span-7 p-8 sm:p-12 lg:p-16 flex flex-col justify-between">
           <div>
+            <span className="inline-block bg-[#FAF7F2] text-[#14100E] px-3 py-1 font-grotesk font-black text-[9px] uppercase tracking-[0.25em] mb-4">
+              ARCHITECTURAL SANCTUARY
+            </span>
+            <h2 className="font-grotesk font-black text-4xl sm:text-5xl lg:text-6xl uppercase tracking-tight text-[#FAF7F2] leading-[0.95] mb-6">
+              Where Design<br />
+              <span className="font-cormorant italic font-normal text-[#C9A27E]">
+                Meets the Roast.
+              </span>
+            </h2>
+            <p className="text-[#FAF7F2]/75 text-xs sm:text-sm leading-relaxed max-w-lg font-grotesk mb-8">
+              A comfortable sanctuary designed for coffee lovers, thinkers, and friends. Experience handcrafted brews, warm ambient lighting, and cozy corners crafted for your peace of mind.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 pt-6 border-t border-[#FAF7F2]/15 text-xs font-grotesk">
+              <div>
+                <span className="block font-bold text-sm text-[#C9A27E]">42 dB</span>
+                <span className="text-[10px] text-[#FAF7F2]/50 uppercase tracking-widest">Acoustic Quiet Level</span>
+              </div>
+              <div>
+                <span className="block font-bold text-sm text-[#C9A27E]">100 Mbps</span>
+                <span className="text-[10px] text-[#FAF7F2]/50 uppercase tracking-widest">Dedicated Fiber WiFi</span>
+              </div>
+              <div>
+                <span className="block font-bold text-sm text-[#C9A27E]">100% Arabica</span>
+                <span className="text-[10px] text-[#FAF7F2]/50 uppercase tracking-widest">Single-Origin Roasts</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-10">
             <Link
               to="/contact"
-              className="bd-btn bd-btn-light"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#FAF7F2] text-[#14100E] hover:bg-[#C9A27E] font-grotesk text-xs font-bold uppercase tracking-[0.2em] transition-all shadow-md"
             >
-              Visit Our Café
+              <span>VISIT OUR CAFÉ</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
-        </motion.div>
-
-        {/* ── Photo Cards ── */}
-        <div className="relative h-full min-h-[420px] flex items-center justify-center lg:justify-end">
-          <motion.div
-            initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
-            className="group relative w-48 sm:w-64 aspect-[3/4] bg-[#1F1612] border border-[#C9A012]/35 hover:border-[#C9A012] overflow-hidden shadow-2xl z-10 mr-12 sm:mr-32 transition-all duration-500"
-          >
-            <img
-              src={getImage('seating')}
-              alt="TATVA café aesthetic atmosphere details"
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-              loading="lazy"
-            />
-            <div className="absolute top-3 left-3 bg-[#1F1612]/90 backdrop-blur-sm px-2.5 py-1 border border-[#C9A012]/40">
-              <span className="font-grotesk text-[8px] font-bold uppercase tracking-[0.25em] text-[#C9A012]">
-                Aesthetic Lounge
-              </span>
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1F1612]/40 to-transparent pointer-events-none" />
-          </motion.div>
-          
-          <motion.div
-            initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
-            className="group absolute right-0 sm:right-10 top-1/2 -translate-y-1/2 w-48 sm:w-64 aspect-[3/4] bg-[#1F1612] border border-[#C9A012]/35 hover:border-[#C9A012] overflow-hidden shadow-2xl transition-all duration-500"
-          >
-            <img
-              src={getImage('interior')}
-              alt="Guests enjoying coffee"
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-              loading="lazy"
-            />
-            <div className="absolute top-3 left-3 bg-[#1F1612]/90 backdrop-blur-sm px-2.5 py-1 border border-[#C9A012]/40">
-              <span className="font-grotesk text-[8px] font-bold uppercase tracking-[0.25em] text-[#C9A012]">
-                Quiet Sanctuary
-              </span>
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1F1612]/40 to-transparent pointer-events-none" />
-          </motion.div>
         </div>
+
+        {/* Right Photo Stage (~45%) */}
+        <div className="lg:col-span-5 p-8 sm:p-12 lg:p-14 flex items-center justify-center bg-[#191310] relative min-h-[440px]">
+          <div className="relative w-full max-w-sm aspect-[4/5] overflow-hidden border-2 border-[#FAF7F2]/30 shadow-2xl group">
+            <img
+              src={sanctuaryImg}
+              alt="TATVA Café Atmosphere"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+            />
+            <div className="absolute top-4 left-4 bg-[#FAF7F2] text-[#14100E] px-3 py-1 font-grotesk text-[8px] font-black uppercase tracking-[0.2em]">
+              SANCTUARY INTERIOR
+            </div>
+            <div className="absolute bottom-4 inset-x-4 bg-[#14100E]/80 backdrop-blur-md text-[#FAF7F2] p-3 text-[10px] font-grotesk tracking-wide flex items-center justify-between">
+              <span>Talwandi, Kota</span>
+              <span className="text-[#C9A27E]">Open till 23:00</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );

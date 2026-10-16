@@ -119,27 +119,27 @@ export const StudyHub = () => {
   return (
     <section
       id="study-hub"
-      className="bg-[#1F1612] py-20 md:py-24 overflow-hidden border-t border-[#FBF7F1]/10"
+      className="bg-[#14100E] text-[#FAF7F2] py-14 sm:py-20 overflow-hidden border-b-2 border-[#14100E] w-full"
       aria-label="Study Hub and Events"
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12">
+      <div className="w-full">
 
-        {/* ── Header row with desktop arrow buttons ── */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-14">
+        {/* ── Header row with desktop arrow buttons (Full Width) ── */}
+        <div className="w-full px-6 sm:px-10 lg:px-16 pb-6 border-b-2 border-[#FAF7F2]/20 flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-8">
           <motion.div
             initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
           >
-            <span className="bd-eyebrow block mb-3">
-              Happenings &amp; Community
+            <span className="inline-block bg-[#FAF7F2] text-[#14100E] px-3 py-1 font-grotesk font-black text-[9px] uppercase tracking-[0.25em] mb-2 shadow-sm">
+              HAPPENINGS &amp; COMMUNITY
             </span>
-            <h2 className="font-cormorant font-semibold text-5xl sm:text-6xl text-[#FBF7F1] leading-[1] tracking-[-0.02em]">
+            <h2 className="font-grotesk font-black text-3xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-[#FAF7F2]">
               Study Hub &amp; Gatherings
             </h2>
-            <p className="mt-3 text-[#FBF7F1]/70 text-xs sm:text-sm font-grotesk uppercase tracking-wider max-w-md">
-              Distraction-free morning study blocks, tasting sessions &amp; weekend community hours.
+            <p className="mt-2 text-[#FAF7F2]/70 text-xs sm:text-sm font-grotesk tracking-wide max-w-lg">
+              Distraction-free morning study blocks, tasting sessions &amp; weekend community hours in Talwandi.
             </p>
           </motion.div>
 
@@ -148,35 +148,33 @@ export const StudyHub = () => {
             <button
               onClick={() => scroll('left')}
               aria-label="Scroll events left"
-              className="w-10 h-10 rounded-full border border-foam/20 text-foam/70
-                         hover:border-caramel hover:text-caramel
-                         flex items-center justify-center transition-all
-                         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-caramel"
+              className="w-10 h-10 rounded-full border border-[#FAF7F2]/30 text-[#FAF7F2]
+                         hover:bg-[#FAF7F2] hover:text-[#14100E]
+                         flex items-center justify-center transition-all"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={() => scroll('right')}
               aria-label="Scroll events right"
-              className="w-10 h-10 rounded-full border border-foam/20 text-foam/70
-                         hover:border-caramel hover:text-caramel
-                         flex items-center justify-center transition-all
-                         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-caramel"
+              className="w-10 h-10 rounded-full border border-[#FAF7F2]/30 text-[#FAF7F2]
+                         hover:bg-[#FAF7F2] hover:text-[#14100E]
+                         flex items-center justify-center transition-all"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
           </div>
         </div>
 
-        {/* ── Scrollable cards row ── */}
+        {/* ── Scrollable cards row (Full Width Edge to Edge) ── */}
         <motion.div
           initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
           ref={scrollRef}
-          className="flex gap-5 overflow-x-auto snap-x snap-mandatory
-                     scrollbar-none pb-3 px-1 -mx-1"
+          className="flex gap-6 overflow-x-auto snap-x snap-mandatory
+                     scrollbar-none pb-6 px-6 sm:px-10 lg:px-16"
         >
           {EVENTS.map((event) => (
             <EventCard key={event.id} event={event} />
