@@ -1,6 +1,6 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
-export const useScrollProgress = (): number => {
+export const useScrollProgress = () => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -20,11 +20,11 @@ export const useScrollProgress = (): number => {
   return progress;
 };
 
-export const useElementScrollProgress = (elementRef: React.RefObject<HTMLElement>): number => {
+export const useElementScrollProgress = (elementRef) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const element = elementRef.current;
+    const element = elementRef?.current;
     if (!element) return;
 
     const updateProgress = () => {
@@ -52,8 +52,8 @@ export const useElementScrollProgress = (elementRef: React.RefObject<HTMLElement
   return progress;
 };
 
-export const useScrollDirection = (): 'up' | 'down' | null => {
-  const [direction, setDirection] = useState<'up' | 'down' | null>(null);
+export const useScrollDirection = () => {
+  const [direction, setDirection] = useState(null);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
@@ -74,9 +74,7 @@ export const useScrollDirection = (): 'up' | 'down' | null => {
   return direction;
 };
 
-import { useRef } from 'react';
-
-export const useScrollPosition = (): { x: number; y: number } => {
+export const useScrollPosition = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {

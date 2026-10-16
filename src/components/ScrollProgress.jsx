@@ -1,15 +1,6 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useScrollProgress } from '../hooks/useScrollProgress';
-import { ANIMATION } from '../config';
-
-interface ScrollProgressBarProps {
-  className?: string;
-  color?: string;
-  height?: number;
-  position?: 'top' | 'bottom';
-  zIndex?: number;
-}
 
 export const ScrollProgressBar = ({
   className = '',
@@ -17,9 +8,9 @@ export const ScrollProgressBar = ({
   height = 3,
   position = 'top',
   zIndex = 50,
-}: ScrollProgressBarProps) => {
+}) => {
   const progress = useScrollProgress();
-  const { prefersReducedMotion } = useReducedMotion();
+  const prefersReducedMotion = useReducedMotion();
 
   if (prefersReducedMotion) return null;
 
@@ -51,23 +42,15 @@ export const ScrollProgressBar = ({
   );
 };
 
-interface CircularProgressProps {
-  className?: string;
-  color?: string;
-  size?: number;
-  strokeWidth?: number;
-  showPercentage?: boolean;
-}
-
 export const CircularScrollProgress = ({
   className = '',
   color = '#A8612E',
   size = 48,
   strokeWidth = 4,
   showPercentage = false,
-}: CircularProgressProps) => {
+}) => {
   const progress = useScrollProgress();
-  const { prefersReducedMotion } = useReducedMotion();
+  const prefersReducedMotion = useReducedMotion();
 
   if (prefersReducedMotion) return null;
 
@@ -116,23 +99,13 @@ export const CircularScrollProgress = ({
   );
 };
 
-interface SectionProgressProps {
-  sections: Array<{ id: string; name: string }>;
-  activeSection: string;
-  onSectionClick: (id: string) => void;
-  className?: string;
-  orientation?: 'horizontal' | 'vertical';
-}
-
 export const SectionProgress = ({
   sections,
   activeSection,
   onSectionClick,
   className = '',
   orientation = 'horizontal',
-}: SectionProgressProps) => {
-  const { prefersReducedMotion } = useReducedMotion();
-
+}) => {
   return (
     <nav
       className={`

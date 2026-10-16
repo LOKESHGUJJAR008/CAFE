@@ -1,25 +1,17 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 
-interface ParallaxLayerProps {
-  children: React.ReactNode;
-  speed?: number;
-  offset?: number;
-  className?: string;
-  style?: React.CSSProperties;
-}
-
 export const ParallaxLayer = ({
   children,
   speed = 0.3,
   offset = 0,
   className = '',
   style = {},
-}: ParallaxLayerProps) => {
-  const { prefersReducedMotion } = useReducedMotion();
+}) => {
+  const prefersReducedMotion = useReducedMotion();
   const [transform, setTransform] = useState({ x: 0, y: 0 });
-  const elementRef = useRef<HTMLDivElement>(null);
-  const rafRef = useRef<number>();
+  const elementRef = useRef(null);
+  const rafRef = useRef();
 
   useEffect(() => {
     if (prefersReducedMotion) return;
@@ -67,26 +59,12 @@ export const ParallaxLayer = ({
   );
 };
 
-interface ParallaxContainerProps {
-  children: React.ReactNode;
-  className?: string;
-  style?: React.CSSProperties;
-  layers: Array<{
-    speed: number;
-    offset?: number;
-    children: React.ReactNode;
-    className?: string;
-  }>;
-}
-
 export const ParallaxContainer = ({
   children,
   className = '',
   style = {},
   layers = [],
-}: ParallaxContainerProps) => {
-  const { prefersReducedMotion } = useReducedMotion();
-
+}) => {
   return (
     <div
       className={`
@@ -110,27 +88,20 @@ export const ParallaxContainer = ({
   );
 };
 
-interface MouseParallaxProps {
-  children: React.ReactNode;
-  strength?: number;
-  className?: string;
-  style?: React.CSSProperties;
-}
-
 export const MouseParallax = ({
   children,
   strength = 20,
   className = '',
   style = {},
-}: MouseParallaxProps) => {
-  const { prefersReducedMotion } = useReducedMotion();
+}) => {
+  const prefersReducedMotion = useReducedMotion();
   const [transform, setTransform] = useState({ x: 0, y: 0 });
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     if (prefersReducedMotion) return;
 
-    const handleMouseMove = (e: MouseEvent) => {
+    const handleMouseMove = (e) => {
       if (!containerRef.current) return;
 
       const rect = containerRef.current.getBoundingClientRect();

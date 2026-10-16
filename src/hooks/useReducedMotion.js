@@ -1,13 +1,11 @@
 import { useEffect, useState, useCallback } from 'react';
 
-export type ReducedMotionLevel = 'none' | 'minimal' | 'full';
-
 const STORAGE_KEY = 'royal-bean-reduced-motion';
 
-export const useReducedMotion = (): { level: ReducedMotionLevel; prefersReducedMotion: boolean } => {
-  const [level, setLevel] = useState<ReducedMotionLevel>(() => {
+export const useReducedMotion = () => {
+  const [level, setLevel] = useState(() => {
     if (typeof window === 'undefined') return 'none';
-    const stored = localStorage.getItem(STORAGE_KEY) as ReducedMotionLevel | null;
+    const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) return stored;
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     return mediaQuery.matches ? 'full' : 'none';
@@ -19,7 +17,7 @@ export const useReducedMotion = (): { level: ReducedMotionLevel; prefersReducedM
     if (typeof window === 'undefined') return;
 
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const handleChange = (e: MediaQueryListEvent) => {
+    const handleChange = (e) => {
       setPrefersReducedMotion(e.matches);
       if (e.matches && level !== 'full') {
         setLevel('full');
@@ -32,7 +30,7 @@ export const useReducedMotion = (): { level: ReducedMotionLevel; prefersReducedM
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, [level]);
 
-  const setReducedMotionLevel = useCallback((newLevel: ReducedMotionLevel) => {
+  const setReducedMotionLevel = useCallback((newLevel) => {
     setLevel(newLevel);
     localStorage.setItem(STORAGE_KEY, newLevel);
   }, []);
@@ -48,14 +46,14 @@ export const useReducedMotion = (): { level: ReducedMotionLevel; prefersReducedM
   };
 };
 
-export const usePrefersReducedMotion = (): boolean => {
+export const usePrefersReducedMotion = () => {
   const [prefers, setPrefers] = useState(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const handleChange = (e: MediaQueryListEvent) => setPrefers(e.matches);
+    const handleChange = (e) => setPrefers(e.matches);
 
     setPrefers(mediaQuery.matches);
     mediaQuery.addEventListener('change', handleChange);

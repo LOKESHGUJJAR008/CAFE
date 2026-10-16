@@ -1,41 +1,25 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 
-interface FrameMetrics {
-  fps: number;
-  frameTime: number;
-  droppedFrames: number;
-  totalFrames: number;
-}
-
-interface AnimationBudgetOptions {
-  sampleSize?: number;
-  warningThreshold?: number;
-  onWarning?: (metrics: FrameMetrics) => void;
-}
-
-export const useAnimationBudget = (options: AnimationBudgetOptions = {}): FrameMetrics & {
-  isOverBudget: boolean;
-  reset: () => void;
-} => {
+export const useAnimationBudget = (options = {}) => {
   const {
     sampleSize = 120,
     warningThreshold = 16.67,
     onWarning,
   } = options;
 
-  const [metrics, setMetrics] = useState<FrameMetrics>({
+  const [metrics, setMetrics] = useState({
     fps: 60,
     frameTime: 16.67,
     droppedFrames: 0,
     totalFrames: 0,
   });
 
-  const framesRef = useRef<number[]>([]);
-  const lastTimeRef = useRef<number>(performance.now());
-  const animationIdRef = useRef<number>();
+  const framesRef = useRef([]);
+  const lastTimeRef = useRef(performance.now());
+  const animationIdRef = useRef();
   const warningTriggeredRef = useRef(false);
 
-  const measureFrame = useCallback((currentTime: number) => {
+  const measureFrame = useCallback((currentTime) => {
     const frameTime = currentTime - lastTimeRef.current;
     lastTimeRef.current = currentTime;
 
@@ -49,7 +33,7 @@ export const useAnimationBudget = (options: AnimationBudgetOptions = {}): FrameM
     const avgFrameTime = framesRef.current.reduce((a, b) => a + b, 0) / totalFrames;
     const fps = 1000 / avgFrameTime;
 
-    const newMetrics: FrameMetrics = {
+    const newMetrics = {
       fps: Math.round(fps),
       frameTime: Math.round(avgFrameTime * 100) / 100,
       droppedFrames,
@@ -97,10 +81,9 @@ export const useAnimationBudget = (options: AnimationBudgetOptions = {}): FrameM
   };
 };
 
-export const useReducedMotionAuto = (): boolean => {
+export const useReducedMotionAuto = () => {
   const { isOverBudget } = useAnimationBudget({
     onWarning: () => {
-      // Could dispatch event to notify components to reduce motion
       window.dispatchEvent(new CustomEvent('animation-budget-exceeded'));
     },
   });
